@@ -1,0 +1,19 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Back-end project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DAWZayas/Klayas.git"
+  },
+  "author": "Klayas",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/DAWZayas/Klayas/issues"
+  },
+  "homepage": "https://github.com/DAWZayas/Klayas#readme"
+}
