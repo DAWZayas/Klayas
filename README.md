@@ -22,4 +22,4 @@ This project is developed by: Susana Cadenas, Juan Medina and Álvaro Quero.
 
 ## License
 
-[MIT](https://opensource.org/licenses/mit-license)
+[MIT](https://github.com/DAWZayas/Klayas/blob/master/LICENSE.md)
