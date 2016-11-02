@@ -4,6 +4,7 @@
   "description": "Back-end project",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "eslint src/ && babel-node test/"
   },
   "repository": {
