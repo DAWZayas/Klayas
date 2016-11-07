@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "db:start": "docker run -d -p 28015:28015 -p 8090:8080 -v $PWD/db:/data --name expertsdb rethinkdb",
+    "db:start": "docker run -d -p 28015:28015 -p 8090:8080 -v $PWD/db:/data --name klayasdb rethinkdb",
     "db:stop": "docker stop expertsdb",
     "db:rm": "docker rm expertsdb",
     "test": "eslint src/ && babel-node test/"
@@ -42,8 +42,12 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
     "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "thinky": "^2.3.7",
     "winston": "^2.2.0"
   }
