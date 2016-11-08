@@ -6,3 +6,5 @@ export default (app) => {
   login(app);
   register(app);
 };
+
+export {loginTaken} from './register';
