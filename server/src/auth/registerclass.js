@@ -1,3 +1,6 @@
+import {Class} from '../db';
+import {hash, asyncRequest} from '../util';
+
 export default (app) => {
   app.post('/api/registerclass', asyncRequest(async (req, res) => {
     // get class input
