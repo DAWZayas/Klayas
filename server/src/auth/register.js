@@ -4,7 +4,7 @@ import {hash, asyncRequest} from '../util';
 
 export const loginTaken = async (login) => {
   // check if login is already taken
-  const users = await User.firlter({login}).run();
+  const users = await User.filter({login}).run();
   return users.length > 0;
 };
 
