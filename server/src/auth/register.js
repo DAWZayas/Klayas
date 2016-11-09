@@ -11,7 +11,7 @@ export const loginTaken = async (login) => {
 export default (app) => {
   app.post('/api/register', asyncRequest(async (req, res) => {
     // get user input
-    const {login, password, passwordRepeat} = req.body;
+    const {name, surname, login, email, password, passwordRepeat} = req.body;
     // check if passwords match
     if (password !== passwordRepeat) {
       res.status(400).send({error: 'passwords do not match!'});
@@ -21,7 +21,10 @@ export default (app) => {
     const hashedPassword = hash(password);
     // create user
     const user = new User({
+      name,
+      surname,
       login,
+      email,
       password: hashedPassword,
     });
     // check if login is already taken
