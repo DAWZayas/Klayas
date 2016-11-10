@@ -10,6 +10,7 @@ import morgan from 'morgan';
 import {logger} from './util';
 import {auth as authConfig} from '../config';
 import setupAuthRoutes from './auth/';
+import setupClassRoutes from './class/';
 
 // init app
 const app = express();
@@ -41,8 +42,9 @@ app.get('/', (req, res) => {
   res.send('Hello world!');
 });
 
-// setup authenticaton routes
+// setup routes
 setupAuthRoutes(app);
+setupClassRoutes(app);
 
 // catch all unhandler errors
 app.use((err, req, res, next) => {

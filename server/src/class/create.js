@@ -1,8 +1,8 @@
 import {Class} from '../db';
-import {hash, asyncRequest} from '../util';
+import {asyncRequest} from '../util';
 
 export default (app) => {
-  app.post('/api/registerclass', asyncRequest(async (req, res) => {
+  app.post('/api/class/create', asyncRequest(async (req, res) => {
     // get class input
     const {name, date, hour, teacher} = req.body;
     // create user
