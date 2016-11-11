@@ -8,6 +8,12 @@ export const loginTaken = async (login) => {
   return users.length > 0;
 };
 
+export const emailTaken = async (email) => {
+  // check if email is already taken
+  const users = await User.filter({email}).run();
+  return users.length > 0;
+};
+
 export default (app) => {
   app.post('/api/register', asyncRequest(async (req, res) => {
     // get user input
@@ -28,9 +34,15 @@ export default (app) => {
       password: hashedPassword,
     });
     // check if login is already taken
-    const exists = await loginTaken(login);
-    if (exists) {
+    const loginExists = await loginTaken(login);
+    if (loginExists) {
       res.status(403).send({error: 'User already exists!'});
+      return;
+    }
+    // check if email is already taken
+    const emailExists = await emailTaken(email);
+    if (emailExists) {
+      res.status(403).send({error: 'Email already exists!'});
       return;
     }
 

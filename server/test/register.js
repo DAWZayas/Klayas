@@ -39,7 +39,7 @@ export default (test) => {
       });
   });
 
-  test('Should fail to register with same username', (t) => {
+  test('Should fail to register with registered username', (t) => {
     request(app)
       .post('/api/register')
       .send({
@@ -73,6 +73,27 @@ export default (test) => {
       .expect(400)
       .end((err, res) => {
         const expectedBody = {error: 'passwords do not match!'};
+        const actualBody = res.body;
+
+        t.error(err, 'No error');
+        t.deepEqual(actualBody, expectedBody, 'Retrieve body');
+        t.end();
+      });
+  });
+
+  test('Should fail to register with registered email', (t) => {
+    request(app)
+      .post('/api/register')
+      .send({
+        name: 'test4',
+        surname: 'tset4',
+        login: 'test4',
+        email: 'test@klayas.com',
+        password: '123',
+        passwordRepeat: '123'})
+      .expect(403)
+      .end((err, res) => {
+        const expectedBody = {error: 'Email already exists!'};
         const actualBody = res.body;
 
         t.error(err, 'No error');
