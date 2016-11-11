@@ -1,9 +1,13 @@
+// npm packages
 import moment from 'moment';
+import passport from 'passport';
+
+// our packages
 import {Class} from '../db';
 import {asyncRequest} from '../util';
 
 export default (app) => {
-  app.post('/api/class/create', asyncRequest(async (req, res) => {
+  app.post('/api/class/create', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get class input
     const {name, date, hour, teacher} = req.body;
 
@@ -30,7 +34,7 @@ export default (app) => {
       name,
       date: moment(date).toDate(),
       hour,
-      teacher,
+      teacher: req.user.id,
     });
 
     // save user
