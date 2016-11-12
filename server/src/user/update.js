@@ -2,7 +2,7 @@
 import passport from 'passport';
 
 // our packages
-import {dataTaken} from '../auth/';
+import {emailTaken} from '../auth/';
 import {User} from '../db';
 import {hash, asyncRequest} from '../util/';
 
@@ -41,7 +41,7 @@ export default (app) => {
     }
 
     // check if email is already taken
-    if (emailChanged && !dataTaken(email)) {
+    if (emailChanged && !emailTaken(email)) {
       res.status(403).send({error: 'Email already exists!'});
       return;
     }
