@@ -7,7 +7,7 @@ export default (app) => {
     // get requested class
     try {
       const clase = await Class.get(req.params.id);
-        // send question back
+        // send class back
       res.send(clase);
     } catch (e) {
       res.stats(400).send({error: e.toString()});

@@ -23,7 +23,7 @@ export default (app) => {
       return;
     }
 
-    // Check if date is after actual moment
+    // Check if date have a correct format
     if (!moment(date, moment.ISO_8601).isValid()) {
       res.status(400).send({error: 'Date should be valid ISO Date!'});
       return;
@@ -37,9 +37,9 @@ export default (app) => {
       teacher: req.user.id,
     });
 
-    // save user
+    // save class
     await clase.save();
-
+    // res.send(clase);
     res.sendStatus(201);
   }));
 };
