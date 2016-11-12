@@ -39,7 +39,9 @@ export default (app) => {
     }
 
     if (studentname) {
-      const student = [{studentname, studentid}];
+      const student = {studentname, studentid};
+      console.log(clase.name);
+      console.log(clase.students);
       console.log(student);
       clase.students.push(student);
     }

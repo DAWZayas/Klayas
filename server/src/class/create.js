@@ -35,11 +35,17 @@ export default (app) => {
       date: moment(date).toDate(),
       hour,
       teacher: req.user.id,
+      students: [],
     });
 
     // save class
     await clase.save();
-    // res.send(clase);
+    try {
+        // send class back
+      res.send(clase);
+    } catch (e) {
+      res.stats(400).send({error: e.toString()});
+    }
     res.sendStatus(201);
   }));
 };

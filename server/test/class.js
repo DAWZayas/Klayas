@@ -73,7 +73,6 @@ export default (test) => {
         hour: '00:00'})
       .end((err, res) => {
         const actualBody = res.body;
-
         t.error(err, 'No error');
         app.set('clase', actualBody);
         t.end();
