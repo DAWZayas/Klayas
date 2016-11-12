@@ -7,4 +7,4 @@ export default (app) => {
   register(app);
 };
 
-export {loginTaken} from './register';
+export {dataTaken} from './register';
