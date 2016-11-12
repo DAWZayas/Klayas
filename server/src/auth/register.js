@@ -2,9 +2,15 @@
 import {User} from '../db';
 import {hash, asyncRequest} from '../util';
 
-export const dataTaken = async (data) => {
+const loginTaken = async (login) => {
   // check if login is already taken
-  const users = await User.filter({data}).run();
+  const users = await User.filter({login}).run();
+  return users.length > 0;
+};
+
+export const emailTaken = async (email) => {
+  // check if email is already taken
+  const users = await User.filter({email}).run();
   return users.length > 0;
 };
 
@@ -28,13 +34,13 @@ export default (app) => {
       password: hashedPassword,
     });
     // check if login is already taken
-    const loginExists = await dataTaken(login);
+    const loginExists = await loginTaken(login);
     if (loginExists) {
       res.status(403).send({error: 'User already exists!'});
       return;
     }
     // check if email is already taken
-    const emailExists = await dataTaken(email);
+    const emailExists = await emailTaken(email);
     if (emailExists) {
       res.status(403).send({error: 'Email already exists!'});
       return;
