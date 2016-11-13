@@ -38,12 +38,18 @@ export default (app) => {
       clase.hour = hour;
     }
 
+    // if (isPublic) {
+    //   clase.isPublic = isPublic;
+    // }
+
     if (studentname) {
-      const student = {studentname, studentid};
-      console.log(clase.name);
-      console.log(clase.students);
-      console.log(student);
-      clase.students.push(student);
+      if (clase.isPublic) {
+        const student = {studentname, studentid};
+        clase.students.push(student);
+      } else {
+        res.status(403).send({error: 'This class is private. Plese contact with the teacher'});
+        return;
+      }
     }
 
 

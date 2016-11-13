@@ -9,7 +9,7 @@ import {asyncRequest} from '../util';
 export default (app) => {
   app.post('/api/class/create', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get class input
-    const {name, date, hour} = req.body;
+    const {name, date, hour, isPublic} = req.body;
 
     // make sure name is not empty
     if (!name || !name.length) {
@@ -36,6 +36,7 @@ export default (app) => {
       hour,
       teacher: req.user.id,
       students: [],
+      isPublic,
     });
 
     // save class
