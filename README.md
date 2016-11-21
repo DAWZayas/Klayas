@@ -1,14 +1,16 @@
-# Klayas
+Klayas
+===================
 
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 
 Klayas is a video streaming web application to record and upload the teacher's lessons to internet.
 
-##Purpose of the project:
+### Purpose of the project:
 
 The purpose of this application is help all students who stay sick at home.
 
-##Content:
+### Content:
 
   Sing up and login in.
   Users (Teacher, student...).
@@ -16,10 +18,6 @@ The purpose of this application is help all students who stay sick at home.
   Chat of the virtual classroom.
   More to coming...
 
-##Authors
+### Authors
 
-This project is developed by: Susana Cadenas, Juan Medina and Álvaro Quero.
-
-## License
-
-[MIT](https://github.com/DAWZayas/Klayas/blob/master/LICENSE.md)
+This project is developed by: Juan Medina and Álvaro Quero
