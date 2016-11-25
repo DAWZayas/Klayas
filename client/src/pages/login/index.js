@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onLoginClick: params => dispatch(loginAction(params)),
-  navToHome: () => dispatch(push('/')),
+  navToHome: () => dispatch(push('/users')),
 });
 
 const Login = ({onLoginClick, navToHome, token, error}) => {

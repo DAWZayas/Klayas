@@ -13,3 +13,7 @@ export const registerAction = payload => ({
   type: ActionTypes.DO_REGISTER,
   payload,
 });
+
+export const clearSesionAction = () => ({
+  type: ActionTypes.CLOSE_SESSION,
+});
