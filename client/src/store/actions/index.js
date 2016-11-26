@@ -17,3 +17,8 @@ export const registerAction = payload => ({
 export const clearSesionAction = () => ({
   type: ActionTypes.CLOSE_SESSION,
 });
+
+export const editProfile = payload => ({
+  type: ActionTypes.UPDATE_PROFILE,
+  payload,
+});

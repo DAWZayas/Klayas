@@ -34,3 +34,21 @@ export const register = action$ => action$
       },
     }))
   );
+
+
+  export const updateProfile = action$ => action$
+  .ofType(ActionTypes.UPDATE_PROFILE)
+  .switchMap(({payload}) => Observable
+    .ajax.post('http://localhost:8080/api/register', payload)
+    .map(res => res.response)
+    .map(response => ({
+      type: ActionTypes.REGISTER_SUCCESS,
+      payload: response,
+    }))
+    .catch(err => Observable.of({
+      type: ActionTypes.REGISTER_ERROR,
+      payload: {
+        error: err,
+      },
+    }))
+  );

@@ -21,8 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
 const User = ({onClick, name}) => (
   <div className="jumbotron">
     <h1>Bienvenido {name}!</h1>
-    <button className="btn btn-default" onClick={onClick}>Cerrar sesión</button>
-    <p><Link to="/login">Home</Link></p>
+    
+    <p><Link to="/">Home</Link> | <Link to="/users/edit-profile">Editar Perfil</Link></p>
+    <p><button className="btn btn-default" onClick={onClick}>Cerrar sesión</button></p>
   </div>
 );
 
