@@ -1,3 +1,14 @@
+FRONT
+
+El usuario se loguea y entra a la página de usuario que de momento sólo le muestra un botón de cerrar sesion.
+El botón si tiene funcionalidad ya que si se pulsa borra el local storage y puede volverse a ir a la home y nos lleva de nuevo la login.
+
+He puesto en la funcion requireAuth que si hay login vaya a user, y si no lo hay vaya a login, y funciona, pero en cambio, el enlace en la página de user de home, no funciona y no te lleva ahí aunque cierres sesion... revisarlo
+
+
+
+
+BACK
 ### CLASES
 Crear los test
 - No se porqué en el main tengo que poner import clase from './class'; porque no me deja importar class.

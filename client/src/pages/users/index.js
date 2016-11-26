@@ -8,7 +8,7 @@ import {push} from 'react-router-redux';
 import {clearSesionAction} from '../../store/actions';
 
 const mapStateToProps = (state) => ({
-  name: state.users.name,
+  name: state.auth.user.name,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const User = ({onClick, name}) => (
   <div className="jumbotron">
-    <h1>Hello {name}!</h1>
+    <h1>Bienvenido {name}!</h1>
     <button className="btn btn-default" onClick={onClick}>Cerrar sesión</button>
     <p><Link to="/login">Home</Link></p>
   </div>

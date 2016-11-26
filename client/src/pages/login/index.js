@@ -40,8 +40,8 @@ const Login = ({onLoginClick, navToHome, token, error}) => {
 
   return (
     <div className="jumbotron">
-      <h2>Experts portal:</h2>
-      <p>Please log in. Or <Link to="/register">register</Link></p>
+      <h2>Klayas:</h2>
+      <p>Accede al portal o si aún no eres usuario <Link to="/register">Registrate</Link></p>
 
       {error ? (
         <div className="alert alert-danger" role="alert">{loginErrorToMessage(error)}</div>
@@ -74,7 +74,7 @@ const Login = ({onLoginClick, navToHome, token, error}) => {
               type="checkbox"
               id="inputRemember"
               ref={(i) => { rememberInput = i; }}
-            /> Remember me
+            /> Recordar
           </label>
         </div>
         <button type="submit" className="btn btn-default" onClick={handleClick}>Login</button>
