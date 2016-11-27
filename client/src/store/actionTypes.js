@@ -10,3 +10,4 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_ERROR = 'REGISTER_ERROR';
 // user actions
 export const CLOSE_SESSION = 'CLOSE_SESSION';
+export const UPDATE_PROFILE = 'UPDATE_PROFILE';

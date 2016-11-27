@@ -8,11 +8,15 @@ import {push} from 'react-router-redux';
 import {clearSesionAction} from '../../store/actions';
 import {editProfile} from '../../store/actions';
 
+//our components
+import Footer from './footer.js';
+
 const mapStateToProps = (state) => ({
   name: state.auth.user.name,
   surname: state.auth.user.surname,
   login: state.auth.user.login,
   email: state.auth.user.email,
+  id: state.auth.user.id,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -22,7 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-const Update = ({onRegisterClick, navToLogin, redirectToLogin, error, name}) => {
+const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, name, surname, login, email, id}) => {
   let nameInput;
   let surnameInput;
   let loginInput;
@@ -42,6 +46,7 @@ const Update = ({onRegisterClick, navToLogin, redirectToLogin, error, name}) => 
       ActualPassword: actualPasswordInput.value,
       password: passwordInput.value,
       passwordRepeat: passwordInputRepeat.value,
+      id: id,
     });
   };
 
@@ -65,7 +70,7 @@ const Update = ({onRegisterClick, navToLogin, redirectToLogin, error, name}) => 
             type="text"
             className="form-control"
             id="inputName"
-            placeholder="Nombre"
+            placeholder= {name}
             ref={(i) => { nameInput = i; }}
           />
         </div>
@@ -75,7 +80,7 @@ const Update = ({onRegisterClick, navToLogin, redirectToLogin, error, name}) => 
             type="text"
             className="form-control"
             id="inputName"
-            placeholder="Apellidos"
+            placeholder={surname}
             ref={(i) => { surnameInput = i; }}
           />
         </div>
@@ -85,7 +90,7 @@ const Update = ({onRegisterClick, navToLogin, redirectToLogin, error, name}) => 
             type="text"
             className="form-control"
             id="inputLogin"
-            placeholder="Nombre de usuario"
+            placeholder={login}
             ref={(i) => { loginInput = i; }}
           />
         </div>
@@ -95,12 +100,25 @@ const Update = ({onRegisterClick, navToLogin, redirectToLogin, error, name}) => 
             type="text"
             className="form-control"
             id="inputLogin"
-            placeholder="Correo electrónico"
+            placeholder={email}
             ref={(i) => { emailInput = i; }}
           />
         </div>
         <div className="form-group">
+          Si desea cambiar su contraseña rellene estos campos, sino, déjelos en blanco
+        </div>
+        <div className="form-group">
           <label htmlFor="inputPassword">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            id="inputPassword"
+            placeholder="Password Actual"
+            ref={(i) => { actualPasswordInput = i; }}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="inputPassword">Nueva Password</label>
           <input
             type="password"
             className="form-control"
@@ -110,7 +128,7 @@ const Update = ({onRegisterClick, navToLogin, redirectToLogin, error, name}) => 
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputPasswordRepeat">Vuelve a escribir la password</label>
+          <label htmlFor="inputPasswordRepeat">Vuelve a escribir la nueva password</label>
           <input
             type="password"
             className="form-control"
@@ -119,8 +137,10 @@ const Update = ({onRegisterClick, navToLogin, redirectToLogin, error, name}) => 
             ref={(i) => { passwordInputRepeat = i; }}
           />
         </div>
-        <button type="submit" className="btn btn-default" onClick={handleClick}>Registrar</button>
+        <button type="submit" className="btn btn-default" onClick={handleClick}>Modificar perfil</button>
       </form>
+      <hr />
+      <Footer />
     </div>
   );
 };
