@@ -2,14 +2,11 @@
   "name": "klayas-front-end",
   "version": "0.1.0",
   "description": "Klayas portal client",
-  "main": "webpack.config.js",
+  "main": "index.js",
   "scripts": {
     "start": "node serve.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DAWZayas/Klayas.git"
-  },
+  "repository": "https://github.com/DAWZayas/Klayas.git",
   "author": "Klayas Team",
   "license": "MIT",
   "bugs": {
@@ -36,6 +33,7 @@
     "webpack-hot-middleware": "^2.12.2"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "history": "^4.4.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",

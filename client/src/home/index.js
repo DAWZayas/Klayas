@@ -10,7 +10,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="jumbotron">
         <h1>Hello world!</h1>
         <Link to="/other">other</Link>
       </div>
