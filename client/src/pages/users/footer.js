@@ -17,7 +17,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Footer = ({onClick}) => (
   <div>
-    <p><Link to="/">Home</Link> | <Link to="/users/edit-profile">Editar Perfil</Link> | <Link to="/users/edit-profile">Crear Clase</Link></p>
+  <hr />
+    <p><Link to="/">Home</Link> | <Link to="/users/edit-profile">Editar Perfil</Link> | <Link to="/class/create">Crear Clase</Link></p>
     <p><button className="btn btn-default" onClick={onClick}>Cerrar sesión</button></p>
   </div>
 );

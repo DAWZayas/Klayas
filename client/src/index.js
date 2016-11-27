@@ -20,6 +20,7 @@ import Login from './pages/login';
 import Register from './pages/register';
 import User from './pages/users';
 import EditProfile from './pages/users/edit-profile.js';
+import CreateClass from './pages/class/create.js';
 import NotFound from './pages/notfound';
 
 // Create an enhanced history that syncs navigation events with the store
@@ -35,6 +36,7 @@ ReactDOM.render((
         <Route path="register" component={Register} />
         <Route path="users" component={User} />
         <Route path="users/edit-profile" component={EditProfile} />
+        <Route path="class/create" component={CreateClass} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>

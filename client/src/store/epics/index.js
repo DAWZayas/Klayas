@@ -1,5 +1,6 @@
 import {login, register} from './auth';
 import {helloWorld} from './helloworld';
+import {createClass} from './class';
 
 export default [
   // auth
@@ -7,4 +8,5 @@ export default [
   register,
   // hello world
   helloWorld,
+  createClass,
 ];
