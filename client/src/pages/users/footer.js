@@ -2,13 +2,11 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
 
 // our packages
 import {clearSesionAction} from '../../store/actions';
 
 const mapStateToProps = (state) => ({
-  name: state.auth.user.name,
 });
 
 const mapDispatchToProps = (dispatch) => ({
