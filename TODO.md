@@ -1,11 +1,7 @@
 FRONT
 
-index de users
-El botón 'Cerrar sesión' tiene funcionalidad ya que si se pulsa borra el local storage y puede volverse a ir a la home y nos lleva de nuevo la login.
-El problema es que la funcion requireAuth mira si el estado tiene token, y el stado sigue teniendolo aunque haya vaciado el localStorage, por lo que es necesario eliminarlo del estad y no se como se hace. 
-Me acuerdo que lo explicó con el 'spread' (...) de una array que sólo sirve en Ecmas 6 y Álvaro le preguntó como hacerlo sin Ecmas 6 y Javier lo intentó pero no pudo.... me acuerdo de lo pregunta, pero no recuerdo bien como lo hizo ni en que parte mirarlo (creo que era cuando Tim devolvía el usuario sin token en el server, pero por más que miro no lo encuentro....
-
-He puesto en la funcion requireAuth que si hay login vaya a user, y si no lo hay vaya a login, y funciona, pero en cambio, el enlace en la página de user de home, no funciona y no te lleva ahí aunque cierres sesion... revisarlo
+CERRAR SESIÓN
+El botón elimina el token, pero aunque he puesto en el footer de user el if para comprobar si hay token o no no he logrado que navegue automáticamente ahí.
 
 ACTULIZACIÓN DE PERFIL
 Creo que lo suyo es que en lugar de con placeholder el valor este puesto con value y sea editable, pero al intentarlo no me deja editarlo... supongo que tiene algo que ver con el VirutalDom pero no se como hacerlo.

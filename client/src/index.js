@@ -31,7 +31,7 @@ ReactDOM.render((
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Home} onEnter={requireAuth} />
+        <IndexRoute component={User} onEnter={requireAuth} />
         <Route path="login" component={Login} />
         <Route path="register" component={Register} />
         <Route path="users" component={User} />

@@ -1,10 +1,10 @@
 // our packages
 import * as ActionTypes from '../actionTypes';
 
-const initialState = {
+const initialState = () => ({
   token: localStorage.getItem('user.token'),
   user: JSON.parse(localStorage.getItem('user.data')),
-};
+});
 
 export const auth = (state = initialState, action) => {
   switch (action.type) {
@@ -24,12 +24,10 @@ export const auth = (state = initialState, action) => {
         ...state,
         error: action.payload.error,
       };
-      case ActionTypes.CLOSE_SESSION:
+    case ActionTypes.CLOSE_SESSION:
       localStorage.removeItem('user.token');
       localStorage.removeItem('user.data');
-      return {
-        initialState,
-      };
+      return initialState();
     default:
       return state;
   }

@@ -9,12 +9,4 @@ export const requireAuth = (nextState, replace) => {
       },
     });
   }
-  else {
-    replace({
-      pathname: '/users',
-      state: {
-        nextPathname: nextState.location.pathname,
-      },
-    });
-  }
 };
