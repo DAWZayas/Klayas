@@ -39,7 +39,7 @@ export const register = action$ => action$
   export const updateProfile = action$ => action$
   .ofType(ActionTypes.UPDATE_PROFILE)
   .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/{id}', payload)
+    .ajax.post('http://localhost:8080/api/user/' + payload.id, payload)
     .map(res => res.response)
     .map(response => ({
       type: ActionTypes.REGISTER_SUCCESS,

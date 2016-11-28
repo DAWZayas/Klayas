@@ -10,7 +10,7 @@ He puesto en la funcion requireAuth que si hay login vaya a user, y si no lo hay
 ACTULIZACIÓN DE PERFIL
 Creo que lo suyo es que en lugar de con placeholder el valor este puesto con value y sea editable, pero al intentarlo no me deja editarlo... supongo que tiene algo que ver con el VirutalDom pero no se como hacerlo.
 
-Para modificar el perfil tengo que llamar a una url con la id del usuario, creo que he sido capaz de añadir esa id al payload y se lo paso a la acción de UPDATE_PROFILE, pero ahora no tengo muy claro como pasarselo a la url, he añadido el epic al index de epic (al principio no lo había hecho y no lo cogía) y veo que no le paso bien la ID, pero no se como hacerlo.
+Ya he conseguido pasar la url correctamente, y se llama a la base de datos, pero ahora no deja postear a esa dirección, hay que ver exactamente a cual llama el update (creo que además tendremos que pasarle el token), porque he visto que tampoco puedo postear a esa dirección desde el Postman
 
 CREACIÓN DE CLASE
 Al pulsar en crear clase me dice que CreateClassAction is not defined (consola de Crhome), pero si que la veo definida y si sigo su creación y la encuentro... de momento lo dejo a ver si en frio lo veo mejor.
