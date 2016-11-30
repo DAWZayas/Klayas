@@ -7,4 +7,4 @@ export default (app) => {
   register(app);
 };
 
-export {dataTaken} from './register';
+export {emailTaken} from './register';

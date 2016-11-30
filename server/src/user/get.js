@@ -3,7 +3,7 @@ import passport from 'passport';
 
 // our packages
 import {User} from '../db';
-import {asyncRequest} from '../util/';
+import {asyncRequest} from '../util';
 
 export default (app) => {
   app.get('/api/user/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
