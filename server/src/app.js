@@ -9,9 +9,9 @@ import morgan from 'morgan';
 // our packages
 import {logger} from './util';
 import {auth as authConfig} from '../config';
-import setupAuthRoutes from './auth/';
+import setupAuthRoutes from './auth';
 import setupUserRoutes from './user';
-import setupClassRoutes from './class/';
+import setupClassroomRoutes from './classroom';
 
 
 // init app
@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
 // setup routes
 setupAuthRoutes(app);
 setupUserRoutes(app);
-setupClassRoutes(app);
+setupClassroomRoutes(app);
 
 // catch all unhandler errors
 app.use((err, req, res, next) => {
