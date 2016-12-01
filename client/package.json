@@ -1,23 +1,13 @@
 {
   "name": "experts-client",
   "version": "0.1.0",
-  "description": "Experts portal client",
+  "description": "Klayas portal client",
   "main": "index.js",
   "scripts": {
     "start": "node serve.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yamalight/building-products-with-js.git"
-  },
-  "keywords": [
-    "react",
-    "react-router",
-    "webpack",
-    "tutorial",
-    "front-end"
-  ],
-  "author": "Tim Ermilov <yamalight@gmail.com> (http://codezen.net)",
+  "repository": "https://github.com/DAWZayas/Klayas.git",
+  "author": "Klayas Team",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/yamalight/building-products-with-js/issues"
@@ -34,6 +24,11 @@
     "babel-preset-react-optimize": "^1.0.1",
     "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.25.0",
+    "eslint": "^3.10.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^6.7.1",
     "express": "^4.14.0",
     "file-loader": "^0.9.0",
     "json-loader": "^0.5.4",
@@ -45,7 +40,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "history": "^4.2.0",
+    "history": "^4.4.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",

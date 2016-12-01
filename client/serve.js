@@ -26,6 +26,7 @@ config.entry = [
   'webpack-hot-middleware/client',
   config.entry,
 ];
+
 // returns a Compiler instance
 const compiler = webpack(config);
 // stats output config
@@ -46,6 +47,7 @@ app.use(webpackHotMiddleware(compiler));
 
 // serve statics
 app.use(express.static(__dirname));
+
 // serve index
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 // start server

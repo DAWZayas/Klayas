@@ -5,9 +5,9 @@ import request from 'supertest';
 import app from '../src/app';
 
 export default (test) => {
-  test('Should not create a class with no name', (t) => {
+  test('Should not create a classroom with no name', (t) => {
     request(app)
-      .post('/api/class/create')
+      .post('/api/classroom/create')
       .set('x-access-token', app.get('token'))
       .send({
         name: '',
@@ -15,7 +15,7 @@ export default (test) => {
         hour: '00:00'})
       .expect(400)
       .end((err, res) => {
-        const expectedBody = {error: 'The class must have a name!'};
+        const expectedBody = {error: 'The classroom must have a name!'};
         const actualBody = res.body;
 
         t.error(err, 'No error');
@@ -24,9 +24,9 @@ export default (test) => {
       });
   });
 
-  test('The class must have a date from future', (t) => {
+  test('The classroom must have a date from future', (t) => {
     request(app)
-      .post('/api/class/create')
+      .post('/api/classroom/create')
       .set('x-access-token', app.get('token'))
       .send({
         name: 'DAW',
@@ -45,7 +45,7 @@ export default (test) => {
 
   test('The date must have a correct format', (t) => {
     request(app)
-      .post('/api/class/create')
+      .post('/api/classroom/create')
       .set('x-access-token', app.get('token'))
       .send({
         name: 'DAW',
@@ -63,9 +63,9 @@ export default (test) => {
   });
 
 
-  test('Should create a class with given data', (t) => {
+  test('Should create a classroom with given data', (t) => {
     request(app)
-      .post('/api/class/create')
+      .post('/api/classroom/create')
       .set('x-access-token', app.get('token'))
       .send({
         name: 'test',
@@ -74,19 +74,19 @@ export default (test) => {
       .end((err, res) => {
         const actualBody = res.body;
         t.error(err, 'No error');
-        app.set('clase', actualBody);
+        app.set('classroom', actualBody);
         t.end();
       });
   });
 
 
-  // test('GET /api/class/:id', (t) => {
+  // test('GET /api/classroom/:id', (t) => {
   //   request(app)
-  //     .get(`/api/class/${app.get('clase').id}`)
+  //     .get(`/api/classroom/${app.get('classroom').id}`)
   //     .expect(200)
   //     .expect('Content-Type', /json/)
   //     .end((err, res) => {
-  //       const expectedBody = app.get('class');
+  //       const expectedBody = app.get('classroom');
   //       const actualBody = res.body;
   //
   //       t.error(err, 'No error');
@@ -97,17 +97,17 @@ export default (test) => {
   // });
 
 
-  // test('GET /api/class/:id', (t) => {
+  // test('GET /api/classroom/:id', (t) => {
   //   request(app)
-  //     .get(`/api/class/${app.get('clase').id}`)
+  //     .get(`/api/classroom/${app.get('classroom').id}`)
   //     .expect(200)
   //     .expect('Content-Type', /json/)
   //     .end((err, res) => {
-  //       const expectedBody = app.get('clase');
+  //       const expectedBody = app.get('classroom');
   //       const actualBody = res.body;
   //
   //       t.error(err, 'No error');
-  //       t.deepEqual(actualBody, expectedBody, 'Retrieve class');
+  //       t.deepEqual(actualBody, expectedBody, 'Retrieve classroom');
   //       t.notOk(actualBody.password, 'No password included');
   //       t.end();
   //     });

@@ -3,17 +3,17 @@ import moment from 'moment';
 import passport from 'passport';
 
 // our packages
-import {Class} from '../db';
+import {Classroom} from '../db';
 import {asyncRequest} from '../util';
 
 export default (app) => {
-  app.post('/api/class/create', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    // get class input
+  app.post('/api/classroom/create', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+    // get classroom input
     const {name, date, hour, isPublic} = req.body;
 
     // make sure name is not empty
     if (!name || !name.length) {
-      res.status(400).send({error: 'The class must have a name!'});
+      res.status(400).send({error: 'The classroom must have a name!'});
       return;
     }
 
@@ -29,8 +29,8 @@ export default (app) => {
       return;
     }
 
-    // create class
-    const clase = new Class({
+    // create classroom
+    const classroom = new Classroom({
       name,
       date: moment(date).toDate(),
       hour,
@@ -39,11 +39,11 @@ export default (app) => {
       isPublic,
     });
 
-    // save class
-    await clase.save();
+    // save classroom
+    await classroom.save();
     try {
-        // send class back
-      res.send(clase);
+        // send classroom back
+      res.send(classroom);
     } catch (e) {
       res.stats(400).send({error: e.toString()});
     }

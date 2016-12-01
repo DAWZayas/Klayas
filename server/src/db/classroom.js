@@ -1,7 +1,7 @@
 // our packages
 import {thinky} from './thinky';
 
-export const Class = thinky.createModel('Class', {
+export const Classroom = thinky.createModel('Classroom', {
   name: thinky.type.string().required(),
   date: thinky.type.date(),
   // hour: thinky.type.date(),
