@@ -13,21 +13,21 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onCloseSessionClick: () => dispatch(clearSesionAction()),
-  navToHome: () => dispatch(push('/')),
+  navToHome: () => dispatch(push('/aaaaaaaaaaaaaaa')),
 });
 
 const Footer = ({onCloseSessionClick, navToHome, token}) => {
-    if (!token) {
-        // TODO: figure out a better way to do nav
-        setImmediate(() => navToHome());
-      }
-    return (
-        <div>
-            <hr />
-                <p><Link to="/">Home</Link> | <Link to="/users/edit-profile">Editar Perfil</Link> | <Link to="/class/create">Crear Clase</Link></p>
-                <p><button className="btn btn-default" onClick={onCloseSessionClick}>Cerrar sesión</button></p>
-        </div>
-        );
+  if (!token) {
+    // TODO: figure out a better way to do nav
+    setImmediate(() => navToHome());
+  }
+  return (
+      <div>
+          <hr />
+              <p><Link to="/">Home</Link> | <Link to="/users/edit-profile">Editar Perfil</Link> | <Link to="/class/create">Crear Clase</Link></p>
+              <p><button className="btn btn-default" onClick={onCloseSessionClick}>Cerrar sesión</button></p>
+      </div>
+      );
 };
 
 
