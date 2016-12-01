@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
 // our packages
-import {clearSesionAction} from '../../store/actions';
 import {editProfile} from '../../store/actions';
 
 //our components
@@ -20,7 +19,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onClick: () => dispatch(clearSesionAction()),
   navToHome: () => dispatch(push('/login')),
   onEditClick: params => dispatch(editProfile(params)),
 });
