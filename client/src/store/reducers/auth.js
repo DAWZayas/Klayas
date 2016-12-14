@@ -6,7 +6,7 @@ const initialState = () => ({
   user: JSON.parse(localStorage.getItem('user.data')),
 });
 
-export const auth = (state = initialState, action) => {
+export const auth = (state = initialState(), action) => {
   switch (action.type) {
     case ActionTypes.REGISTER_SUCCESS:
       return {

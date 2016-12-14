@@ -19,8 +19,8 @@ import Home from './pages/home';
 import Login from './pages/login';
 import Register from './pages/register';
 import User from './pages/users';
-import EditProfile from './pages/users/edit-profile.js';
-import CreateClass from './pages/class/create.js';
+import EditProfile from './pages/users/edit-profile';
+import CreateClass from './pages/class/create';
 import NotFound from './pages/notfound';
 
 // Create an enhanced history that syncs navigation events with the store
@@ -31,7 +31,7 @@ ReactDOM.render((
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={User} onEnter={requireAuth} />
+        <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="login" component={Login} />
         <Route path="register" component={Register} />
         <Route path="users" component={User} />

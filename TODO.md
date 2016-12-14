@@ -1,7 +1,9 @@
 FRONT
 
-CERRAR SESIÓN
-El botón elimina el token, pero aunque he puesto en el footer de user el if para comprobar si hay token o no no he logrado que navegue automáticamente ahí.
+#
+PERFIL DE USUARIO
+El usuario tiene que tener un array de clases propias vacio y un array de clases que observa vacio... hay que implementarlo en el back
+
 
 ACTULIZACIÓN DE PERFIL
 Creo que lo suyo es que en lugar de con placeholder el valor este puesto con value y sea editable, pero al intentarlo no me deja editarlo... supongo que tiene algo que ver con el VirutalDom pero no se como hacerlo.
