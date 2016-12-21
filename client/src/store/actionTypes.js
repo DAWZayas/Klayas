@@ -11,8 +11,8 @@ export const REGISTER_ERROR = 'REGISTER_ERROR';
 // user actions
 export const CLOSE_SESSION = 'CLOSE_SESSION';
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
-export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
-export const UPDATE_ERROR = 'UPDATE_ERROR';
+export const UPDATE_PROFILE_SUCCESS = 'UPDATE_SUCCESS';
+export const UPDATE_PROFILE_ERROR = 'UPDATE_ERROR';
 // class actions
 export const CREATE_CLASS = 'CREATE_CLASS';
 export const CREATE_SUCCESS = 'CREATE_SUCCESS';

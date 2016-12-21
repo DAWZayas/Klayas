@@ -28,6 +28,11 @@ export const auth = (state = initialState(), action) => {
       localStorage.removeItem('user.token');
       localStorage.removeItem('user.data');
       return initialState();
+    case ActionTypes.UPDATE_PROFILE_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+      };
     default:
       return state;
   }

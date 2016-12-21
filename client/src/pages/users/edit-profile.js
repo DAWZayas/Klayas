@@ -11,11 +11,7 @@ import {editProfile} from '../../store/actions';
 import Footer from './footer.js';
 
 const mapStateToProps = (state) => ({
-  name: state.auth.user.name,
-  surname: state.auth.user.surname,
-  login: state.auth.user.login,
-  email: state.auth.user.email,
-  id: state.auth.user.id,
+  user: state.auth.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, name, surname, login, email, id}) => {
+const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, user}) => {
   let nameInput;
   let surnameInput;
   let loginInput;
@@ -44,7 +40,7 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, name,
       ActualPassword: actualPasswordInput.value,
       password: passwordInput.value,
       passwordRepeat: passwordInputRepeat.value,
-      id: id,
+      id: user.id,
     });
   };
 
@@ -55,7 +51,7 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, name,
 
   return (
     <div className="jumbotron">
-      <h1>Edita tu perfil {name}!</h1>
+      <h1>Edita tu perfil {user.name}!</h1>
 
       {error ? (
         <div className="alert alert-danger" role="alert">{registerErrorToMessage(error)}</div>
@@ -68,7 +64,7 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, name,
             type="text"
             className="form-control"
             id="inputName"
-            placeholder= {name}
+            defaultValue={user.name}
             ref={(i) => { nameInput = i; }}
           />
         </div>
@@ -78,7 +74,7 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, name,
             type="text"
             className="form-control"
             id="inputName"
-            placeholder={surname}
+            defaultValue={user.surname}
             ref={(i) => { surnameInput = i; }}
           />
         </div>
@@ -88,7 +84,7 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, name,
             type="text"
             className="form-control"
             id="inputLogin"
-            placeholder={login}
+            defaultValue={user.login}
             ref={(i) => { loginInput = i; }}
           />
         </div>
@@ -98,7 +94,7 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, name,
             type="text"
             className="form-control"
             id="inputLogin"
-            placeholder={email}
+            defaultValue={user.email}
             ref={(i) => { emailInput = i; }}
           />
         </div>
