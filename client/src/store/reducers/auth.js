@@ -31,7 +31,7 @@ export const auth = (state = initialState(), action) => {
     case ActionTypes.UPDATE_PROFILE_SUCCESS:
       return {
         ...state,
-        ...action.payload,
+        user: action.payload,
       };
     default:
       return state;
