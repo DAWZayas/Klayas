@@ -29,6 +29,7 @@ export const auth = (state = initialState(), action) => {
       localStorage.removeItem('user.data');
       return initialState();
     case ActionTypes.UPDATE_PROFILE_SUCCESS:
+      localStorage.setItem('user.data', JSON.stringify(action.payload));
       return {
         ...state,
         user: action.payload,
