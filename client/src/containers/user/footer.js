@@ -23,9 +23,16 @@ const Footer = ({onCloseSessionClick, navToLogin}) => {
   return (
     <div>
       <hr />
-      <p><Link to="/">Home</Link> | <Link to="/users/edit-profile">Editar Perfil</Link> |&nbsp;
-      <Link to="/class/create">Crear Clase</Link></p>
-      <p><button className="btn btn-default" onClick={handleLogoutClick}>Cerrar sesión</button></p>
+      <p>
+        <Link to="/">Home</Link>{' '}
+        |{' '}
+        <Link to="/users/edit-profile">Editar Perfil</Link>{' '}
+        |{' '}
+        <Link to="/classroom/create">Crear Clase</Link>
+      </p>
+      <p>
+        <button className="btn btn-default" onClick={handleLogoutClick}>Cerrar sesión</button>
+      </p>
     </div>
   );
 };

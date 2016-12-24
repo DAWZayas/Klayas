@@ -1,6 +1,5 @@
 // npm packages
 import React from 'react';
-import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
@@ -8,12 +7,11 @@ import {push} from 'react-router-redux';
 import {registerAction} from '../../store/actions';
 import {registerErrorToMessage} from '../../util';
 
-//our components
-import Footer from '../users/footer.js';
+// our components
+import Footer from '../user/footer';
 
 const mapStateToProps = state => ({
   redirectToLogin: state.auth.redirectToLogin,
-  error: state.auth.error,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -21,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
   onCreateClick: params => dispatch(createClassAction(params)),
 });
 
-const CreateClass = ({onCreateClick, navToLogin, redirectToLogin, error}) => {
+const CreateClass = ({onCreateClick, navToLogin, redirectToLogin}) => {
   let nameInput;
   let dateInput;
   let timeInput;

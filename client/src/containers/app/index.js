@@ -2,11 +2,11 @@
 import React from 'react';
 
 // our components
-import Header from './header';
+import Navbar from '../../components/navbar';
 
 export default ({children}) => (
   <div className="container">
-    <Header />
+    <Navbar />
     {children}
   </div>
 );

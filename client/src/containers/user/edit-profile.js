@@ -1,14 +1,13 @@
 // npm packages
 import React from 'react';
-import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
 // our packages
 import {editProfile} from '../../store/actions';
 
-//our components
-import Footer from './footer.js';
+// our components
+import Footer from './footer';
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
@@ -52,10 +51,6 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, user}
   return (
     <div className="jumbotron">
       <h1>Edita tu perfil {user.name}!</h1>
-
-      {error ? (
-        <div className="alert alert-danger" role="alert">{registerErrorToMessage(error)}</div>
-      ) : ''}
 
       <form>
         <div className="form-group">
