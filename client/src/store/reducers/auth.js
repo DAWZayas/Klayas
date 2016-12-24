@@ -24,7 +24,7 @@ export const auth = (state = initialState(), action) => {
         ...state,
         error: action.payload.error,
       };
-    case ActionTypes.CLOSE_SESSION:
+    case ActionTypes.LOGOUT:
       localStorage.removeItem('user.token');
       localStorage.removeItem('user.data');
       return initialState();

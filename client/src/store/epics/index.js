@@ -1,6 +1,6 @@
 import {login, register, updateProfile} from './auth';
 import {helloWorld} from './helloworld';
-import {createClass} from './class';
+import {createClassroom} from './classroom';
 
 export default [
   // auth
@@ -9,5 +9,5 @@ export default [
   updateProfile,
   // hello world
   helloWorld,
-  createClass,
+  createClassroom,
 ];

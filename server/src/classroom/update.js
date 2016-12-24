@@ -3,7 +3,7 @@ import passport from 'passport';
 
 // our packages
 import {asyncRequest} from '../util';
-import {Class} from '../db';
+import {Classroom} from '../db';
 
 export default (app) => {
   app.post('/api/classroom/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
@@ -13,7 +13,7 @@ export default (app) => {
     // get classroom data
     let classroom;
     try {
-      classroom = await Class.get(req.params.id);
+      classroom = await Classroom.get(req.params.id);
     } catch (e) {
       res.status(400).send({error: "The classroom don't exist"});
       return;
