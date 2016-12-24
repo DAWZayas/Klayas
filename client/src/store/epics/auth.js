@@ -39,7 +39,6 @@ export const register = action$ => action$
     })),
   );
 
-
 export const updateProfile = action$ => action$
 .ofType(ActionTypes.UPDATE_PROFILE)
 .map(signRequest)
@@ -47,11 +46,11 @@ export const updateProfile = action$ => action$
   .ajax.post(`http://localhost:8080/api/user/${payload.id}`, payload, headers)
   .map(res => res.response)
   .map(response => ({
-    type: ActionTypes.REGISTER_SUCCESS,
+    type: ActionTypes.UPDATE_PROFILE_SUCCESS,
     payload: response,
   }))
   .catch(err => Observable.of({
-    type: ActionTypes.REGISTER_ERROR,
+    type: ActionTypes.UPDATE_PROFILE_ERROR,
     payload: {
       error: err,
     },
