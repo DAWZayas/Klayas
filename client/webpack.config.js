@@ -1,3 +1,5 @@
+import webpack from 'webpack';
+
 const path = require('path');
 
 module.exports = {
@@ -19,6 +21,10 @@ module.exports = {
     loaders: [{
       test: /\.css$/,
       loaders: ['style', 'css?modules'],
+      exclude: /node_modules/,
+    }, {
+      test: /\.scss$/,
+      loaders: ['style', 'css?modules', 'sass'],
       exclude: /node_modules/,
     }, {
       test: /node_modules\/.+\.css$/,
