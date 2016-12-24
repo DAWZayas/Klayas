@@ -34,8 +34,8 @@ ReactDOM.render((
         <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="login" component={Login} />
         <Route path="register" component={Register} />
-        <Route path="users" component={User} />
-        <Route path="users/edit-profile" component={EditProfile} />
+        <Route path="user" component={User} />
+        <Route path="user/edit-profile" component={EditProfile} />
         <Route path="classroom/create" component={CreateClassroom} />
         <Route path="*" component={NotFound} />
       </Route>

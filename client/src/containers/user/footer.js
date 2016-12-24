@@ -26,7 +26,7 @@ const Footer = ({onCloseSessionClick, navToLogin}) => {
       <p>
         <Link to="/">Home</Link>{' '}
         |{' '}
-        <Link to="/users/edit-profile">Editar Perfil</Link>{' '}
+        <Link to="/user/edit-profile">Editar Perfil</Link>{' '}
         |{' '}
         <Link to="/classroom/create">Crear Clase</Link>
       </p>

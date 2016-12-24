@@ -17,7 +17,7 @@ const User = ({user}) => (
       <div className="panel panel-default">
         <div className="panel-heading">
           <h4>Tu perfil
-            <Link to="/users/edit-profile">
+            <Link to="/user/edit-profile">
               <span className="label label-primary pull-right">Editar perfil</span>
             </Link>
           </h4>
@@ -32,7 +32,7 @@ const User = ({user}) => (
       <div className="panel panel-default">
         <div className="panel-heading">
           <h4>Tus clases
-            <Link to="/users/edit-profile">
+            <Link to="/user/edit-profile">
               <span className="label label-primary pull-right">Crear clase</span>
             </Link>
           </h4>
