@@ -1,5 +1,3 @@
-import webpack from 'webpack';
-
 const path = require('path');
 
 module.exports = {
