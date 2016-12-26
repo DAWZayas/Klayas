@@ -16,11 +16,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   navToHome: () => dispatch(push('/login')),
+  navToProfile: () => dispatch(push('/users')),
   onEditClick: params => dispatch(editProfile(params)),
 });
 
 
-const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, user}) => {
+const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin, error, user}) => {
   let nameInput;
   let surnameInput;
   let loginInput;
@@ -31,6 +32,7 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, user}
 
   const handleClick = (e) => {
     e.preventDefault();
+    setImmediate(() => navToProfile());
 
     onEditClick({
       name: nameInput.value,

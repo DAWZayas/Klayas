@@ -24,7 +24,7 @@ const User = ({user}) => (
           Nombre: {user.name}<br/>
           Apellidos: {user.surname}<br/>
           Nombre de usuario: {user.login}<br/>
-          Correo electrónico: {user.mail}<br/>
+          Correo electrónico: {user.email}<br/>
         </div>
       </div>
       <div className="panel panel-default">
