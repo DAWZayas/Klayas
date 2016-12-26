@@ -1,6 +1,7 @@
 import React from 'react';
+import {IndexLink} from 'react-router';
 
-// const styles = require('./Navbar.scss');
+const styles = require('./Navbar.scss');
 
 export default () => (
   <nav className="navbar navbar-default">
@@ -18,13 +19,12 @@ export default () => (
           <span className="icon-bar" />
           <span className="icon-bar" />
         </button>
-        <a className="navbar-brand">
-          <div className="" />
+        <IndexLink to="/" className={`navbar-brand ${styles.navbar}`}>
+          <div className={styles.brand} />
           <span>Klayas</span>
-        </a>
+        </IndexLink>
       </div>
 
-      {/* Collect the nav links, forms, and other content for toggling */}
       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       </div>
     </div>
