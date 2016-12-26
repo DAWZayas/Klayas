@@ -133,7 +133,8 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
             ref={(i) => { passwordInputRepeat = i; }}
           />
         </div>
-        <button type="submit" className="btn btn-default" onClick={handleClick}>Modificar perfil</button>
+        <button type="submit" className="btn btn-default" onClick={handleClick}>Modificar perfil</button> &nbsp;| &nbsp;
+        <button type="submit" className="btn btn-default" onClick={navToProfile}>Cancelar</button>
       </form>
       <hr />
       <Footer />
