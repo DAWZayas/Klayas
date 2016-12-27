@@ -20,7 +20,7 @@ import Login from './pages/login';
 import Register from './pages/register';
 import User from './pages/users';
 import EditProfile from './pages/users/edit-profile';
-import CreateClass from './pages/class/create';
+import CreateClass from './pages/classroom/create';
 import NotFound from './pages/notfound';
 
 // Create an enhanced history that syncs navigation events with the store

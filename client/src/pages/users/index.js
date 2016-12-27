@@ -29,10 +29,18 @@ const User = ({user}) => (
       </div>
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h4>Tus clases<Link to="/users/edit-profile"><span className="label label-primary pull-right">Crear clase</span></Link></h4>
+          <h4>Tus clases<Link to="/class/create"><span className="label label-primary pull-right">Crear clase</span></Link></h4>
         </div>
         <div className="panel-body">
           Clases que vas a impartir: {user.name}<br/>
+        </div>
+      </div>
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h4>Clases que sigues<Link to="/users/edit-profile"><span className="label label-primary pull-right">Buscar Clases</span></Link></h4>
+        </div>
+        <div className="panel-body">
+          Clases que estas siguiendo: {user.name}<br/>
         </div>
       </div>
     </div>

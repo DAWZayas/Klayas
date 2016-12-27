@@ -1,10 +1,15 @@
+// npm packages
 import {Observable} from 'rxjs/Observable';
+
+// our packages
 import * as ActionTypes from '../actionTypes';
+import {signRequest} from '../../util/signRequest';
 
 export const createClass = action$ => action$
   .ofType(ActionTypes.CREATE_CLASS)
-  .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/class/create', payload)
+  .map(signRequest)
+  .switchMap(({headers, payload}) => Observable
+    .ajax.post('http://localhost:8080/api/classroom/create', payload, headers)
     .map(res => res.response)
     .map(response => ({
       type: ActionTypes.CREATE_SUCCESS,
@@ -17,5 +22,3 @@ export const createClass = action$ => action$
       },
     }))
   );
-
-

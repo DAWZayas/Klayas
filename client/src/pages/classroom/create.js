@@ -1,27 +1,24 @@
 // npm packages
 import React from 'react';
-import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
+import moment from 'moment';
 
 // our packages
-import {registerAction} from '../../store/actions';
+import {createClassAction} from '../../store/actions';
 import {registerErrorToMessage} from '../../util';
 
 //our components
 import Footer from '../users/footer.js';
 
 const mapStateToProps = state => ({
-  redirectToLogin: state.auth.redirectToLogin,
   error: state.auth.error,
 });
 
 const mapDispatchToProps = dispatch => ({
-  navToLogin: () => dispatch(push('/login')),
   onCreateClick: params => dispatch(createClassAction(params)),
 });
 
-const CreateClass = ({onCreateClick, navToLogin, redirectToLogin, error}) => {
+const CreateClass = ({onCreateClick, error}) => {
   let nameInput;
   let dateInput;
   let timeInput;
@@ -32,16 +29,10 @@ const CreateClass = ({onCreateClick, navToLogin, redirectToLogin, error}) => {
 
     onCreateClick({
       name: nameInput.value,
-      date: dateInput.value,
+      date: moment(dateInput.value).toISOString(),
       time: timeInput.value,
-      email: publicInput.value,
     });
   };
-
-  if (redirectToLogin) {
-    // TODO: figure out a better way to do nav
-    setImmediate(() => navToLogin());
-  }
 
   return (
     <div className="jumbotron">
