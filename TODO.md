@@ -1,4 +1,5 @@
-FRONT
+Recuperar las clases.
+Ya las saco de la BBDD y me llegan al store por el reducer, pero aún no se almacenan bien en este.
 
 #
 PERFIL DE USUARIO

@@ -5,6 +5,22 @@ import {Observable} from 'rxjs/Observable';
 import * as ActionTypes from '../actionTypes';
 import {signRequest} from '../../util/signRequest';
 
+export const getAllClassRoom = action$ => action$
+  .ofType(ActionTypes.GET_ALL_CLASSROOM)
+  .map(signRequest)
+  .switchMap(({headers}) => Observable
+    .ajax.get('http://localhost:8080/api/classroom', headers)
+    .map(res => res.response)
+    .map(classroom => ({
+      type: ActionTypes.GET_ALL_CLASSROOM_SUCCESS,
+      payload: {classroom},
+    }))
+    .catch(error => Observable.of({
+      type: ActionTypes.GET_ALL_CLASSROOM_ERROR,
+      payload: {error},
+    })),
+  );
+
 export const createClass = action$ => action$
   .ofType(ActionTypes.CREATE_CLASS)
   .map(signRequest)

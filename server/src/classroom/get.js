@@ -1,16 +1,16 @@
+// npm packages
+import passport from 'passport';
+
 // our packages
-import {Class} from '../db';
+import {r} from '../db';
 import {asyncRequest} from '../util';
 
 export default (app) => {
-  app.get('/api/classroom/:id', asyncRequest(async (req, res) => {
-    // get requested classroom
-    try {
-      const classroom = await Class.get(req.params.id);
-        // send classroom back
-      res.send(classroom);
-    } catch (e) {
-      res.stats(400).send({error: e.toString()});
-    }
+  app.get('/api/classroom', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+    const classroom = await r.table('Classroom')
+                             .pluck('date', 'id', 'isPublic', 'name', 'students', 'teacher')
+                             .orderBy(r.desc('date'));
+    // send question back
+    res.send(classroom);
   }));
 };
