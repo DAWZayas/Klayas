@@ -1,5 +1,5 @@
 Recuperar las clases.
-Ya las saco de la BBDD y me llegan al store por el reducer, pero aún no se almacenan bien en este.
+Al hacer el componente ClassroomOwner, si lo intento importar desde el index de componentes me da error, tengo que importarlo directamente del archivo.
 
 #
 PERFIL DE USUARIO

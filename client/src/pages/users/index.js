@@ -9,6 +9,7 @@ import {getAllClassRoom} from '../../store/actions';
 
 // our components
 import Footer from './footer';
+import ClassroomOwner from '../../components/classroom/ClassroomOwner';
 
 const mapStateToProps = (state) => ({
   user: state.auth.user
@@ -48,7 +49,7 @@ const User = ({user, DoGetAllClassRoom}) => {
       <div className="panel panel-default">
         <div className="panel-heading">
           <h4>
-            Tus clases
+            Clases que vas a impartir, {user.name}
             <Link to="/class/create">
               <span className="label label-primary pull-right">
                 Crear clase
@@ -57,7 +58,8 @@ const User = ({user, DoGetAllClassRoom}) => {
           </h4>
         </div>
         <div className="panel-body">
-          Clases que vas a impartir: {user.name}<br />
+          <ClassroomOwner />
+
         </div>
       </div>
       <div className="panel panel-default">
