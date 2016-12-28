@@ -17,13 +17,11 @@ const mapDispatchToProps = (dispatch) => ({
 const ClassroomOwner = ({classrooms, user}) => {
 
   return (
-
-        <div>
-          {classrooms.map((classroom, index) => (
-            classroom.teacher === user.id ? <Classroom key={index} classroom={classroom} /> : null
-          ))}
-        </div>
-
+    <div>
+      {classrooms.map((classroom, index) => (
+        classroom.teacher === user.id ? <Classroom key={index} classroom={classroom} /> : null
+      ))}
+    </div>
   );
 };
 
