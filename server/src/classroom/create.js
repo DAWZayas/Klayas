@@ -9,7 +9,7 @@ import {asyncRequest} from '../util';
 export default (app) => {
   app.post('/api/classroom/create', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get classroom input
-    const {name, date, hour, isPublic} = req.body;
+    const {name, date, time, isPublic} = req.body;
 
     // make sure name is not empty
     if (!name || !name.length) {
@@ -33,7 +33,7 @@ export default (app) => {
     const classroom = new Classroom({
       name,
       date: moment(date).toDate(),
-      hour,
+      time,
       teacher: req.user.id,
       students: [],
       isPublic,

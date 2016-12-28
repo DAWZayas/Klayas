@@ -26,7 +26,6 @@ const CreateClass = ({onCreateClick, error}) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-
     onCreateClick({
       name: nameInput.value,
       date: moment(dateInput.value).toISOString(),

@@ -8,7 +8,7 @@ import {asyncRequest} from '../util';
 export default (app) => {
   app.get('/api/classroom', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     const classroom = await r.table('Classroom')
-                             .pluck('date', 'id', 'isPublic', 'name', 'students', 'teacher')
+                             .pluck('name', 'date', 'time', 'id', 'isPublic', 'students', 'teacher')
                              .orderBy(r.desc('date'));
     // send question back
     res.send(classroom);
