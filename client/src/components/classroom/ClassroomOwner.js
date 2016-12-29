@@ -1,28 +1,44 @@
-// npm packages
-import React from 'react';
-import {connect} from 'react-redux';
+import React, {Component} from 'react';
+import {Link} from 'react-router';
+import moment from 'moment';
 
-// our packages
-import Classroom from './Classroom';
+class Classroom extends Component {
 
-const mapStateToProps = (state) => ({
-  classrooms: state.classrooms.classrooms,
-  user: state.auth.user
-});
+  constructor(props) {
+    super(props);
+  }
 
-const mapDispatchToProps = (dispatch) => ({
-  DoGetAllClassRoom: _.once(() => dispatch(getAllClassRoom())),
-});
+  render() {
+    const {classroom} = this.props;
 
-const ClassroomOwner = ({classrooms, user}) => {
+    const handleSeeClass = (e) => {
+      e.preventDefault();
+      this.setState({
+        collapse: !this.state.collapse,
+      });
+      return false;
+    };
 
-  return (
-    <div>
-      {classrooms.map((classroom, index) => (
-        classroom.teacher === user.id ? <Classroom key={index} classroom={classroom} /> : null
-      ))}
-    </div>
-  );
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ClassroomOwner);
+    return (
+      <div className="col-md-3">
+        <div className="panel panel-primary">
+          <div className="panel-heading">
+            {classroom.name}
+          </div>
+          <div className="panel-body">
+            <strong>Dia:</strong> {moment(classroom.date).locale('es').format("ll")}<br />
+            <strong>Hora:</strong> {classroom.time}
+          </div>
+          <div className="panel-body">
+          <Link to={'/classroom/'+classroom.id }>
+          <span className="label label-primary pull-right">
+            Ver clase completa
+          </span>
+          </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+export default Classroom;

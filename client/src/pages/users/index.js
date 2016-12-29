@@ -12,6 +12,7 @@ import Footer from './footer';
 import ClassroomOwner from '../../components/classroom/ClassroomOwner';
 
 const mapStateToProps = (state) => ({
+  classrooms: state.classrooms.classrooms,
   user: state.auth.user
 });
 
@@ -19,7 +20,7 @@ const mapDispatchToProps = dispatch => ({
   DoGetAllClassRoom: _.once(() => dispatch(getAllClassRoom())),
 });
 
-const User = ({user, DoGetAllClassRoom}) => {
+const User = ({user, classrooms, DoGetAllClassRoom}) => {
   DoGetAllClassRoom();
 
   return (
@@ -58,7 +59,11 @@ const User = ({user, DoGetAllClassRoom}) => {
           </h4>
         </div>
         <div className="panel-body">
-          <ClassroomOwner />
+          <div>
+            {classrooms.map((classroom, index) => (
+              classroom.teacher === user.id ? <ClassroomOwner key={index} classroom={classroom} /> : null
+            ))}
+          </div>
 
         </div>
       </div>

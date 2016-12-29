@@ -2,17 +2,35 @@ Recuperar las clases.
 Al hacer el componente ClassroomOwner, si lo intento importar desde el index de componentes me da error, tengo que importarlo directamente del archivo.
 
 #
-PERFIL DE USUARIO
-El usuario tiene que tener un array de clases propias vacio y un array de clases que observa vacio... hay que implementarlo en el back
+TODO
+
+##
+List user classroom in his profile
+Cuando el usuario no tiene ninguna clase debe mostrar un mensaje informándole e instándole a crear su primera clase
+
+##
+Create classrroms
+Mirar como almacenar las horas, actualmente se almacenan como string y habrá que cambiarlo para enviar alertas
+
+#
+DOCUMENTACIÓN (¿Documentar un proceso es crear la documentación?)
+
+##
+Show complete classroom
+Tenemos todas las clases en un array, pero no soy capaz de acceder al contenido de un array concreto, tengo que recorrer todo el array y quedarme sólo con las que quiero. Mi primera idea es filtralas para que quede una sóla, pero tendría que filtrarla por ID, pero ¿cómo me puede llegar esa información?
+Puedo poner enlaces que lleven a /clases/id, pero no se como crear esas páginas dinámicamente.
+Puedo hacer como con editar perfil que pongo el pefil del usuario, pero como he dicho no puedo acceder a sólo los datos de una clase
+Puedo hacer un filtro que muestre sólo la clase con determinada ID, pero ¿como me llega esa ID? Se puede enviar información en JS por url como hace PHP con GET
+Puedo hacer una nueva consulta a la BBDD y almacenar en el estado la información de una sola clase aunque se almacenaría información redundante en el estado.
 
 
-ACTULIZACIÓN DE PERFIL
-Creo que lo suyo es que en lugar de con placeholder el valor este puesto con value y sea editable, pero al intentarlo no me deja editarlo... supongo que tiene algo que ver con el VirutalDom pero no se como hacerlo.
+##
+List user classroom in his profile
+Tenemos todas las clases en un array, pero no soy capaz de acceder al contenido de un array concreto, tengo que recorrer todo el array y quedarme sólo con las que quiero. Actualmente lo hago con un map y un selector ternario, que actua como filtro, pero supongo que sería mejor hacerlo directamente con un filtro
 
-Ya he conseguido pasar la url correctamente, y se llama a la base de datos, pero ahora no deja postear a esa dirección, hay que ver exactamente a cual llama el update (creo que además tendremos que pasarle el token), porque he visto que tampoco puedo postear a esa dirección desde el Postman
-
-CREACIÓN DE CLASE
-Al pulsar en crear clase me dice que CreateClassAction is not defined (consola de Crhome), pero si que la veo definida y si sigo su creación y la encuentro... de momento lo dejo a ver si en frio lo veo mejor.
+##
+Refresh the localstorage when edit profile. Can refresh page.
+Me costó darme cuenta de porqué al recargar la página no leía correctamente los datos. El caso es que el usuario no se está leyendo del stado sino del localstorage, así que cada vez que cambio el estado del usuario tengo que volver a grabarlo en el localstorage.. ¿Por qué no se está leyendo directamente del estado?
 
 
 
