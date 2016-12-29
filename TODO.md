@@ -5,6 +5,10 @@ Al hacer el componente ClassroomOwner, si lo intento importar desde el index de 
 TODO
 
 ##
+Create a squeleton for user
+Mantener el Jumbotron exterior en todas las páginas de usario y variar únicamente el interior creando diferentes componentes.
+
+##
 List user classroom in his profile
 Cuando el usuario no tiene ninguna clase debe mostrar un mensaje informándole e instándole a crear su primera clase
 

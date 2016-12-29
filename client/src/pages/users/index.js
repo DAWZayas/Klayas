@@ -8,7 +8,7 @@ import _ from 'lodash';
 import {getAllClassRoom} from '../../store/actions';
 
 // our components
-import Footer from './footer';
+import LogoutButton from './LogoutButton';
 import ClassroomOwner from '../../components/classroom/ClassroomOwner';
 
 const mapStateToProps = (state) => ({
@@ -26,7 +26,10 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
   return (
   <div className="panel panel-primary">
     <div className="panel-heading">
-      <h3>Bienvenido {user.name}!</h3>
+      <h3>Bienvenido {user.name}!
+      <span className="label label-primary pull-right">
+        <LogoutButton />
+      </span></h3>
     </div>
     <div className="panel-body">
       <div className="panel panel-default">
@@ -83,7 +86,6 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
         </div>
       </div>
     </div>
-    <Footer />
   </div>
   );
 };

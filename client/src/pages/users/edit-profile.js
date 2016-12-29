@@ -7,8 +7,6 @@ import {push} from 'react-router-redux';
 // our packages
 import {editProfile} from '../../store/actions';
 
-//our components
-import Footer from './footer.js';
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
@@ -137,7 +135,6 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
         <button type="submit" className="btn btn-default" onClick={navToProfile}>Cancelar</button>
       </form>
       <hr />
-      <Footer />
     </div>
   );
 };

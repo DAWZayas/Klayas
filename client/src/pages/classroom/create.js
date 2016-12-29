@@ -7,9 +7,6 @@ import moment from 'moment';
 import {createClassAction} from '../../store/actions';
 import {registerErrorToMessage} from '../../util';
 
-//our components
-import Footer from '../users/footer.js';
-
 const mapStateToProps = state => ({
   error: state.auth.error,
 });
@@ -84,7 +81,6 @@ const CreateClass = ({onCreateClick, error}) => {
         </div>
         <button type="submit" className="btn btn-default" onClick={handleClick}>Crear Clase</button>
       </form>
-      <Footer />
     </div>
   );
 };
