@@ -2,20 +2,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
+import {push} from 'react-router-redux';
 
 // our packages
 import {createClassAction} from '../../store/actions';
 import {registerErrorToMessage} from '../../util';
 
 const mapStateToProps = state => ({
-  error: state.auth.error,
+  classroom: state.classrooms.specificclassroom,
 });
 
 const mapDispatchToProps = dispatch => ({
   onCreateClick: params => dispatch(createClassAction(params)),
+  navToClassroom: () => dispatch(push('/users')),
 });
 
-const CreateClass = ({onCreateClick, error}) => {
+const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
   let nameInput;
   let descriptionInput;
   let urlInput;
@@ -25,6 +27,7 @@ const CreateClass = ({onCreateClick, error}) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    setImmediate(() => navToClassroom());
     onCreateClick({
       name: nameInput.value,
       description: descriptionInput.value,
@@ -37,7 +40,7 @@ const CreateClass = ({onCreateClick, error}) => {
   return (
     <div className="jumbotron">
       <h2>Klayas:</h2>
-      <p>Crea ahora tu clase en Klayas</p>
+      <p>Edita tu clase en Klayas</p>
 
       {error ? (
         <div className="alert alert-danger" role="alert">{registerErrorToMessage(error)}</div>
@@ -49,7 +52,7 @@ const CreateClass = ({onCreateClick, error}) => {
             type="text"
             className="form-control"
             id="inputName"
-            placeholder="Nombre"
+            defaultValue={classroom.name}
             ref={(i) => { nameInput = i; }}
           />
         </div>
@@ -59,7 +62,7 @@ const CreateClass = ({onCreateClick, error}) => {
             type="text"
             className="form-control"
             id="inputDescription"
-            placeholder="Descripción"
+            defaultValue={classroom.description}
             ref={(i) => { descriptionInput = i; }}
           />
         </div>
@@ -69,7 +72,7 @@ const CreateClass = ({onCreateClick, error}) => {
             type="text"
             className="form-control"
             id="inputUrl"
-            placeholder="Url"
+            defaultValue={classroom.url}
             ref={(i) => { urlInput = i; }}
           />
         </div>
@@ -79,7 +82,7 @@ const CreateClass = ({onCreateClick, error}) => {
             type="date"
             className="form-control"
             id="inputDate"
-            placeholder="Fecha"
+            defaultValue={classroom.date}
             ref={(i) => { dateInput = i; }}
           />
         </div>
@@ -89,7 +92,7 @@ const CreateClass = ({onCreateClick, error}) => {
             type="time"
             className="form-control"
             id="inputTime"
-            placeholder="Hora"
+            defaultValue={classroom.time}
             ref={(i) => { timeInput = i; }}
           />
         </div>
@@ -102,10 +105,11 @@ const CreateClass = ({onCreateClick, error}) => {
             /> Es pública
           </label>
         </div>
-        <button type="submit" className="btn btn-default" onClick={handleClick}>Crear Clase</button>
+        <button type="submit" className="btn btn-default" onClick={handleClick}>Modificar Clase</button> &nbsp;| &nbsp;
+        <button type="submit" className="btn btn-default" onClick={navToClassroom}>Cancelar</button>
       </form>
     </div>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateClass);
+export default connect(mapStateToProps, mapDispatchToProps)(EditClassroom);

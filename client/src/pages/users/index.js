@@ -38,7 +38,7 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
             Tu perfil
             <Link to="/users/edit-profile">
               <span className="label label-primary pull-right">
-                Editar perfil
+                <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> Editar perfil
               </span>
             </Link>
           </h4>
@@ -56,7 +56,7 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
             Clases que vas a impartir, {user.name}
             <Link to="/class/create">
               <span className="label label-primary pull-right">
-                Crear clase
+                <span className="glyphicon glyphicon-plus" aria-hidden="true" /> Crear clase
               </span>
             </Link>
           </h4>

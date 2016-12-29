@@ -2,6 +2,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
+import {Link} from 'react-router';
 
 // our packages
 import {createClassAction} from '../../store/actions';
@@ -32,16 +33,41 @@ const CompleteClassroom = ({classroom, onCreateClick, error}) => {
   };
 
   return (
-    <div className="col-md-12">
-      <div className="panel panel-primary">
-        <div className="panel-heading">
-          {classroom.name}
+    <div className="panel panel-primary">
+      <div className="panel-heading">
+        <h3>{classroom.name}!
+        <Link to="/classroom/edit-classroom">
+          <span className="label label-primary pull-right">
+            <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> Editar clase
+          </span>
+        </Link></h3>
+      </div>
+      <div className="panel-body">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h4>
+              Descripción
+            </h4>
+          </div>
+          <div className="panel-body">
+            {classroom.description}
+          </div>
         </div>
-        <div className="panel-body">
-          <strong>Dia:</strong> {moment(classroom.date).locale('es').format('ll')}<br />
-          <strong>Hora:</strong> {classroom.time}
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h4>
+              Retransmisión
+            </h4>
+          </div>
+          <div className="panel-body">
+            <div>
+              <div className="col-md-6">
+                <iframe width="560" height="315" src={classroom.url} frameBorder="0" allowFullScreen />
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div className="panel-body" />
       </div>
     </div>
   );

@@ -18,13 +18,11 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ClassroomOwner = ({onSeeCompleteClassClick, navToCompleteClass, classroom}) => {
   const handleSeeCompleteClass = (e) => {
-    console.log(classroom.id);
     e.preventDefault();
-    setImmediate(() => navToCompleteClass());
     onSeeCompleteClassClick({
       id: classroom.id,
     });
-
+    setImmediate(() => navToCompleteClass());
   };
 
   return (
@@ -40,7 +38,7 @@ const ClassroomOwner = ({onSeeCompleteClassClick, navToCompleteClass, classroom}
         <div className="panel-body">
           <Link to="/classroom/complete-classroom" onClick={handleSeeCompleteClass}>
             <span className="label label-primary pull-right">
-              Ver clase completa
+              <span className="glyphicon glyphicon-eye-open" aria-hidden="true" /> Ver clase completa
             </span>
           </Link>
         </div>
