@@ -5,6 +5,10 @@ Al hacer el componente ClassroomOwner, si lo intento importar desde el index de 
 TODO
 
 ##
+Implement notification system
+Poner un sistema de notificaciones como el de Javier que indique todos los exitos y errores que envia el back
+
+##
 Create a squeleton for user
 Mantener el Jumbotron exterior en todas las páginas de usario y variar únicamente el interior creando diferentes componentes.
 Alinear mejor el botón de cerrar sesión.
@@ -27,6 +31,10 @@ Puedo poner enlaces que lleven a /clases/id, pero no se como crear esas páginas
 Puedo hacer como con editar perfil que pongo el pefil del usuario, pero como he dicho no puedo acceder a sólo los datos de una clase
 Puedo hacer un filtro que muestre sólo la clase con determinada ID, pero ¿como me llega esa ID? Se puede enviar información en JS por url como hace PHP con GET
 Puedo hacer una nueva consulta a la BBDD y almacenar en el estado la información de una sola clase aunque se almacenaría información redundante en el estado.
+
+Me decido por esta última. Necesito crear un nuevo endpoint para obtener sólo la información de una clase (el que hay obtiene todas las clases)... supongo que lo normal sería meterlo en el server get de classroom, pero ya tiene el get de todas las clases y se exporta como default... a lo mejor se pueden meter más, pero no se como hacerlo.
+
+A la hora de hacer el enlace lo voy a mandar a complete-classroom, pero para ello tengo que tener unas mapDispatchToProps, el problema es que como lo hizo Javier es una clase ya que recibe sus propios props, y para pasarle el mapDispatchToProps necesito que sea una constante.... buso en Internet y encuentro esto https://github.com/reactjs/redux/issues/693 que me funciona.
 
 
 ##

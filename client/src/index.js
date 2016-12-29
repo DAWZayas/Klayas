@@ -20,6 +20,7 @@ import Login from './pages/login';
 import Register from './pages/register';
 import User from './pages/users';
 import EditProfile from './pages/users/edit-profile';
+import CompleteClassroom from './pages/classroom/complete-classroom';
 import CreateClass from './pages/classroom/create';
 import NotFound from './pages/notfound';
 
@@ -36,6 +37,7 @@ ReactDOM.render((
         <Route path="register" component={Register} />
         <Route path="users" component={User} />
         <Route path="users/edit-profile" component={EditProfile} />
+        <Route path="classroom/complete-classroom" component={CompleteClassroom} />
         <Route path="class/create" component={CreateClass} />
         <Route path="*" component={NotFound} />
       </Route>
