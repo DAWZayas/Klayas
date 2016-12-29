@@ -8,7 +8,7 @@ import _ from 'lodash';
 import {getAllClassRoom} from '../../store/actions';
 
 // our components
-import LogoutButton from './LogoutButton';
+import LogoutButton from '../../components/user/LogoutButton';
 import ClassroomOwner from '../../components/classroom/ClassroomOwner';
 
 const mapStateToProps = (state) => ({
