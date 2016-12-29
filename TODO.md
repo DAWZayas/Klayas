@@ -21,6 +21,8 @@ Cuando el usuario no tiene ninguna clase debe mostrar un mensaje informándole e
 Create classrroms
 Mirar como almacenar las horas, actualmente se almacenan como string y habrá que cambiarlo para enviar alertas
 
+Eliminar del formulario la url y generarla automáticamente
+
 #
 DOCUMENTACIÓN (¿Documentar un proceso es crear la documentación?)
 
@@ -39,6 +41,8 @@ A la hora de hacer el enlace lo voy a mandar a complete-classroom, pero para ell
 Consigo crear una nueva entrada en el state que intento llamar SpecificClassroom... mogollón de problemas, al final descubro que es que no se pueden poner mayúscuas y me funciona con specificclassroom.
 
 Ya me pasó al crear el array de classrooms que si el initialState esta vacio 'casca', hay que ponerle que es un array vacio.... lo mismo me ha pasado con specificclassroom.
+
+He añadido campos descripción y url en el formulario de craear clase. La descripción si valdrá, pero la url, que será la que se insertará al emitirse tiene que generarse automáticamente.
 
 ##
 List user classroom in his profile

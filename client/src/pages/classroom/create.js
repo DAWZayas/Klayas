@@ -17,6 +17,8 @@ const mapDispatchToProps = dispatch => ({
 
 const CreateClass = ({onCreateClick, error}) => {
   let nameInput;
+  let descriptionInput;
+  let urlInput;
   let dateInput;
   let timeInput;
   let publicInput;
@@ -25,6 +27,8 @@ const CreateClass = ({onCreateClick, error}) => {
     e.preventDefault();
     onCreateClick({
       name: nameInput.value,
+      description: descriptionInput.value,
+      url: urlInput.value,
       date: moment(dateInput.value).toISOString(),
       time: timeInput.value,
     });
@@ -38,7 +42,6 @@ const CreateClass = ({onCreateClick, error}) => {
       {error ? (
         <div className="alert alert-danger" role="alert">{registerErrorToMessage(error)}</div>
       ) : ''}
-
       <form>
         <div className="form-group">
           <label htmlFor="inputName">Nombre:</label>
@@ -51,7 +54,27 @@ const CreateClass = ({onCreateClick, error}) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputSurname">Fecha:</label>
+          <label htmlFor="inputName">Descripción:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="inputName"
+            placeholder="Descripción"
+            ref={(i) => { descriptionInput = i; }}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="inputUrl">Url:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="inputName"
+            placeholder="Url"
+            ref={(i) => { urlInput = i; }}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="inputDate">Fecha:</label>
           <input
             type="date"
             className="form-control"
