@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 
 // styles
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './scss/main.scss';
 
 // our packages
 import App from './containers/app';
@@ -23,6 +24,11 @@ import EditProfile from './containers/user/edit-profile';
 import CreateClassroom from './containers/classroom/create';
 import NotFound from './containers/notfound';
 
+// JQuery for Bootstrap
+global.jQuery = require('jquery/dist/jquery.min.js');
+require('bootstrap/dist/js/bootstrap.min.js');
+
+
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -31,10 +37,10 @@ ReactDOM.render((
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Home} onEnter={requireAuth} />
+        <IndexRoute component={User} onEnter={requireAuth} />
+        <Route path="home" component={Home} />
         <Route path="login" component={Login} />
         <Route path="register" component={Register} />
-        <Route path="user" component={User} />
         <Route path="user/edit-profile" component={EditProfile} />
         <Route path="classroom/create" component={CreateClassroom} />
         <Route path="*" component={NotFound} />

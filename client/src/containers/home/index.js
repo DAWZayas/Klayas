@@ -1,24 +1,29 @@
 import React from 'react';
+import {Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
+import {push} from 'react-router-redux';
 
-// our packages
-import {helloWorldAction} from '../../store/actions';
-import Login from '../login';
-
-const mapStateToProps = (state) => ({
-  world: state.helloWorld.world,
+const mapDispatchToProps = dispatch => ({
+  onRegisterClick: () => dispatch(push('/register')),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onClick: () => dispatch(helloWorldAction()),
-});
+const Home = ({onRegisterClick}) => {
+  const handleRegisterClick = (e) => {
+    e.preventDefault();
+    onRegisterClick();
+  };
 
+  return (
+    <div className="container-fluid">
+      <section id="intro" className="row">
+        <header className="col-md-8 col-md-offset-2">
+          <h1>Imparte tus clases o asiste a tus favoritas desde cualquier lugar</h1>
+          <h3>Klayas es la manera m&aacute;s f&aacute;cil para impartir tus clases o asistir a ellas est&eacute;s donde est&eacute;s</h3>
+          <Button bsStyle="primary" bsSize="large" onClick={handleRegisterClick}> Reg&iacute;strate ya </Button>
+        </header>
+      </section>
+    </div>
+  );
+};
 
-const Home = ({onClick, world}) => (
-  <div>
-    <Login />
-    <button>Registrate</button>
-  </div>
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Home);
