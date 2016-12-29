@@ -31,3 +31,8 @@ export const createClassAction = payload => ({
 export const getAllClassRoom = () => ({
   type: ActionTypes.GET_ALL_CLASSROOM,
 });
+
+export const getOneClassRoom = payload => ({
+  type: ActionTypes.GET_ONE_CLASSROOM,
+  payload,
+});

@@ -12,26 +12,25 @@ const mapDispatchToProps = (dispatch) => ({
   navToCompleteClass: () => dispatch(push('/classroom/complete-classroom')),
 });
 
-const ClassroomOwner = ({navToCompleteClass, classroom}) => {
+const ClassroomComplete = ({navToCompleteClass, classroom}) => {
   const handleSeeClass = (e) => {
     e.preventDefault();
     setImmediate(() => navToCompleteClass());
   };
 
-
   return (
     <div className="col-md-12">
       <div className="panel panel-primary">
         <div className="panel-heading">
-          {classroom.name}
+          Hola
         </div>
         <div className="panel-body">
           <strong>Dia:</strong> {moment(classroom.date).locale('es').format('ll')}<br />
           <strong>Hora:</strong> {classroom.time}
         </div>
         <div className="panel-body">
-          <Link to="/classroom/complete-classroom">
-            <span className="label label-primary pull-right" onClick={handleSeeClass}>
+          <Link to="/classroom/complete-classroom" onClick={handleSeeClass}>
+            <span className="label label-primary pull-right">
               Ver clase completa
             </span>
           </Link>
@@ -41,42 +40,4 @@ const ClassroomOwner = ({navToCompleteClass, classroom}) => {
   );
 };
 
-
-
-// class ClassroomOwner extends Component {
-//
-//   constructor(props) {
-//     super(props);
-//   }
-//
-//   render() {
-//     const {classroom} = this.props;
-//
-    // const handleSeeClass = (e) => {
-    //   e.preventDefault();
-    //   setImmediate(() => navToCompleteClass());
-    // };
-//
-//     return (
-      // <div className="col-md-3">
-      //   <div className="panel panel-primary">
-      //     <div className="panel-heading">
-      //       {classroom.name}
-      //     </div>
-      //     <div className="panel-body">
-      //       <strong>Dia:</strong> {moment(classroom.date).locale('es').format("ll")}<br />
-      //       <strong>Hora:</strong> {classroom.time}
-      //     </div>
-      //     <div className="panel-body">
-      //     <Link to="/classroom/complete-classroom">
-      //     <span className="label label-primary pull-right" onClick={handleSeeClass}>
-      //       Ver clase completa
-      //     </span>
-      //     </Link>
-      //     </div>
-      //   </div>
-      // </div>
-//     );
-//   }
-// }
-export default connect(mapStateToProps, mapDispatchToProps)(ClassroomOwner);
+export default connect(mapStateToProps, mapDispatchToProps)(ClassroomComplete);
