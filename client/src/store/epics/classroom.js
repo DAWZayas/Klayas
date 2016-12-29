@@ -25,11 +25,11 @@ export const getOneClassRoom = action$ => action$
   .ofType(ActionTypes.GET_ONE_CLASSROOM)
   .map(signRequest)
   .mergeMap(({headers, payload}) => Observable
-    .ajax.get(`http://localhost:8080/api/classroom${payload.id}`, headers)
+    .ajax.get(`http://localhost:8080/api/classroom/${payload.id}`, headers)
     .map(res => res.response)
-    .map(classroom => ({
+    .map(specificclassroom => ({
       type: ActionTypes.GET_ONE_CLASSROOM_SUCCESS,
-      payload: {classroom},
+      payload: {specificclassroom},
     }))
     .catch(error => Observable.of({
       type: ActionTypes.GET_ONE_CLASSROOM_ERROR,

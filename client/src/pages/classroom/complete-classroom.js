@@ -8,14 +8,15 @@ import {createClassAction} from '../../store/actions';
 import {registerErrorToMessage} from '../../util';
 
 const mapStateToProps = state => ({
-  error: state.auth.error,
+  classroom: state.classrooms.specificclassroom,
 });
 
 const mapDispatchToProps = dispatch => ({
   onCreateClick: params => dispatch(createClassAction(params)),
 });
 
-const CompleteClassroom = ({onCreateClick, error}) => {
+const CompleteClassroom = ({classroom, onCreateClick, error}) => {
+
   let nameInput;
   let dateInput;
   let timeInput;
@@ -31,8 +32,17 @@ const CompleteClassroom = ({onCreateClick, error}) => {
   };
 
   return (
-    <div className="jumbotron">
-      hola
+    <div className="col-md-12">
+      <div className="panel panel-primary">
+        <div className="panel-heading">
+          {classroom.name}
+        </div>
+        <div className="panel-body">
+          <strong>Dia:</strong> {moment(classroom.date).locale('es').format('ll')}<br />
+          <strong>Hora:</strong> {classroom.time}
+        </div>
+        <div className="panel-body" />
+      </div>
     </div>
   );
 };

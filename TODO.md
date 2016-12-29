@@ -36,6 +36,9 @@ Me decido por esta última. Necesito crear un nuevo endpoint para obtener sólo 
 
 A la hora de hacer el enlace lo voy a mandar a complete-classroom, pero para ello tengo que tener unas mapDispatchToProps, el problema es que como lo hizo Javier es una clase ya que recibe sus propios props, y para pasarle el mapDispatchToProps necesito que sea una constante.... buso en Internet y encuentro esto https://github.com/reactjs/redux/issues/693 que me funciona.
 
+Consigo crear una nueva entrada en el state que intento llamar SpecificClassroom... mogollón de problemas, al final descubro que es que no se pueden poner mayúscuas y me funciona con specificclassroom.
+
+Ya me pasó al crear el array de classrooms que si el initialState esta vacio 'casca', hay que ponerle que es un array vacio.... lo mismo me ha pasado con specificclassroom.
 
 ##
 List user classroom in his profile
