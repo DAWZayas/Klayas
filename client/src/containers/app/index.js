@@ -2,10 +2,10 @@
 import React from 'react';
 
 // our components
-import Navbar from '../../components/navbar';
+import {Navbar} from '../../components';
 
 export default ({children}) => (
-  <div className="container">
+  <div className="container-fluid">
     <Navbar />
     {children}
   </div>

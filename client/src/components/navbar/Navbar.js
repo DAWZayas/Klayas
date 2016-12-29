@@ -11,7 +11,7 @@ export default () => (
         <button
           type="button"
           className="navbar-toggle collapsed"
-          data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          data-toggle="collapse" data-target="#navbar-collapse-1"
           aria-expanded="false"
         >
           <span className="sr-only">Toggle navigation</span>
@@ -20,12 +20,21 @@ export default () => (
           <span className="icon-bar" />
         </button>
         <IndexLink to="/" className={`navbar-brand ${styles.navbar}`}>
-          <div className={styles.brand} />
           <span>Klayas</span>
         </IndexLink>
       </div>
 
-      <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div className="collapse navbar-collapse" id="navbar-collapse-1">
+        <ul className="nav navbar-nav navbar-right">
+          <li>
+            <button
+              type="button"
+              className={`btn btn-primary ${styles.button}`}
+            >
+              <span className="glyphicon glyphicon-log-in" /> Inicia sesi&oacute;n
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
