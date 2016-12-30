@@ -7,9 +7,6 @@ import {push} from 'react-router-redux';
 import {registerAction} from '../../store/actions';
 import {registerErrorToMessage} from '../../util';
 
-// our components
-import Footer from '../user/footer';
-
 const mapStateToProps = state => ({
   redirectToLogin: state.auth.redirectToLogin,
 });
