@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 
 // our packages
 import * as ActionTypes from '../actionTypes';
+import * as Actions from '../actions';
 import {signRequest} from '../../util/signRequest';
 
 export const login = action$ => action$
@@ -27,10 +28,14 @@ export const register = action$ => action$
   .switchMap(({payload}) => Observable
     .ajax.post('http://localhost:8080/api/register', payload)
     .map(res => res.response)
-    .map(response => ({
-      type: ActionTypes.REGISTER_SUCCESS,
-      payload: response,
-    }))
+    .mergeMap(response => Observable.of(
+      {
+        type: ActionTypes.REGISTER_SUCCESS,
+        payload: response,
+      },
+      Actions.loginAction(
+        {login: payload.login, password: payload.password}),
+    ))
     .catch(err => Observable.of({
       type: ActionTypes.REGISTER_ERROR,
       payload: {

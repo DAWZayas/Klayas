@@ -14,8 +14,8 @@ export const registerAction = payload => ({
   payload,
 });
 
-export const clearSesionAction = () => ({
-  type: ActionTypes.LOGOUT,
+export const logoutAction = () => ({
+  type: ActionTypes.DO_LOGOUT,
 });
 
 export const editProfile = payload => ({
