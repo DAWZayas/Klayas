@@ -5,7 +5,7 @@ import moment from 'moment';
 import {push} from 'react-router-redux';
 
 // our packages
-import {createClassAction} from '../../store/actions';
+import {updateClassAction} from '../../store/actions';
 import {registerErrorToMessage} from '../../util';
 
 const mapStateToProps = state => ({
@@ -13,8 +13,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onCreateClick: params => dispatch(createClassAction(params)),
-  navToClassroom: () => dispatch(push('/users')),
+  onCreateClick: params => dispatch(updateClassAction(params)),
+  navToClassroom: () => dispatch(push('/classroom/complete-classroom')),
 });
 
 const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
@@ -34,6 +34,7 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
       url: urlInput.value,
       date: moment(dateInput.value).toISOString(),
       time: timeInput.value,
+      id: classroom.id,
     });
   };
 

@@ -14,6 +14,11 @@ export const classrooms = (state = initialState, action) => {
         ...state,
         specificclassroom: action.payload.specificclassroom,
       };
+    case ActionTypes.UPDATE_CLASS:
+      return {
+        ...state,
+        specificclassroom: action.payload,
+      };
     default:
       return state;
   }

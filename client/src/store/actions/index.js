@@ -28,6 +28,11 @@ export const createClassAction = payload => ({
   payload,
 });
 
+export const updateClassAction = payload => ({
+  type: ActionTypes.UPDATE_CLASS,
+  payload,
+});
+
 export const getAllClassRoom = () => ({
   type: ActionTypes.GET_ALL_CLASSROOM,
 });

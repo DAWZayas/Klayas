@@ -65,7 +65,16 @@ const CompleteClassroom = ({classroom, onCreateClick, error}) => {
                 <iframe width="560" height="315" src={classroom.url} frameBorder="0" allowFullScreen />
               </div>
             </div>
-
+          </div>
+        </div>
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h4>
+              Alumnos apuntados a esta clase
+            </h4>
+          </div>
+          <div className="panel-body">
+            {classroom.students}
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import {login, register, updateProfile} from './auth';
-import {createClass, getAllClassRoom, getOneClassRoom} from './classroom';
+import {createClass, getAllClassRoom, getOneClassRoom, updateClassAction} from './classroom';
 
 export default [
   // auth
@@ -10,4 +10,5 @@ export default [
   createClass,
   getAllClassRoom,
   getOneClassRoom,
+  updateClassAction,
 ];

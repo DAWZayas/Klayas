@@ -54,3 +54,21 @@ export const createClass = action$ => action$
       },
     })),
   );
+
+  export const updateClassAction = action$ => action$
+  .ofType(ActionTypes.UPDATE_CLASS)
+  .map(signRequest)
+  .switchMap(({headers, payload}) => Observable
+    .ajax.post(`http://localhost:8080/api/classroom/${payload.id}`, payload, headers)
+    .map(res => res.response)
+    .map(response => ({
+      type: ActionTypes.UPDATE_CLASS_SUCCESS,
+      payload: response,
+    }))
+    .catch(err => Observable.of({
+      type: ActionTypes.UPDATE_CLASS_ERROR,
+      payload: {
+        error: err,
+      },
+    })),
+  );

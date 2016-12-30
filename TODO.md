@@ -23,15 +23,12 @@ Mirar como almacenar las horas, actualmente se almacenan como string y habrá qu
 
 Eliminar del formulario la url y generarla automáticamente
 
+##
 Edit classroom
-El botón de Cancelar si te lleva al edit-classroom ya no funciona porque no tiene en el store el specificclassroom. Lo he solucionado enviando directamente al perfil de usuario, pero se debería buscar la causa (yo creo que es el initialState de specificclassroom) y solucionarlo.
+La fecha no se recupera y hay que ponerla de nuevo... hay que solucionarlo, además de modificar el diseño para incluir la fecha y la hora.
 
 #
 DOCUMENTACIÓN (¿Documentar un proceso es crear la documentación?)
-
-##
-Edit classroom
-El botón de Cancelar si te lleva al edit-classroom ya no funciona porque no tiene en el store el specificclassroom. Lo he solucionado enviando directamente al perfil de usuario, pero se debería buscar la causa (yo creo que es el initialState de specificclassroom) y solucionarlo.
 
 ##
 Show complete classroom
