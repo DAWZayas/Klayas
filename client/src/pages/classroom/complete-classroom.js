@@ -1,34 +1,29 @@
 // npm packages
 import React from 'react';
 import {connect} from 'react-redux';
-import moment from 'moment';
 import {Link} from 'react-router';
 
 // our packages
-import {createClassAction} from '../../store/actions';
-import {registerErrorToMessage} from '../../util';
+import {updateClassAction} from '../../store/actions';
+import SimplyUser from '../../components/user/SimplyUser';
 
 const mapStateToProps = state => ({
   classroom: state.classrooms.specificclassroom,
+  user: state.auth.user,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onCreateClick: params => dispatch(createClassAction(params)),
+  onCreateClick: params => dispatch(updateClassAction(params)),
 });
 
-const CompleteClassroom = ({classroom, onCreateClick, error}) => {
-
-  let nameInput;
-  let dateInput;
-  let timeInput;
-  let publicInput;
+const CompleteClassroom = ({classroom, user, onCreateClick, error}) => {
 
   const handleClick = (e) => {
     e.preventDefault();
     onCreateClick({
-      name: nameInput.value,
-      date: moment(dateInput.value).toISOString(),
-      time: timeInput.value,
+      studentname: user.name,
+      studentid: user.id,
+      id: classroom.id,
     });
   };
 
@@ -36,11 +31,20 @@ const CompleteClassroom = ({classroom, onCreateClick, error}) => {
     <div className="panel panel-primary">
       <div className="panel-heading">
         <h3>{classroom.name}!
-        <Link to="/classroom/edit-classroom">
-          <span className="label label-primary pull-right">
-            <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> Editar clase
-          </span>
-        </Link></h3>
+
+          {classroom.teacher === user.id ? (
+            <Link to="/classroom/edit-classroom">
+              <span className="label label-primary pull-right">
+                <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> Editar clase
+              </span>
+            </Link>) : (
+            <Link to="" onClick={handleClick}>
+              <span className="label label-primary pull-right">
+                <span className="glyphicon glyphicon-hand-up" aria-hidden="true" /> Apuntarse a esta clase
+              </span>
+            </Link>)
+          }
+        </h3>
       </div>
       <div className="panel-body">
         <div className="panel panel-default">
@@ -74,7 +78,10 @@ const CompleteClassroom = ({classroom, onCreateClick, error}) => {
             </h4>
           </div>
           <div className="panel-body">
-            {classroom.students}
+            {classroom.students.map((student, index) => (
+              <SimplyUser key={index} student={student} />
+            ))}
+
           </div>
         </div>
       </div>

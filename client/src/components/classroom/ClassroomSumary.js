@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   onSeeCompleteClassClick: params => dispatch(getOneClassRoom(params)),
 });
 
-const ClassroomOwner = ({onSeeCompleteClassClick, navToCompleteClass, classroom}) => {
+const ClassroomSumary = ({onSeeCompleteClassClick, navToCompleteClass, classroom}) => {
   const handleSeeCompleteClass = (e) => {
     e.preventDefault();
     onSeeCompleteClassClick({
@@ -29,7 +29,7 @@ const ClassroomOwner = ({onSeeCompleteClassClick, navToCompleteClass, classroom}
     <div className="col-md-3">
       <div className="panel panel-primary">
         <div className="panel-heading">
-          {classroom.name}
+          Resumen de {classroom.name}
         </div>
         <div className="panel-body">
           <strong>Dia:</strong> {moment(classroom.date).locale('es').format('ll')}<br />
@@ -47,4 +47,4 @@ const ClassroomOwner = ({onSeeCompleteClassClick, navToCompleteClass, classroom}
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClassroomOwner);
+export default connect(mapStateToProps, mapDispatchToProps)(ClassroomSumary);

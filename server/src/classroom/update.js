@@ -21,10 +21,10 @@ export default (app) => {
 
 
     // check if user is the teacher of the classroom is changing
-    if (classroom.teacher !== req.user.id) {
-      res.status(403).send({error: "This classroom is not yours. You can't change it"});
-      return;
-    }
+    // if (classroom.teacher !== req.user.id) {
+    //   res.status(403).send({error: "This classroom is not yours. You can't change it"});
+    //   return;
+    // }
 
     // update data
     if (name) {

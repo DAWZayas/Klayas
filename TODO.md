@@ -3,7 +3,6 @@ Al hacer el componente ClassroomOwner, si lo intento importar desde el index de 
 
 #
 TODO
-
 ##
 Implement notification system
 Poner un sistema de notificaciones como el de Javier que indique todos los exitos y errores que envia el back
@@ -26,9 +25,17 @@ Eliminar del formulario la url y generarla automáticamente
 ##
 Edit classroom
 La fecha no se recupera y hay que ponerla de nuevo... hay que solucionarlo, además de modificar el diseño para incluir la fecha y la hora.
+Solucionar que el teacher sea undefined al principio (ver documentación)
 
 #
 DOCUMENTACIÓN (¿Documentar un proceso es crear la documentación?)
+##
+User can Sing Up to a classroom
+El back no dejaba apuntarse porque no era el profesor (obviamente). Es una decisión de funcionalidad si se puede apuntar el alumno o debe mandar solicitud al profesor, pero yo de momento voy a dejar que se apunte el alumno
+
+##
+Edit classroom
+Para hacer que el profesor pueda editar la clase y el alumno apuntarse hay que comprobar si el usuario es el profesor. El problema es que la función de getOneClassRoom que es la que devuelve specificclassroom tarda un poco más que en pintarse la página por primera vez y entonces en ese momento el profesor es undefined. Lo he solucionado cambiando en ClassroomOwner en lugar de setImmediate el cambio de página setTimeout poniendo medio segundo, lo que da tiempo a que llegue la información, pero creo que es un poco chapuza.....Pasa lo mismo a la vuelta de actualizar una clase pero ahí lo he dejado para que se pueda comprobar.
 
 ##
 Show complete classroom

@@ -10,6 +10,7 @@ import {getAllClassRoom} from '../../store/actions';
 // our components
 import LogoutButton from '../../components/user/LogoutButton';
 import ClassroomOwner from '../../components/classroom/ClassroomOwner';
+import ClassroomSumary from '../../components/classroom/ClassroomSumary';
 
 const mapStateToProps = (state) => ({
   classrooms: state.classrooms.classrooms,
@@ -82,7 +83,9 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
           </h4>
         </div>
         <div className="panel-body">
-          Clases que estas siguiendo: {user.name}<br />
+          {classrooms.map((classroom, index) => (
+            <ClassroomSumary key={index} classroom={classroom} />
+        ))}
         </div>
       </div>
     </div>
