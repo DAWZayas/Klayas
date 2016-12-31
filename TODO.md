@@ -1,3 +1,6 @@
+PENDIENTE
+El index de usuario tiene que mostrar las clases de cada usuario.. llama al ClassroomSumary pero este tiene un array que no puedo leer... tendría que pasarlo a otro para poder actuar desde él... no se si es el modo.
+
 Recuperar las clases.
 Al hacer el componente ClassroomOwner, si lo intento importar desde el index de componentes me da error, tengo que importarlo directamente del archivo.
 
@@ -29,6 +32,10 @@ Solucionar que el teacher sea undefined al principio (ver documentación)
 
 #
 DOCUMENTACIÓN (¿Documentar un proceso es crear la documentación?)
+
+##List classrooms user follow in his profile
+Al apuntarse a una clase, pasa de nuevo el problema de que la specificclassroom tarda un poco más que en pintarse la página por primera vez y entonces en ese momento el classroom y la consola da un error de que no puede hacer map de undefined, pero sólo es un error en consola que no se si tendremos que solucionar.
+
 ##
 User can Sing Up to a classroom
 El back no dejaba apuntarse porque no era el profesor (obviamente). Es una decisión de funcionalidad si se puede apuntar el alumno o debe mandar solicitud al profesor, pero yo de momento voy a dejar que se apunte el alumno

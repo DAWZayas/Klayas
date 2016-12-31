@@ -23,6 +23,7 @@ import EditProfile from './pages/users/edit-profile';
 import CompleteClassroom from './pages/classroom/complete-classroom';
 import EditClassroom from './pages/classroom/edit-classroom';
 import CreateClass from './pages/classroom/create';
+import SearchClassroom from './pages/classroom/search-classroom';
 import NotFound from './pages/notfound';
 
 // Create an enhanced history that syncs navigation events with the store
@@ -40,6 +41,7 @@ ReactDOM.render((
         <Route path="users/edit-profile" component={EditProfile} />
         <Route path="classroom/complete-classroom" component={CompleteClassroom} />
         <Route path="classroom/edit-classroom" component={EditClassroom} />
+        <Route path="classroom/search-classroom" component={SearchClassroom} />
         <Route path="class/create" component={CreateClass} />
         <Route path="*" component={NotFound} />
       </Route>

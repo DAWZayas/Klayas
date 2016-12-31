@@ -10,7 +10,7 @@ import {getAllClassRoom} from '../../store/actions';
 // our components
 import LogoutButton from '../../components/user/LogoutButton';
 import ClassroomOwner from '../../components/classroom/ClassroomOwner';
-import ClassroomSumary from '../../components/classroom/ClassroomSumary';
+import ClassroomLinker from '../../components/classroom/ClassroomLinker';
 
 const mapStateToProps = (state) => ({
   classrooms: state.classrooms.classrooms,
@@ -75,7 +75,7 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
         <div className="panel-heading">
           <h4>
             Clases que sigues
-            <Link to="/users/edit-profile">
+            <Link to="/classroom/search-classroom">
               <span className="label label-primary pull-right">
                 Buscar Clases
               </span>
@@ -84,7 +84,7 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
         </div>
         <div className="panel-body">
           {classrooms.map((classroom, index) => (
-            <ClassroomSumary key={index} classroom={classroom} />
+            <ClassroomLinker key={index} classroom={classroom} />
         ))}
         </div>
       </div>
