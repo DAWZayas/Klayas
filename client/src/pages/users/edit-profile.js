@@ -79,14 +79,7 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputLogin">Nombre de usuario:</label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputLogin"
-            defaultValue={user.login}
-            ref={(i) => { loginInput = i; }}
-          />
+          <label htmlFor="inputLogin">Nombre de usuario: {user.login} (el nombre de usuario no puede cambiarse)</label>
         </div>
         <div className="form-group">
           <label htmlFor="inputEmail">Correo electrónico:</label>
