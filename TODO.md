@@ -38,7 +38,9 @@ Al apuntarse a una clase, pasa de nuevo el problema de que la specificclassroom 
 
 ##
 User can Sing Up to a classroom
-El back no dejaba apuntarse porque no era el profesor (obviamente). Es una decisión de funcionalidad si se puede apuntar el alumno o debe mandar solicitud al profesor, pero yo de momento voy a dejar que se apunte el alumno
+El back no dejaba apuntarse porque no era el profesor (obviamente). Es una decisión de funcionalidad si se puede apuntar el alumno o debe mandar solicitud al profesor, pero yo de momento voy a dejar que se apunte el alumno.
+
+El ordenador portatil no me deja apuntar a clases, al intentar hacer post a una direccion me dice que la clase no existe, aunque si se hace get si se obtiene la información.... he pensado que es porque hay un método Classroom.get supongo que copiado del de user, y lo mismo nosotros tendríamos que utilizar Classroom.getone ya que se llama getone el método nuestro que obtiene la información de una sola clase, pero no se... juraría que en el otro ordenador si soy capaz de apuntarme a una clase.... luego lo miraré.
 
 ##
 Edit classroom
