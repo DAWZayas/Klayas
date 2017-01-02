@@ -37,6 +37,7 @@ export default (app) => {
       date: moment(date).toDate(),
       time,
       teacher: req.user.id,
+      teacherName: req.user.login,
       students: [],
       isPublic,
     });
