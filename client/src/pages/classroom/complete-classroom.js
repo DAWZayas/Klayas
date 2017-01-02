@@ -30,7 +30,7 @@ const CompleteClassroom = ({classroom, user, onCreateClick, error}) => {
   return (
     <div className="panel panel-primary">
       <div className="panel-heading">
-        <h3>{classroom.name}!
+        <h3>{classroom.name}
 
           {classroom.teacher === user.id ? (
             <Link to="/classroom/edit-classroom">
@@ -47,16 +47,25 @@ const CompleteClassroom = ({classroom, user, onCreateClick, error}) => {
         </h3>
       </div>
       <div className="panel-body">
+      {classroom.teacher === user.id ? (
         <div className="panel panel-default">
           <div className="panel-heading">
             <h4>
-              Descripción
+              Esta clase va a ser impartida por ti
             </h4>
           </div>
-          <div className="panel-body">
-            {classroom.description}
-          </div>
-        </div>
+        </div>) : (
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <h4>
+                Clase impartida por:
+              </h4>
+            </div>
+            <div className="panel-body">
+              {classroom.teacherName}
+            </div>
+          </div>)
+      }
         <div className="panel panel-default">
           <div className="panel-heading">
             <h4>

@@ -42,6 +42,10 @@ El back no dejaba apuntarse porque no era el profesor (obviamente). Es una decis
 
 El ordenador portatil no me deja apuntar a clases, al intentar hacer post a una direccion me dice que la clase no existe, aunque si se hace get si se obtiene la información.... he pensado que es porque hay un método Classroom.get supongo que copiado del de user, y lo mismo nosotros tendríamos que utilizar Classroom.getone ya que se llama getone el método nuestro que obtiene la información de una sola clase, pero no se... juraría que en el otro ordenador si soy capaz de apuntarme a una clase.... luego lo miraré.
 
+Efectivamente no me ha dejado apuntarme tampoco desde el otro ordenador... no se porqué, de hecho hay usuarios apuntados a alguna clase con lo que en su momento funcionó, que fue cuando lo subí....ahora no doy con el error.
+
+Sólo deja apuntarse a clases recien creadas... ¡¡Misterio!!
+
 ##
 Edit classroom
 Para hacer que el profesor pueda editar la clase y el alumno apuntarse hay que comprobar si el usuario es el profesor. El problema es que la función de getOneClassRoom que es la que devuelve specificclassroom tarda un poco más que en pintarse la página por primera vez y entonces en ese momento el profesor es undefined. Lo he solucionado cambiando en ClassroomOwner en lugar de setImmediate el cambio de página setTimeout poniendo medio segundo, lo que da tiempo a que llegue la información, pero creo que es un poco chapuza.....Pasa lo mismo a la vuelta de actualizar una clase pero ahí lo he dejado para que se pueda comprobar.

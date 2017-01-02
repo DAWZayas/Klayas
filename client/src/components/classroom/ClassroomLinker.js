@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 // our components
-import ClassroomOwner from '../../components/classroom/ClassroomOwner';
+import ClassroomFollow from '../../components/classroom/ClassroomFollow';
 
 const mapStateToProps = (state, ownProps) => ({
   classroom: ownProps.classroom,
@@ -13,7 +13,7 @@ const ClassroomLinker = ({classroom, user}) => {
   return (
     <div>
       {classroom.students.map((student, index) => (
-        student.studentid === user.id ? <ClassroomOwner key={index} classroom={classroom} /> : null
+        student.studentid === user.id ? <ClassroomFollow key={index} classroom={classroom} /> : null
       ))}
     </div>
   );
