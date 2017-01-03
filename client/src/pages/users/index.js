@@ -27,7 +27,7 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
   return (
   <div className="panel panel-primary">
     <div className="panel-heading">
-      <h3>Bienvenido {user.name}!
+      <h3>Bienvenido {user.name}
       <span className="label label-primary pull-right">
         <LogoutButton />
       </span></h3>

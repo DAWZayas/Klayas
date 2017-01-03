@@ -35,7 +35,6 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
     onEditClick({
       name: nameInput.value,
       surname: surnameInput.value,
-      login: loginInput.value,
       email: emailInput.value,
       ActualPassword: actualPasswordInput.value,
       password: passwordInput.value,
@@ -51,12 +50,7 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
 
   return (
     <div className="jumbotron">
-      <h1>Edita tu perfil {user.name}!</h1>
-
-      {error ? (
-        <div className="alert alert-danger" role="alert">{registerErrorToMessage(error)}</div>
-      ) : ''}
-
+      <h1>Edita tu perfil {user.name}</h1>
       <form>
         <div className="form-group">
           <label htmlFor="inputName">Nombre:</label>
@@ -79,7 +73,13 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputLogin">Nombre de usuario: {user.login} (el nombre de usuario no puede cambiarse)</label>
+          <label htmlFor="inputLogin">Nombre de usuario (el nombre de usuario no puede cambiarse)</label>
+          <input
+            type="text"
+            className="form-control"
+            readOnly="readonly"
+            defaultValue={user.login}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="inputEmail">Correo electrónico:</label>
