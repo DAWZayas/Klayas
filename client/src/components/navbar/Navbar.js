@@ -60,13 +60,13 @@ class Navbar extends Component {
             <ul className="nav navbar-nav navbar-right">
               {!token ? (
                 <li>
-                  <Button bsStyle="primary" bsClass={styles.button} onClick={handleLoginClick}>
+                  <Button bsStyle="primary" className={styles.customBtn} onClick={handleLoginClick}>
                     <span className="glyphicon glyphicon-log-in" /> Inicia sesi&oacute;n
                   </Button>
                 </li>
               ) : (
                 <li>
-                  <Button bsStyle="primary" bsClass={styles.button} onClick={handleLogoutClick}>
+                  <Button bsStyle="primary" className={styles.customBtn} onClick={handleLogoutClick}>
                     <span className="glyphicon glyphicon-log-out" /> Cerrar sesi&oacute;n
                   </Button>
                 </li>
