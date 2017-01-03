@@ -19,6 +19,11 @@ export const classrooms = (state = initialState, action) => {
         ...state,
         specificclassroom: action.payload,
       };
+    case ActionTypes.SEARCH_CLASSROOMS:
+      return {
+        ...state,
+        search: action.payload.seachterm,
+      };
     default:
       return state;
   }

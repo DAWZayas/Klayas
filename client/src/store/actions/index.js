@@ -33,6 +33,11 @@ export const updateClassAction = payload => ({
   payload,
 });
 
+export const doSearchClassroom = payload => ({
+  type: ActionTypes.SEARCH_CLASSROOMS,
+  payload,
+});
+
 export const getAllClassRoom = () => ({
   type: ActionTypes.GET_ALL_CLASSROOM,
 });

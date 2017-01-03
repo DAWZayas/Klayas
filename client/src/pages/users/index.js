@@ -77,7 +77,7 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
             Clases que sigues
             <Link to="/classroom/search-classroom">
               <span className="label label-primary pull-right">
-                Buscar Clases
+                <span className="glyphicon glyphicon-search" aria-hidden="true" /> Buscar Clases
               </span>
             </Link>
           </h4>
