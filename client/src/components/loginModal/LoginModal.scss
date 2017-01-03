@@ -1,0 +1,35 @@
+.verticalDivider {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  margin-left: 10px;
+  padding: 0;
+  width: auto;
+  height: 50%;
+  line-height: 0;
+  text-align:center;
+  text-transform: uppercase;
+  &:before,
+  &:after {
+    position: absolute;
+    left: 50%;
+    content: '';
+    z-index: 9;
+    border-left: 1px solid rgba(34,36,38,.15);
+    border-right: 1px solid rgba(255,255,255,.1);
+    width: 0;
+    height: calc(100% - 1rem);
+  }
+  &:before {
+    top: -100%;
+  }
+  &:after {
+    top: auto;
+    bottom: 0;
+  }
+}
+
+.rowDivided > .verticalDivider {
+  height: calc(50% - 1rem);
+}

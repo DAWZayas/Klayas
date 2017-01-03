@@ -1,13 +1,15 @@
 import React from 'react';
 import {Modal, Button, Form, FormGroup, Col, FormControl, Checkbox} from 'react-bootstrap';
 
+const styles = require('./LoginModal.scss');
+
 export default ({show, close}) => (
   <Modal show={show} onHide={close}>
     <Modal.Header closeButton>
       <h4>Inicia sesi&oacute;n en tu cuenta</h4>
     </Modal.Header>
     <Modal.Body>
-      <div className="row">
+      <div className={`row ${styles.rowDivided}`}>
         <div className="col-xs-6">
           <form>
             <div className="form-group has-feedback">
@@ -18,7 +20,7 @@ export default ({show, close}) => (
               <input type="password" className="form-control" placeholder="Password" />
               <i className="glyphicon glyphicon-lock form-control-feedback" />
             </div>
-            <div className="">
+            <div>
               <label htmlFor="remember_me">
                 <input type="checkbox" value="1" name="remember_me" checked="checked" />
                 <span > Recordar mis datos</span>
@@ -29,7 +31,7 @@ export default ({show, close}) => (
             <Button bsStyle="primary" block>Iniciar sesi&oacute;n</Button>
           </form>
         </div>
-        <div className="col-xs-1">
+        <div className={`col-xs-1 ${styles.verticalDivider}`}>
           <p>o</p>
         </div>
         <div className="col-xs-5">
