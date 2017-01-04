@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 // our packages
 import * as ActionTypes from '../actionTypes';
 import {signRequest} from '../../util/signRequest';
+import * as Actions from '../actions';
 
 export const getAllClassRoom = action$ => action$
   .ofType(ActionTypes.GET_ALL_CLASSROOM)
@@ -47,12 +48,19 @@ export const createClass = action$ => action$
       type: ActionTypes.CREATE_SUCCESS,
       payload: response,
     }))
-    .catch(err => Observable.of({
-      type: ActionTypes.CREATE_ERROR,
-      payload: {
-        error: err,
+    .concat(Observable.of(
+      Actions.addNotificationAction(
+        {text: 'Clase creada correctamente', alertType: 'success'},
+    )))
+    .catch(error => Observable.of(
+      {
+        type: ActionTypes.CREATE_ERROR,
+        payload: {
+          error,
+        },
       },
-    })),
+      Actions.addNotificationAction({text: 'Ha ocurrido un error durante la creación de la clase', alertType: 'danger'}),
+    )),
   );
 
   export const updateClassAction = action$ => action$
@@ -65,10 +73,17 @@ export const createClass = action$ => action$
       type: ActionTypes.UPDATE_CLASS_SUCCESS,
       payload: response,
     }))
-    .catch(err => Observable.of({
-      type: ActionTypes.UPDATE_CLASS_ERROR,
-      payload: {
-        error: err,
+    .concat(Observable.of(
+      Actions.addNotificationAction(
+        {text: 'Clase actualizada correctamente', alertType: 'success'},
+    )))
+    .catch(error => Observable.of(
+      {
+        type: ActionTypes.UPDATE_CLASS_ERROR,
+        payload: {
+          error,
+        },
       },
-    })),
+      Actions.addNotificationAction({text: 'Ha ocurrido un error durante la actualización de la clase', alertType: 'danger'}),
+    )),
   );

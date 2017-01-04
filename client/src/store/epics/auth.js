@@ -18,7 +18,7 @@ export const login = action$ => action$
     }))
     .concat(Observable.of(
       Actions.addNotificationAction(
-        {text: 'Login success', alertType: 'info'},
+        {text: 'Acceso completado', alertType: 'success'},
     )))
     .catch(error => Observable.of(
       {
@@ -42,7 +42,7 @@ export const register = action$ => action$
     }))
     .concat(Observable.of(
       Actions.addNotificationAction(
-        {text: 'Register success', alertType: 'info'},
+        {text: 'Registro completado', alertType: 'success'},
     )))
     .catch(error => Observable.of(
       {
@@ -65,10 +65,17 @@ export const updateProfile = action$ => action$
     type: ActionTypes.UPDATE_PROFILE_SUCCESS,
     payload: response,
   }))
-  .catch(err => Observable.of({
-    type: ActionTypes.UPDATE_PROFILE_ERROR,
-    payload: {
-      error: err,
+  .concat(Observable.of(
+    Actions.addNotificationAction(
+      {text: 'Perfil actualizado correctamente', alertType: 'success'},
+  )))
+  .catch(error => Observable.of(
+    {
+      type: ActionTypes.UPDATE_PROFILE_ERROR,
+      payload: {
+        error,
+      },
     },
-  })),
+    Actions.addNotificationAction({text: loginErrorToMessage(error), alertType: 'danger'}),
+  )),
 );
