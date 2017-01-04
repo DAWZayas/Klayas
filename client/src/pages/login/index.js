@@ -6,11 +6,9 @@ import {push} from 'react-router-redux';
 
 // our packages
 import {loginAction} from '../../store/actions';
-import {loginErrorToMessage} from '../../util';
 
 const mapStateToProps = state => ({
   token: state.auth.token,
-  error: state.auth.error,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -18,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
   navToHome: () => dispatch(push('/users')),
 });
 
-const Login = ({onLoginClick, navToHome, token, error}) => {
+const Login = ({onLoginClick, navToHome, token}) => {
   let usernameInput;
   let passwordInput;
   let rememberInput;

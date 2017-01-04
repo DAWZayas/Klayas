@@ -20,10 +20,7 @@ export const auth = (state = initialState(), action) => {
       };
     case ActionTypes.LOGIN_ERROR:
     case ActionTypes.REGISTER_ERROR:
-      return {
-        ...state,
-        error: action.payload.error,
-      };
+      return state;
     case ActionTypes.CLOSE_SESSION:
       localStorage.removeItem('user.token');
       localStorage.removeItem('user.data');

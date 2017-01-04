@@ -29,7 +29,7 @@ const SearchClassroom = ({classrooms, doSearch, search}) => {
     <div className="panel panel-primary">
       <div className="panel-heading">
         <h3>
-           de clases
+           Buscador de clases
         </h3>
       </div>
 
@@ -45,7 +45,7 @@ const SearchClassroom = ({classrooms, doSearch, search}) => {
       </div>
       <div className="panel-body">
         <div>
-          {classrooms.map((classroom, index) => (
+          {classrooms.map((classroom, index) => ( 
             1 === 1 ? <ClassroomFollow key={index} classroom={classroom} /> : null
           ))}
         </div>
