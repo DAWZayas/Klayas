@@ -6,6 +6,11 @@ Al hacer el componente ClassroomOwner, si lo intento importar desde el index de 
 
 #
 TODO
+
+##
+New corporative color
+Hay que salvar el archivo que he puesto en el raíz en 'client/node_modules/bootstrap/dist/css/bootstrap.min.css'. No se sube automáticamente porque está dentro de node_modules;
+
 ##
 Implement notification system
 Poner un sistema de notificaciones como el de Javier que indique todos los exitos y errores que envia el back
