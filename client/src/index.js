@@ -17,6 +17,7 @@ import {requireAuth} from './util';
 // our pages
 import Home from './pages/home';
 import Login from './pages/login';
+import TestPage from './pages/testpage';
 import Register from './pages/register';
 import User from './pages/users';
 import EditProfile from './pages/users/edit-profile';
@@ -36,6 +37,7 @@ ReactDOM.render((
       <Route path="/" component={App}>
         <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="login" component={Login} />
+        <Route path="testpage" component={TestPage} />
         <Route path="register" component={Register} />
         <Route path="users" component={User} />
         <Route path="users/edit-profile" component={EditProfile} />
