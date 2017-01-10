@@ -1,3 +1,6 @@
+// npm packages
+import validator from 'validator';
+
 // our packages
 import {User} from '../db';
 import {hash, asyncRequest} from '../util';
@@ -39,6 +42,13 @@ export default (app) => {
       res.status(403).send({error: 'User already exists!'});
       return;
     }
+
+    // check if email is valid
+    if (!validator.isEmail(email)){
+      res.status(400).send({error: 'The email does not seem valid'});
+      return;
+    }
+
     // check if email is already taken
     const emailExists = await emailTaken(email);
     if (emailExists) {

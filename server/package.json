@@ -55,6 +55,7 @@
     "passport-jwt": "^2.2.0",
     "passport-local": "^1.0.0",
     "thinky": "^2.3.7",
+    "validator": "^6.2.0",
     "winston": "^2.2.0"
   }
 }

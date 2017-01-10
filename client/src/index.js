@@ -17,10 +17,14 @@ import {requireAuth} from './util';
 // our pages
 import Home from './pages/home';
 import Login from './pages/login';
+import TestPage from './pages/testpage';
 import Register from './pages/register';
 import User from './pages/users';
 import EditProfile from './pages/users/edit-profile';
-import CreateClass from './pages/class/create';
+import CompleteClassroom from './pages/classroom/complete-classroom';
+import EditClassroom from './pages/classroom/edit-classroom';
+import CreateClass from './pages/classroom/create';
+import SearchClassroom from './pages/classroom/search-classroom';
 import NotFound from './pages/notfound';
 
 // Create an enhanced history that syncs navigation events with the store
@@ -33,9 +37,13 @@ ReactDOM.render((
       <Route path="/" component={App}>
         <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="login" component={Login} />
+        <Route path="testpage" component={TestPage} />
         <Route path="register" component={Register} />
         <Route path="users" component={User} />
         <Route path="users/edit-profile" component={EditProfile} />
+        <Route path="classroom/complete-classroom" component={CompleteClassroom} />
+        <Route path="classroom/edit-classroom" component={EditClassroom} />
+        <Route path="classroom/search-classroom" component={SearchClassroom} />
         <Route path="class/create" component={CreateClass} />
         <Route path="*" component={NotFound} />
       </Route>

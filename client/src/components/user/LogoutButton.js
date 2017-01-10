@@ -21,12 +21,9 @@ const Footer = ({onCloseSessionClick, navToLogin}) => {
   };
 
   return (
-    <div>
-      <hr />
-      <p><Link to="/">Home</Link> | <Link to="/users/edit-profile">Editar Perfil</Link> |&nbsp;
-      <Link to="/class/create">Crear Clase</Link></p>
-      <p><button className="btn btn-default" onClick={handleLogoutClick}>Cerrar sesión</button></p>
-    </div>
+    <button className="btn btn-default" onClick={handleLogoutClick}>Cerrar sesión &nbsp;
+    <span className="glyphicon glyphicon-log-out" aria-hidden="true"></span></button>
+
   );
 };
 

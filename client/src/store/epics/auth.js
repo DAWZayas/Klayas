@@ -4,6 +4,8 @@ import {Observable} from 'rxjs/Observable';
 // our packages
 import * as ActionTypes from '../actionTypes';
 import {signRequest} from '../../util/signRequest';
+import * as Actions from '../actions';
+import {loginErrorToMessage, registerErrorToMessage} from '../../util';
 
 export const login = action$ => action$
   .ofType(ActionTypes.DO_LOGIN)
@@ -14,12 +16,19 @@ export const login = action$ => action$
       type: ActionTypes.LOGIN_SUCCESS,
       payload: response,
     }))
-    .catch(err => Observable.of({
-      type: ActionTypes.LOGIN_ERROR,
-      payload: {
-        error: err,
+    .concat(Observable.of(
+      Actions.addNotificationAction(
+        {text: 'Acceso completado', alertType: 'success'},
+    )))
+    .catch(error => Observable.of(
+      {
+        type: ActionTypes.LOGIN_ERROR,
+        payload: {
+          error,
+        },
       },
-    })),
+      Actions.addNotificationAction({text: loginErrorToMessage(error), alertType: 'danger'}),
+    )),
   );
 
 export const register = action$ => action$
@@ -31,12 +40,19 @@ export const register = action$ => action$
       type: ActionTypes.REGISTER_SUCCESS,
       payload: response,
     }))
-    .catch(err => Observable.of({
-      type: ActionTypes.REGISTER_ERROR,
-      payload: {
-        error: err,
+    .concat(Observable.of(
+      Actions.addNotificationAction(
+        {text: 'Registro completado', alertType: 'success'},
+    )))
+    .catch(error => Observable.of(
+      {
+        type: ActionTypes.REGISTER_ERROR,
+        payload: {
+          error,
+        },
       },
-    })),
+      Actions.addNotificationAction({text: registerErrorToMessage(error), alertType: 'danger'}),
+    )),
   );
 
 export const updateProfile = action$ => action$
@@ -49,10 +65,17 @@ export const updateProfile = action$ => action$
     type: ActionTypes.UPDATE_PROFILE_SUCCESS,
     payload: response,
   }))
-  .catch(err => Observable.of({
-    type: ActionTypes.UPDATE_PROFILE_ERROR,
-    payload: {
-      error: err,
+  .concat(Observable.of(
+    Actions.addNotificationAction(
+      {text: 'Perfil actualizado correctamente', alertType: 'success'},
+  )))
+  .catch(error => Observable.of(
+    {
+      type: ActionTypes.UPDATE_PROFILE_ERROR,
+      payload: {
+        error,
+      },
     },
-  })),
+    Actions.addNotificationAction({text: loginErrorToMessage(error), alertType: 'danger'}),
+  )),
 );

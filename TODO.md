@@ -1,17 +1,85 @@
-FRONT
+PENDIENTE
+El index de usuario tiene que mostrar las clases de cada usuario.. llama al ClassroomSumary pero este tiene un array que no puedo leer... tendría que pasarlo a otro para poder actuar desde él... no se si es el modo.
+
+Recuperar las clases.
+Al hacer el componente ClassroomOwner, si lo intento importar desde el index de componentes me da error, tengo que importarlo directamente del archivo.
 
 #
-PERFIL DE USUARIO
-El usuario tiene que tener un array de clases propias vacio y un array de clases que observa vacio... hay que implementarlo en el back
+TODO
 
+##
+New corporative color
+Hay que salvar el archivo que he puesto en el raíz en 'client/node_modules/bootstrap/dist/css/bootstrap.min.css'. No se sube automáticamente porque está dentro de node_modules;
 
-ACTULIZACIÓN DE PERFIL
-Creo que lo suyo es que en lugar de con placeholder el valor este puesto con value y sea editable, pero al intentarlo no me deja editarlo... supongo que tiene algo que ver con el VirutalDom pero no se como hacerlo.
+##
+Implement notification system
+Poner un sistema de notificaciones como el de Javier que indique todos los exitos y errores que envia el back
 
-Ya he conseguido pasar la url correctamente, y se llama a la base de datos, pero ahora no deja postear a esa dirección, hay que ver exactamente a cual llama el update (creo que además tendremos que pasarle el token), porque he visto que tampoco puedo postear a esa dirección desde el Postman
+##
+Create a squeleton for user
+Mantener el Jumbotron exterior en todas las páginas de usario y variar únicamente el interior creando diferentes componentes.
+Alinear mejor el botón de cerrar sesión.
 
-CREACIÓN DE CLASE
-Al pulsar en crear clase me dice que CreateClassAction is not defined (consola de Crhome), pero si que la veo definida y si sigo su creación y la encuentro... de momento lo dejo a ver si en frio lo veo mejor.
+##
+List user classroom in his profile
+Cuando el usuario no tiene ninguna clase debe mostrar un mensaje informándole e instándole a crear su primera clase
+
+##
+Create classrroms
+Mirar como almacenar las horas, actualmente se almacenan como string y habrá que cambiarlo para enviar alertas
+
+Eliminar del formulario la url y generarla automáticamente
+
+##
+Edit classroom
+La fecha no se recupera y hay que ponerla de nuevo... hay que solucionarlo, además de modificar el diseño para incluir la fecha y la hora.
+Solucionar que el teacher sea undefined al principio (ver documentación)
+
+#
+DOCUMENTACIÓN (¿Documentar un proceso es crear la documentación?)
+
+##List classrooms user follow in his profile
+Al apuntarse a una clase, pasa de nuevo el problema de que la specificclassroom tarda un poco más que en pintarse la página por primera vez y entonces en ese momento el classroom y la consola da un error de que no puede hacer map de undefined, pero sólo es un error en consola que no se si tendremos que solucionar.
+
+##
+User can Sing Up to a classroom
+El back no dejaba apuntarse porque no era el profesor (obviamente). Es una decisión de funcionalidad si se puede apuntar el alumno o debe mandar solicitud al profesor, pero yo de momento voy a dejar que se apunte el alumno.
+
+El ordenador portatil no me deja apuntar a clases, al intentar hacer post a una direccion me dice que la clase no existe, aunque si se hace get si se obtiene la información.... he pensado que es porque hay un método Classroom.get supongo que copiado del de user, y lo mismo nosotros tendríamos que utilizar Classroom.getone ya que se llama getone el método nuestro que obtiene la información de una sola clase, pero no se... juraría que en el otro ordenador si soy capaz de apuntarme a una clase.... luego lo miraré.
+
+Efectivamente no me ha dejado apuntarme tampoco desde el otro ordenador... no se porqué, de hecho hay usuarios apuntados a alguna clase con lo que en su momento funcionó, que fue cuando lo subí....ahora no doy con el error.
+
+Sólo deja apuntarse a clases recien creadas... ¡¡Misterio!!
+
+##
+Edit classroom
+Para hacer que el profesor pueda editar la clase y el alumno apuntarse hay que comprobar si el usuario es el profesor. El problema es que la función de getOneClassRoom que es la que devuelve specificclassroom tarda un poco más que en pintarse la página por primera vez y entonces en ese momento el profesor es undefined. Lo he solucionado cambiando en ClassroomOwner en lugar de setImmediate el cambio de página setTimeout poniendo medio segundo, lo que da tiempo a que llegue la información, pero creo que es un poco chapuza.....Pasa lo mismo a la vuelta de actualizar una clase pero ahí lo he dejado para que se pueda comprobar.
+
+##
+Show complete classroom
+Tenemos todas las clases en un array, pero no soy capaz de acceder al contenido de un array concreto, tengo que recorrer todo el array y quedarme sólo con las que quiero. Mi primera idea es filtralas para que quede una sóla, pero tendría que filtrarla por ID, pero ¿cómo me puede llegar esa información?
+Puedo poner enlaces que lleven a /clases/id, pero no se como crear esas páginas dinámicamente.
+Puedo hacer como con editar perfil que pongo el pefil del usuario, pero como he dicho no puedo acceder a sólo los datos de una clase
+Puedo hacer un filtro que muestre sólo la clase con determinada ID, pero ¿como me llega esa ID? Se puede enviar información en JS por url como hace PHP con GET
+Puedo hacer una nueva consulta a la BBDD y almacenar en el estado la información de una sola clase aunque se almacenaría información redundante en el estado.
+
+Me decido por esta última. Necesito crear un nuevo endpoint para obtener sólo la información de una clase (el que hay obtiene todas las clases)... supongo que lo normal sería meterlo en el server get de classroom, pero ya tiene el get de todas las clases y se exporta como default... a lo mejor se pueden meter más, pero no se como hacerlo.
+
+A la hora de hacer el enlace lo voy a mandar a complete-classroom, pero para ello tengo que tener unas mapDispatchToProps, el problema es que como lo hizo Javier es una clase ya que recibe sus propios props, y para pasarle el mapDispatchToProps necesito que sea una constante.... buso en Internet y encuentro esto https://github.com/reactjs/redux/issues/693 que me funciona.
+
+Consigo crear una nueva entrada en el state que intento llamar SpecificClassroom... mogollón de problemas, al final descubro que es que no se pueden poner mayúscuas y me funciona con specificclassroom.
+
+Ya me pasó al crear el array de classrooms que si el initialState esta vacio 'casca', hay que ponerle que es un array vacio.... lo mismo me ha pasado con specificclassroom.
+
+He añadido campos descripción y url en el formulario de craear clase. La descripción si valdrá, pero la url, que será la que se insertará al emitirse tiene que generarse automáticamente.
+
+##
+List user classroom in his profile
+Tenemos todas las clases en un array, pero no soy capaz de acceder al contenido de un array concreto, tengo que recorrer todo el array y quedarme sólo con las que quiero. Actualmente lo hago con un map y un selector ternario, que actua como filtro, pero supongo que sería mejor hacerlo directamente con un filtro
+
+##
+Refresh the localstorage when edit profile. Can refresh page.
+Me costó darme cuenta de porqué al recargar la página no leía correctamente los datos. El caso es que el usuario no se está leyendo del stado sino del localstorage, así que cada vez que cambio el estado del usuario tengo que volver a grabarlo en el localstorage.. ¿Por qué no se está leyendo directamente del estado?
 
 
 

@@ -1,57 +1,43 @@
 // npm packages
 import React from 'react';
-import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
+import moment from 'moment';
 
 // our packages
-import {registerAction} from '../../store/actions';
+import {createClassAction} from '../../store/actions';
 import {registerErrorToMessage} from '../../util';
 
-//our components
-import Footer from '../users/footer.js';
-
 const mapStateToProps = state => ({
-  redirectToLogin: state.auth.redirectToLogin,
   error: state.auth.error,
 });
 
 const mapDispatchToProps = dispatch => ({
-  navToLogin: () => dispatch(push('/login')),
   onCreateClick: params => dispatch(createClassAction(params)),
 });
 
-const CreateClass = ({onCreateClick, navToLogin, redirectToLogin, error}) => {
+const CreateClass = ({onCreateClick, error}) => {
   let nameInput;
+  let descriptionInput;
+  let urlInput;
   let dateInput;
   let timeInput;
   let publicInput;
 
   const handleClick = (e) => {
     e.preventDefault();
-
     onCreateClick({
       name: nameInput.value,
-      date: dateInput.value,
+      description: descriptionInput.value,
+      url: urlInput.value,
+      date: moment(dateInput.value).toISOString(),
       time: timeInput.value,
-      email: publicInput.value,
     });
   };
-
-  if (redirectToLogin) {
-    // TODO: figure out a better way to do nav
-    setImmediate(() => navToLogin());
-  }
 
   return (
     <div className="jumbotron">
       <h2>Klayas:</h2>
       <p>Crea ahora tu clase en Klayas</p>
-
-      {error ? (
-        <div className="alert alert-danger" role="alert">{registerErrorToMessage(error)}</div>
-      ) : ''}
-
       <form>
         <div className="form-group">
           <label htmlFor="inputName">Nombre:</label>
@@ -64,7 +50,27 @@ const CreateClass = ({onCreateClick, navToLogin, redirectToLogin, error}) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputSurname">Fecha:</label>
+          <label htmlFor="inputDescription">Descripción:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="inputDescription"
+            placeholder="Descripción"
+            ref={(i) => { descriptionInput = i; }}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="inputUrl">Url:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="inputUrl"
+            placeholder="Url"
+            ref={(i) => { urlInput = i; }}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="inputDate">Fecha:</label>
           <input
             type="date"
             className="form-control"
@@ -94,7 +100,6 @@ const CreateClass = ({onCreateClick, navToLogin, redirectToLogin, error}) => {
         </div>
         <button type="submit" className="btn btn-default" onClick={handleClick}>Crear Clase</button>
       </form>
-      <Footer />
     </div>
   );
 };

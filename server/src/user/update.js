@@ -1,5 +1,6 @@
 // npm packages
 import passport from 'passport';
+import validator from 'validator';
 
 // our packages
 import {emailTaken} from '../auth';
@@ -51,6 +52,12 @@ export default (app) => {
     // check if new email is already taken
     if (emailChanged && await emailTaken(email)) {
       res.status(400).send({error: 'Email already exists!'});
+      return;
+    }
+
+    // check if new email is valid
+    if (!validator.isEmail(email)){
+      res.status(400).send({error: 'The email does not seem valid'});
       return;
     }
 

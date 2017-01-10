@@ -7,8 +7,6 @@ import {push} from 'react-router-redux';
 // our packages
 import {editProfile} from '../../store/actions';
 
-//our components
-import Footer from './footer.js';
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
@@ -16,11 +14,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   navToHome: () => dispatch(push('/login')),
+  navToProfile: () => dispatch(push('/users')),
   onEditClick: params => dispatch(editProfile(params)),
 });
 
 
-const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, user}) => {
+const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin, error, user}) => {
   let nameInput;
   let surnameInput;
   let loginInput;
@@ -31,11 +30,11 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, user}
 
   const handleClick = (e) => {
     e.preventDefault();
+    setImmediate(() => navToProfile());
 
     onEditClick({
       name: nameInput.value,
       surname: surnameInput.value,
-      login: loginInput.value,
       email: emailInput.value,
       ActualPassword: actualPasswordInput.value,
       password: passwordInput.value,
@@ -51,12 +50,7 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, user}
 
   return (
     <div className="jumbotron">
-      <h1>Edita tu perfil {user.name}!</h1>
-
-      {error ? (
-        <div className="alert alert-danger" role="alert">{registerErrorToMessage(error)}</div>
-      ) : ''}
-
+      <h1>Edita tu perfil {user.name}</h1>
       <form>
         <div className="form-group">
           <label htmlFor="inputName">Nombre:</label>
@@ -79,13 +73,12 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, user}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputLogin">Nombre de usuario:</label>
+          <label htmlFor="inputLogin">Nombre de usuario (el nombre de usuario no puede cambiarse)</label>
           <input
             type="text"
             className="form-control"
-            id="inputLogin"
+            readOnly="readonly"
             defaultValue={user.login}
-            ref={(i) => { loginInput = i; }}
           />
         </div>
         <div className="form-group">
@@ -131,10 +124,10 @@ const Update = ({onEditClick, onClick, navToLogin, redirectToLogin, error, user}
             ref={(i) => { passwordInputRepeat = i; }}
           />
         </div>
-        <button type="submit" className="btn btn-default" onClick={handleClick}>Modificar perfil</button>
+        <button type="submit" className="btn btn-default" onClick={handleClick}>Modificar perfil</button> &nbsp;| &nbsp;
+        <button type="submit" className="btn btn-default" onClick={navToProfile}>Cancelar</button>
       </form>
       <hr />
-      <Footer />
     </div>
   );
 };

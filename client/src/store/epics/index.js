@@ -1,13 +1,17 @@
 import {login, register, updateProfile} from './auth';
-import {helloWorld} from './helloworld';
-import {createClass} from './class';
+import {createClass, getAllClassRoom, getOneClassRoom, updateClassAction} from './classroom';
+import {addNotification} from './notifications';
 
 export default [
   // auth
   login,
   register,
   updateProfile,
-  // hello world
-  helloWorld,
+  // classroom
   createClass,
+  getAllClassRoom,
+  getOneClassRoom,
+  updateClassAction,
+  // notirications
+  addNotification,
 ];
