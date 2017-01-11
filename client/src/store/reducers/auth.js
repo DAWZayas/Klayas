@@ -10,7 +10,7 @@ export const auth = (state = initialState(), action) => {
   switch (action.type) {
     case ActionTypes.REGISTER_SUCCESS:
       return {
-        redirectToLogin: true,
+        ...state,
       };
     case ActionTypes.LOGIN_SUCCESS:
       localStorage.setItem('user.token', action.payload.token);
@@ -21,7 +21,7 @@ export const auth = (state = initialState(), action) => {
     case ActionTypes.LOGIN_ERROR:
     case ActionTypes.REGISTER_ERROR:
       return state;
-    case ActionTypes.CLOSE_SESSION:
+    case ActionTypes.DO_LOGOUT:
       localStorage.removeItem('user.token');
       localStorage.removeItem('user.data');
       return initialState();

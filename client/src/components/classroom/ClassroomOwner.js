@@ -22,7 +22,7 @@ const ClassroomOwner = ({onSeeCompleteClassClick, navToCompleteClass, classroom}
     onSeeCompleteClassClick({
       id: classroom.id,
     });
-    setTimeout(() => navToCompleteClass(), 500);
+    setImmediate(() => navToCompleteClass());
   };
 
   return (

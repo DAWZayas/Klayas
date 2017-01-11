@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
   onCreateClick: params => dispatch(createClassAction(params)),
 });
 
-const CreateClass = ({onCreateClick, error}) => {
+const CreateClassroom = ({onCreateClick, error}) => {
   let nameInput;
   let descriptionInput;
   let urlInput;
@@ -104,4 +104,4 @@ const CreateClass = ({onCreateClick, error}) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateClass);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateClassroom);

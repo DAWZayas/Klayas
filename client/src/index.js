@@ -8,24 +8,29 @@ import {Provider} from 'react-redux';
 
 // styles
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './scss/main.scss';
 
 // our packages
-import App from './app';
+import App from './containers/app';
 import store from './store';
 import {requireAuth} from './util';
 
 // our pages
-import Home from './pages/home';
-import Login from './pages/login';
-import TestPage from './pages/testpage';
-import Register from './pages/register';
-import User from './pages/users';
-import EditProfile from './pages/users/edit-profile';
-import CompleteClassroom from './pages/classroom/complete-classroom';
-import EditClassroom from './pages/classroom/edit-classroom';
-import CreateClass from './pages/classroom/create';
-import SearchClassroom from './pages/classroom/search-classroom';
-import NotFound from './pages/notfound';
+import Home from './containers/home';
+import Login from './containers/login';
+import TestPage from './containers/testpage';
+import Register from './containers/register';
+import User from './containers/user';
+import EditProfile from './containers/user/edit-profile';
+import CompleteClassroom from './containers/classroom/complete-classroom';
+import EditClassroom from './containers/classroom/edit-classroom';
+import CreateClassroom from './containers/classroom/create';
+import SearchClassroom from './containers/classroom/search-classroom';
+import NotFound from './containers/notfound';
+
+// JQuery for Bootstrap
+global.jQuery = require('jquery/dist/jquery.min.js');
+require('bootstrap/dist/js/bootstrap.min.js');
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -35,18 +40,24 @@ ReactDOM.render((
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Home} onEnter={requireAuth} />
+        <IndexRoute component={User} onEnter={requireAuth} />
+        <Route path="home" component={Home} />
         <Route path="login" component={Login} />
         <Route path="testpage" component={TestPage} />
         <Route path="register" component={Register} />
-        <Route path="users" component={User} />
-        <Route path="users/edit-profile" component={EditProfile} />
+        <Route path="user" component={User} />
+        <Route path="user/edit-profile" component={EditProfile} />
         <Route path="classroom/complete-classroom" component={CompleteClassroom} />
         <Route path="classroom/edit-classroom" component={EditClassroom} />
         <Route path="classroom/search-classroom" component={SearchClassroom} />
-        <Route path="class/create" component={CreateClass} />
+        <Route path="user/edit-profile" component={EditProfile} />
+        <Route path="classroom/create" component={CreateClassroom} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>
   </Provider>
 ), document.getElementById('app'));
+
+if (module.hot) {
+  module.hot.accept();
+}

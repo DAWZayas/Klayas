@@ -1,9 +1,5 @@
 import * as ActionTypes from '../actionTypes';
 
-export const helloWorldAction = () => ({
-  type: ActionTypes.HELLO_WORLD,
-});
-
 export const loginAction = payload => ({
   type: ActionTypes.DO_LOGIN,
   payload,
@@ -14,8 +10,8 @@ export const registerAction = payload => ({
   payload,
 });
 
-export const clearSesionAction = () => ({
-  type: ActionTypes.CLOSE_SESSION,
+export const logoutAction = () => ({
+  type: ActionTypes.DO_LOGOUT,
 });
 
 export const editProfile = payload => ({
@@ -24,12 +20,12 @@ export const editProfile = payload => ({
 });
 
 export const createClassAction = payload => ({
-  type: ActionTypes.CREATE_CLASS,
+  type: ActionTypes.CREATE_CLASSROOM,
   payload,
 });
 
 export const updateClassAction = payload => ({
-  type: ActionTypes.UPDATE_CLASS,
+  type: ActionTypes.UPDATE_CLASSROOM,
   payload,
 });
 

@@ -5,35 +5,41 @@ import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
 // our packages
-import {registerAction} from '../../store/actions';
+import {editProfile} from '../../store/actions';
 
-const mapStateToProps = state => ({
-  redirectToLogin: state.auth.redirectToLogin,
+
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
 });
 
-const mapDispatchToProps = dispatch => ({
-  navToLogin: () => dispatch(push('/login')),
-  onRegisterClick: params => dispatch(registerAction(params)),
+const mapDispatchToProps = (dispatch) => ({
+  navToHome: () => dispatch(push('/login')),
+  navToProfile: () => dispatch(push('/user')),
+  onEditClick: params => dispatch(editProfile(params)),
 });
 
-const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
+
+const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin, error, user}) => {
   let nameInput;
   let surnameInput;
   let loginInput;
   let emailInput;
+  let actualPasswordInput;
   let passwordInput;
   let passwordInputRepeat;
 
   const handleClick = (e) => {
     e.preventDefault();
+    setImmediate(() => navToProfile());
 
-    onRegisterClick({
+    onEditClick({
       name: nameInput.value,
       surname: surnameInput.value,
-      login: loginInput.value,
       email: emailInput.value,
+      ActualPassword: actualPasswordInput.value,
       password: passwordInput.value,
       passwordRepeat: passwordInputRepeat.value,
+      id: user.id,
     });
   };
 
@@ -44,8 +50,7 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
 
   return (
     <div className="jumbotron">
-      <h2>Klayas:</h2>
-      <p>Registrate en Klayas o si ya eres usuario <Link to="/login">accede al portal</Link></p>
+      <h1>Edita tu perfil {user.name}</h1>
       <form>
         <div className="form-group">
           <label htmlFor="inputName">Nombre:</label>
@@ -53,7 +58,7 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
             type="text"
             className="form-control"
             id="inputName"
-            placeholder="Nombre"
+            defaultValue={user.name}
             ref={(i) => { nameInput = i; }}
           />
         </div>
@@ -63,18 +68,17 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
             type="text"
             className="form-control"
             id="inputName"
-            placeholder="Apellidos"
+            defaultValue={user.surname}
             ref={(i) => { surnameInput = i; }}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputLogin">Nombre de usuario:</label>
+          <label htmlFor="inputLogin">Nombre de usuario (el nombre de usuario no puede cambiarse)</label>
           <input
             type="text"
             className="form-control"
-            id="inputLogin"
-            placeholder="Nombre de usuario"
-            ref={(i) => { loginInput = i; }}
+            readOnly="readonly"
+            defaultValue={user.login}
           />
         </div>
         <div className="form-group">
@@ -83,12 +87,25 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
             type="text"
             className="form-control"
             id="inputLogin"
-            placeholder="Correo electrónico"
+            defaultValue={user.email}
             ref={(i) => { emailInput = i; }}
           />
         </div>
         <div className="form-group">
+          Si desea cambiar su contraseña rellene estos campos, sino, déjelos en blanco
+        </div>
+        <div className="form-group">
           <label htmlFor="inputPassword">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            id="inputPassword"
+            placeholder="Password Actual"
+            ref={(i) => { actualPasswordInput = i; }}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="inputPassword">Nueva Password</label>
           <input
             type="password"
             className="form-control"
@@ -98,7 +115,7 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputPasswordRepeat">Vuelve a escribir la password</label>
+          <label htmlFor="inputPasswordRepeat">Vuelve a escribir la nueva password</label>
           <input
             type="password"
             className="form-control"
@@ -107,10 +124,12 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
             ref={(i) => { passwordInputRepeat = i; }}
           />
         </div>
-        <button type="submit" className="btn btn-default" onClick={handleClick}>Registrar</button>
+        <button type="submit" className="btn btn-default" onClick={handleClick}>Modificar perfil</button> &nbsp;| &nbsp;
+        <button type="submit" className="btn btn-default" onClick={navToProfile}>Cancelar</button>
       </form>
+      <hr />
     </div>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Update);

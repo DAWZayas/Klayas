@@ -3,9 +3,8 @@ import {Observable} from 'rxjs/Observable';
 
 // our packages
 import * as ActionTypes from '../actionTypes';
-import {signRequest} from '../../util/signRequest';
 import * as Actions from '../actions';
-import {loginErrorToMessage, registerErrorToMessage} from '../../util';
+import {loginErrorToMessage, registerErrorToMessage, signRequest} from '../../util';
 
 export const login = action$ => action$
   .ofType(ActionTypes.DO_LOGIN)

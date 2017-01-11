@@ -1,5 +1,5 @@
 {
-  "name": "experts-client",
+  "name": "klayas-client",
   "version": "0.1.0",
   "description": "Klayas portal client",
   "main": "index.js",
@@ -32,6 +32,8 @@
     "express": "^4.14.0",
     "file-loader": "^0.9.0",
     "json-loader": "^0.5.4",
+    "node-sass": "^4.1.1",
+    "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
@@ -41,10 +43,12 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "history": "^4.4.0",
+    "jquery": "^3.1.1",
     "lodash": "^4.17.3",
     "moment": "^2.17.1",
     "react": "^15.3.2",
     "react-addons-css-transition-group": "^15.4.1",
+    "react-bootstrap": "^0.30.7",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^3.0.0",

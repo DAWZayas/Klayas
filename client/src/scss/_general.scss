@@ -1,0 +1,19 @@
+section {
+  text-align: center;
+}
+
+// Make the button responsive
+button[class*="btn"] {
+  white-space: normal;
+}
+
+button[class*="btn-primary"] {
+  background-color: #7a387c;
+  border-color: #632d65;
+  &:hover, &:focus,
+  &:active:focus, &:active:hover,
+  &:active {
+    background-color: #672f67;
+    border-color: #632d65;
+  }
+}

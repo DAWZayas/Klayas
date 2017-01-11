@@ -1,0 +1,68 @@
+.verticalDivider {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  margin-left: 10px;
+  padding: 0;
+  width: auto;
+  height: 50%;
+  line-height: 0;
+  text-align:center;
+  text-transform: uppercase;
+  &:before,
+  &:after {
+    position: absolute;
+    left: 50%;
+    content: '';
+    z-index: 9;
+    border-left: 1px solid rgba(34,36,38,.15);
+    border-right: 1px solid rgba(255,255,255,.1);
+    width: 0;
+    height: calc(100% - 1rem);
+  }
+  &:before {
+    top: -100%;
+  }
+  &:after {
+    top: auto;
+    bottom: 0;
+  }
+}
+
+.rowDivided > .verticalDivider {
+  height: calc(50% - 1rem);
+}
+
+.verticalAlign {
+  position: relative;
+  top: 3.125em;
+}
+
+i[class*="social"] {
+  padding-right: 0.7em;
+  border-right: 2px solid rgba(255,255,255,.2);
+}
+
+button.btnGoogle {
+  background-color: #C62828;
+  border-color: #871a1a;
+  &:hover, &:focus,
+  &:active:focus, &:active:hover,
+  &:active {
+    background-color: #af2121;
+    border-color: #871a1a;
+  }
+}
+
+button.btnGithub {
+  color: black;
+  background-color: #dedede;
+  border-color: #bebebe;
+  &:hover, &:focus,
+  &:active:focus, &:active:hover,
+  &:active {
+    background-color: #aaa8a8;
+    border-color: #bebebe;
+  }
+}

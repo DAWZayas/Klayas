@@ -6,7 +6,7 @@ import * as ActionTypes from '../actionTypes';
 import {signRequest} from '../../util/signRequest';
 import * as Actions from '../actions';
 
-export const getAllClassRoom = action$ => action$
+export const getAllClassroom = action$ => action$
   .ofType(ActionTypes.GET_ALL_CLASSROOM)
   .map(signRequest)
   .switchMap(({headers}) => Observable
@@ -22,7 +22,7 @@ export const getAllClassRoom = action$ => action$
     })),
   );
 
-export const getOneClassRoom = action$ => action$
+export const getOneClassroom = action$ => action$
   .ofType(ActionTypes.GET_ONE_CLASSROOM)
   .map(signRequest)
   .mergeMap(({headers, payload}) => Observable
@@ -38,14 +38,14 @@ export const getOneClassRoom = action$ => action$
     })),
   );
 
-export const createClass = action$ => action$
-  .ofType(ActionTypes.CREATE_CLASS)
+export const createClassroom = action$ => action$
+  .ofType(ActionTypes.CREATE_CLASSROOM)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
     .ajax.post('http://localhost:8080/api/classroom/create', payload, headers)
     .map(res => res.response)
     .map(response => ({
-      type: ActionTypes.CREATE_SUCCESS,
+      type: ActionTypes.CREATE_CLASSROOM_SUCCESS,
       payload: response,
     }))
     .concat(Observable.of(
@@ -54,23 +54,28 @@ export const createClass = action$ => action$
     )))
     .catch(error => Observable.of(
       {
-        type: ActionTypes.CREATE_ERROR,
+        type: ActionTypes.CREATE_CLASSROOM_ERROR,
         payload: {
           error,
         },
       },
-      Actions.addNotificationAction({text: 'Ha ocurrido un error durante la creación de la clase', alertType: 'danger'}),
+      Actions.addNotificationAction(
+        {
+          text: 'Ha ocurrido un error durante la creación de la clase',
+          alertType: 'danger',
+        },
+      ),
     )),
   );
 
-  export const updateClassAction = action$ => action$
-  .ofType(ActionTypes.UPDATE_CLASS)
+export const updateClassroomAction = action$ => action$
+  .ofType(ActionTypes.UPDATE_CLASSROOM)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
     .ajax.post(`http://localhost:8080/api/classroom/${payload.id}`, payload, headers)
     .map(res => res.response)
     .map(response => ({
-      type: ActionTypes.UPDATE_CLASS_SUCCESS,
+      type: ActionTypes.UPDATE_CLASSROOM_SUCCESS,
       payload: response,
     }))
     .concat(Observable.of(
@@ -79,11 +84,16 @@ export const createClass = action$ => action$
     )))
     .catch(error => Observable.of(
       {
-        type: ActionTypes.UPDATE_CLASS_ERROR,
+        type: ActionTypes.UPDATE_CLASSROOM_ERROR,
         payload: {
           error,
         },
       },
-      Actions.addNotificationAction({text: 'Ha ocurrido un error durante la actualización de la clase', alertType: 'danger'}),
+      Actions.addNotificationAction(
+        {
+          text: 'Ha ocurrido un error durante la actualización de la clase',
+          alertType: 'danger',
+        },
+      ),
     )),
   );
