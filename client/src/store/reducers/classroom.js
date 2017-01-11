@@ -23,6 +23,12 @@ export const classrooms = (state = initialState, action) => {
     case ActionTypes.UPDATE_CLASSROOM:
       return {
         ...state,
+        status: 'loading',
+      };
+    case ActionTypes.UPDATE_CLASSROOM_SUCCESS:
+      return {
+        ...state,
+        status: 'done',
         specificclassroom: action.payload,
       };
     case ActionTypes.SEARCH_CLASSROOMS:
