@@ -44,11 +44,21 @@ const LoginModal = ({onLoginClick, show, close}) => {
           <div className="col-xs-6">
             <form>
               <div className="form-group has-feedback">
-                <input type="text" className="form-control" placeholder="Username" ref={(i) => { usernameInput = i; }} />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Username"
+                  ref={(i) => { usernameInput = i; }}
+                />
                 <i className="glyphicon glyphicon-user form-control-feedback" />
               </div>
               <div className="form-group has-feedback">
-                <input type="password" className="form-control" placeholder="Password" ref={(i) => { passwordInput = i; }} />
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="Password"
+                  ref={(i) => { passwordInput = i; }}
+                />
                 <i className="glyphicon glyphicon-lock form-control-feedback" />
               </div>
               <div>
