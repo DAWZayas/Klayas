@@ -49,6 +49,7 @@ const LoginModal = ({onLoginClick, show, close}) => {
                   className="form-control"
                   placeholder="Username"
                   ref={(i) => { usernameInput = i; }}
+                  autoFocus
                 />
                 <i className="glyphicon glyphicon-user form-control-feedback" />
               </div>

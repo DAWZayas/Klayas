@@ -27,6 +27,7 @@ const RegisterModal = ({show, close, onRegisterClick}) => {
       password: passwordInput.value,
       passwordRepeat: passwordInputRepeat.value,
     });
+    close();
   };
 
   return (
@@ -35,69 +36,105 @@ const RegisterModal = ({show, close, onRegisterClick}) => {
         <Modal.Title>Register</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
-          <div className="form-group">
-            <label htmlFor="inputName">Nombre:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputName"
-              placeholder="Nombre"
-              ref={(i) => { nameInput = i; }}
-            />
+        <form>
+          <div className="row form-group">
+            <div className="col-xs-3 col-xs-offset-1">
+              <label htmlFor="inputName">Nombre:</label>
+            </div>
+            <div className="col-xs-7">
+              <input
+                type="text"
+                className="form-control"
+                id="inputName"
+                placeholder="Nombre"
+                ref={(i) => { nameInput = i; }}
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="inputSurname">Apellidos:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputName"
-              placeholder="Apellidos"
-              ref={(i) => { surnameInput = i; }}
-            />
+          <div className="row form-group">
+            <div className="col-xs-3 col-xs-offset-1">
+              <label htmlFor="inputSurname">Apellidos:</label>
+            </div>
+            <div className="col-xs-7">
+              <input
+                type="text"
+                className="form-control"
+                id="inputName"
+                placeholder="Apellidos"
+                ref={(i) => { surnameInput = i; }}
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="inputLogin">Nombre de usuario:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputLogin"
-              placeholder="Nombre de usuario"
-              ref={(i) => { loginInput = i; }}
-            />
+          <div className="row form-group">
+            <div className="col-xs-3 col-xs-offset-1">
+              <label htmlFor="inputLogin">Nombre de usuario:</label>
+            </div>
+            <div className="col-xs-7">
+              <input
+                type="text"
+                className="form-control"
+                id="inputLogin"
+                placeholder="Nombre de usuario"
+                ref={(i) => { loginInput = i; }}
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="inputEmail">Correo electrónico:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputLogin"
-              placeholder="Correo electrónico"
-              ref={(i) => { emailInput = i; }}
-            />
+          <div className="row form-group">
+            <div className="col-xs-3 col-xs-offset-1">
+              <label htmlFor="inputEmail">Correo electrónico:</label>
+            </div>
+            <div className="col-xs-7">
+              <input
+                type="text"
+                className="form-control"
+                id="inputLogin"
+                placeholder="Correo electrónico"
+                ref={(i) => { emailInput = i; }}
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="inputPassword">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="inputPassword"
-              placeholder="Password"
-              ref={(i) => { passwordInput = i; }}
-            />
+          <div className="row form-group">
+            <div className="col-xs-3 col-xs-offset-1">
+              <label htmlFor="inputPassword">Password</label>
+            </div>
+            <div className="col-xs-7">
+              <input
+                type="password"
+                className="form-control"
+                id="inputPassword"
+                placeholder="Password"
+                ref={(i) => { passwordInput = i; }}
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="inputPasswordRepeat">Vuelve a escribir la password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="inputPasswordRepeat"
-              placeholder="Repite la password"
-              ref={(i) => { passwordInputRepeat = i; }}
-            />
+          <div className="row form-group">
+            <div className="col-xs-3 col-xs-offset-1">
+              <label htmlFor="inputPasswordRepeat">Vuelve a escribir la password</label>
+            </div>
+            <div className="col-xs-7">
+              <input
+                type="password"
+                className="form-control"
+                id="inputPasswordRepeat"
+                placeholder="Repite la password"
+                ref={(i) => { passwordInputRepeat = i; }}
+              />
+            </div>
           </div>
-          <Button type="submit" className="btn btn-default" onClick={handleClick}>Registrar</Button>
-        </Form>
+          <div className="row">
+            <div className="col-xs-7 col-xs-offset-4">
+              <Button
+                type="submit"
+                bsStyle="primary"
+                className="btn btn-default"
+                block
+                onClick={handleClick}
+              >
+                Registrar
+              </Button>
+            </div>
+          </div>
+        </form>
       </Modal.Body>
     </Modal>
   );
