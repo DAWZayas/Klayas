@@ -44,14 +44,15 @@ export const createClassroom = action$ => action$
   .switchMap(({headers, payload}) => Observable
     .ajax.post('http://localhost:8080/api/classroom/create', payload, headers)
     .map(res => res.response)
-    .map(response => ({
-      type: ActionTypes.CREATE_CLASSROOM_SUCCESS,
-      payload: response,
-    }))
-    .concat(Observable.of(
+    .mergeMap(response => Observable.of(
+      {
+        type: ActionTypes.CREATE_CLASSROOM_SUCCESS,
+        payload: response,
+      },
       Actions.addNotificationAction(
         {text: 'Clase creada correctamente', alertType: 'success'},
-    )))
+      ),
+    ))
     .catch(error => Observable.of(
       {
         type: ActionTypes.CREATE_CLASSROOM_ERROR,
@@ -60,10 +61,7 @@ export const createClassroom = action$ => action$
         },
       },
       Actions.addNotificationAction(
-        {
-          text: 'Ha ocurrido un error durante la creación de la clase',
-          alertType: 'danger',
-        },
+        {text: 'Ha ocurrido un error durante la creación de la clase', alertType: 'danger'},
       ),
     )),
   );
@@ -74,14 +72,15 @@ export const updateClassroomAction = action$ => action$
   .switchMap(({headers, payload}) => Observable
     .ajax.post(`http://localhost:8080/api/classroom/${payload.id}`, payload, headers)
     .map(res => res.response)
-    .map(response => ({
-      type: ActionTypes.UPDATE_CLASSROOM_SUCCESS,
-      payload: response,
-    }))
-    .concat(Observable.of(
+    .mergeMap(response => Observable.of(
+      {
+        type: ActionTypes.UPDATE_CLASSROOM_SUCCESS,
+        payload: response,
+      },
       Actions.addNotificationAction(
         {text: 'Clase actualizada correctamente', alertType: 'success'},
-    )))
+      ),
+    ))
     .catch(error => Observable.of(
       {
         type: ActionTypes.UPDATE_CLASSROOM_ERROR,
@@ -90,10 +89,7 @@ export const updateClassroomAction = action$ => action$
         },
       },
       Actions.addNotificationAction(
-        {
-          text: 'Ha ocurrido un error durante la actualización de la clase',
-          alertType: 'danger',
-        },
+        {text: 'Ha ocurrido un error durante la actualización de la clase', alertType: 'danger'},
       ),
     )),
   );
