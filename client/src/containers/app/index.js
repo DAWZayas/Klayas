@@ -5,6 +5,7 @@ import {push} from 'react-router-redux';
 
 // our components
 import {Navbar} from '../../components';
+import Footer from '../../components/footer';
 
 const mapStateToProps = state => ({
   actualPath: state.routing.locationBeforeTransitions && state.routing.locationBeforeTransitions.pathname,
@@ -46,6 +47,7 @@ class App extends React.Component {
         <Navbar {...this.props} />
         <div className="container">
           {children}
+          <Footer />
         </div>
       </div>
     );
