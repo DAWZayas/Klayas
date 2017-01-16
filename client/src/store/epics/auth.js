@@ -17,7 +17,7 @@ export const login = action$ => action$
         payload: response,
       },
       Actions.addNotificationAction(
-        {text: 'Acceso correcto', alertType: 'success'},
+        {text: 'Acceso correcto', alertType: 'info'},
       ),
     ))
     .catch(error => Observable.of(
@@ -44,7 +44,7 @@ export const register = action$ => action$
         payload: response,
       },
       Actions.addNotificationAction(
-        {text: 'Registro completado', alertType: 'success'},
+        {text: 'Registro completado', alertType: 'info'},
       ),
       Actions.loginAction(
         {login: payload.login, password: payload.password},
@@ -63,30 +63,39 @@ export const register = action$ => action$
     )),
   );
 
+export const logout = action$ => action$
+  .ofType(ActionTypes.DO_LOGOUT)
+  .switchMap(() => Observable.of(
+    Actions.addNotificationAction({
+      text: 'Cerrada la sesión',
+      alertType: 'info',
+    }),
+  ));
+
 export const updateProfile = action$ => action$
-.ofType(ActionTypes.UPDATE_PROFILE)
-.map(signRequest)
-.switchMap(({headers, payload}) => Observable
-  .ajax.post(`http://localhost:8080/api/user/${payload.id}`, payload, headers)
-  .map(res => res.response)
-  .mergeMap(response => Observable.of(
-    {
-      type: ActionTypes.UPDATE_PROFILE_SUCCESS,
-      payload: response,
-    },
-    Actions.addNotificationAction(
-      {text: 'Perfil actualizado correctamente', alertType: 'success'},
-    ),
-  ))
-  .catch(error => Observable.of(
-    {
-      type: ActionTypes.UPDATE_PROFILE_ERROR,
-      payload: {
-        error,
+  .ofType(ActionTypes.UPDATE_PROFILE)
+  .map(signRequest)
+  .switchMap(({headers, payload}) => Observable
+    .ajax.post(`http://localhost:8080/api/user/${payload.id}`, payload, headers)
+    .map(res => res.response)
+    .mergeMap(response => Observable.of(
+      {
+        type: ActionTypes.UPDATE_PROFILE_SUCCESS,
+        payload: response,
       },
-    },
-    Actions.addNotificationAction(
-      {text: loginErrorToMessage(error), alertType: 'danger'},
-    ),
-  )),
-);
+      Actions.addNotificationAction(
+        {text: 'Perfil actualizado correctamente', alertType: 'success'},
+      ),
+    ))
+    .catch(error => Observable.of(
+      {
+        type: ActionTypes.UPDATE_PROFILE_ERROR,
+        payload: {
+          error,
+        },
+      },
+      Actions.addNotificationAction(
+        {text: loginErrorToMessage(error), alertType: 'danger'},
+      ),
+    )),
+  );
