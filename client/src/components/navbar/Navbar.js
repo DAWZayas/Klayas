@@ -10,8 +10,8 @@ import {LoginModal} from '../../components';
 const styles = require('./Navbar.scss');
 
 const mapDispatchToProps = dispatch => ({
-  onLoginClick: () => dispatch(push('/login')),
   onLogoutClick: () => dispatch(logoutAction()),
+  navToHome: () => dispatch(push('/home')),
 });
 
 class Navbar extends Component {
@@ -21,7 +21,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const {onLogoutClick, token} = this.props;
+    const {onLogoutClick, navToHome, token} = this.props;
     const close = () => {
       this.setState({showModal: false});
     };
@@ -32,6 +32,7 @@ class Navbar extends Component {
 
     const handleLogoutClick = (e) => {
       e.preventDefault();
+      navToHome();
       onLogoutClick();
     };
 
@@ -81,8 +82,8 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  onLoginClick: PropTypes.func.isRequired,
   onLogoutClick: PropTypes.func.isRequired,
+  navToHome: PropTypes.func.isRequired,
   token: PropTypes.string,
 };
 
