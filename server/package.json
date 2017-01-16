@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "db:start": "docker run -d -p 28015:28015 -p 8090:8080 -v $PWD/db:/data --name klayasdb rethinkdb",
+    "db:create": "node util/db/create",
+    "db:start": "docker start klayasdb",
     "db:stop": "docker stop klayasdb",
     "db:rm": "docker rm klayasdb",
-    "test": "eslint src/ && babel-node test/index.js | tap-spec"
+    "test": "eslint src/ && node test/index.js | tap-spec"
   },
   "repository": {
     "type": "git",
