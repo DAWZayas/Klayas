@@ -35,18 +35,22 @@ const SearchClassroom = ({classrooms, doSearch, search}) => {
 
       <div className="input-group">
         <span className="input-group-addon" id="basic-addon1">Término de búsqueda</span>
-        <input type="text"
+        <input
+          type="text"
           onChange={handleSearchChange}
           className="form-control"
-          placeholder=" buscar por profesor, fecha, o cualquier otro elemento"
+          placeholder="Buscar por nombre de la calse, del profesor o descripción"
           aria-describedby="basic-addon1"
           ref={(i) => { seachtermInput = i; }}
         />
       </div>
       <div className="panel-body">
         <div>
-          {classrooms.map((classroom, index) => ( 
-            1 === 1 ? <ClassroomFollow key={index} classroom={classroom} /> : null
+          {classrooms.map((classroom, index) => (
+            classroom.name.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
+            classroom.teacher.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
+            classroom.description.toLowerCase().indexOf(search.toLowerCase()) !== -1
+            ? <ClassroomFollow key={index} classroom={classroom} /> : null
           ))}
         </div>
       </div>
