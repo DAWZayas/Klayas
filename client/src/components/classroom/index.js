@@ -1,9 +1,9 @@
 import ClassroomOwner from './ClassroomOwner';
 import ClassroomFollow from './ClassroomFollow';
-import ClassroomComplete from './ClassroomComplete';
+import SeeClassroomButton from './SeeClassroomButton';
 
 export {
   ClassroomOwner,
-  ClassroomComplete,
   ClassroomFollow,
+  SeeClassroomButton,
 };

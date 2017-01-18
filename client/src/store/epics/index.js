@@ -1,6 +1,7 @@
 import {login, register, logout, updateProfile} from './auth';
 import {createClassroom, getAllClassroom, getOneClassroom, updateClassroomAction} from './classroom';
 import {addNotification} from './notifications';
+import {addObservable} from './realtime';
 
 export default [
   // auth
@@ -15,4 +16,5 @@ export default [
   updateClassroomAction,
   // notirications
   addNotification,
+  addObservable,
 ];

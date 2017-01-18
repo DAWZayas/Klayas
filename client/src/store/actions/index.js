@@ -68,3 +68,13 @@ export const removeNotificationAction = notificationId => ({
   type: ActionTypes.REMOVE_NOTIFICATION,
   payload: {notificationId},
 });
+
+export const addObservable = observable => ({
+  type: ActionTypes.ADD_OBSERVABLE,
+  payload: observable,
+});
+
+export const removeObservable = observable => ({
+  type: ActionTypes.REMOVE_OBSERVABLE,
+  payload: observable,
+});

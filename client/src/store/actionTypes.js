@@ -28,3 +28,6 @@ export const SEARCH_CLASSROOMS = 'SEARCH_CLASSROOMS';
 // notifications actions
 export const ADD_NOTIFICATION = 'ADD_NOTIFICATION';
 export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
+// observable actions
+export const ADD_OBSERVABLE = 'ADD_OBSERVABLE';
+export const REMOVE_OBSERVABLE = 'REMOVE_OBSERVABLE';
