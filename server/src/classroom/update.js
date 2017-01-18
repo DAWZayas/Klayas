@@ -42,9 +42,7 @@ export default (app) => {
       classroom.description = description;
     }
 
-    if (url) {
-      classroom.url = url;
-    }
+    classroom.url = url;
 
     // if (isPublic) {
     //   classroom.isPublic = isPublic;
