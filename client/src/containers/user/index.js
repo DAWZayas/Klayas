@@ -52,7 +52,7 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
             <div className="panel-heading">
               <h4>
                 Clases que vas a impartir, {user.name}
-                <Link to="/classroom/create">
+                <Link to="/create">
                   <span className="label label-primary pull-right">
                     <span className="glyphicon glyphicon-plus" aria-hidden="true" /> Crear clase
                   </span>
@@ -72,7 +72,7 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
             <div className="panel-heading">
               <h4>
                 Clases que sigues
-                <Link to="/classroom/search-classroom">
+                <Link to="/search-classroom">
                   <span className="label label-primary pull-right">
                     <span className="glyphicon glyphicon-search" aria-hidden="true" /> Buscar Clases
                   </span>

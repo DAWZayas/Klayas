@@ -1,8 +1,10 @@
-PENDIENTE
-El index de usuario tiene que mostrar las clases de cada usuario.. llama al ClassroomSumary pero este tiene un array que no puedo leer... tendría que pasarlo a otro para poder actuar desde él... no se si es el modo.
+Convierto el componente en clase
 
-Recuperar las clases.
-Al hacer el componente ClassroomOwner, si lo intento importar desde el index de componentes me da error, tengo que importarlo directamente del archivo.
+Al intentar editar clase veo que sigue mostrando complet clase. Pienso que es porque le digo que navege a classroom/:id y piensa que edit-class o serch-class es un id.
+
+Cambio las url de estas aunque me extraña que tenga que ser así.
+
+No se puede entrar directamente a la calse porque dice que no la puedes recuperar porque no estas autentificado. Se puede quitar la autorización en el server pero incluso así da error porque no tiene las props... no se porque ve la classroom como undefined
 
 #
 TODO

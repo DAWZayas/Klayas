@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  navToCompleteClass: () => dispatch(push('/classroom/complete-classroom')),
+  navToCompleteClass: (id) => dispatch(push(`/classroom/${id}`)),
   onSeeCompleteClassClick: params => dispatch(getOneClassRoom(params)),
 });
 
@@ -22,7 +22,7 @@ const ClassroomOwner = ({onSeeCompleteClassClick, navToCompleteClass, classroom}
     onSeeCompleteClassClick({
       id: classroom.id,
     });
-    setImmediate(() => navToCompleteClass());
+     setImmediate(() => navToCompleteClass(classroom.id));
   };
 
   return (
@@ -36,7 +36,7 @@ const ClassroomOwner = ({onSeeCompleteClassClick, navToCompleteClass, classroom}
           <strong>Hora:</strong> {classroom.time}
         </div>
         <div className="panel-body">
-          <Link to="/classroom/complete-classroom" onClick={handleSeeCompleteClass}>
+          <Link to={`/classroom/${classroom.id}`} onClick={handleSeeCompleteClass}>
             <span className="label label-primary pull-right">
               <span className="glyphicon glyphicon-eye-open" aria-hidden="true" /> Ver clase completa
             </span>
