@@ -11,9 +11,9 @@ import {getAllClassRoom} from '../../store/actions';
 import ClassroomOwner from '../../components/classroom/ClassroomOwner';
 import ClassroomLinker from '../../components/classroom/ClassroomLinker';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   classrooms: state.classrooms.classrooms,
-  user: state.auth.user
+  user: state.auth.user,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -22,6 +22,8 @@ const mapDispatchToProps = dispatch => ({
 
 const User = ({user, classrooms, DoGetAllClassRoom}) => {
   DoGetAllClassRoom();
+
+  const classRoomsByTeacher = classrooms.filter(classroom => (classroom.teacher === user.id));
 
   return (
     <div className="container">
@@ -61,11 +63,16 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
             </div>
             <div className="panel-body">
               <div>
-                {classrooms.map((classroom, index) => (
-                  classroom.teacher === user.id ? <ClassroomOwner key={index} classroom={classroom} /> : null
-                ))}
+                {
+                  (classRoomsByTeacher.length !== 0 ?
+                    classRoomsByTeacher.map((classroom, index) => (
+                      <ClassroomOwner key={index} classroom={classroom} />
+                    )) : (
+                      <div>Not classrooms yet</div>
+                    )
+                  )
+                }
               </div>
-
             </div>
           </div>
           <div className="panel panel-default">
