@@ -26,38 +26,44 @@ class CompleteClassroom extends Component {
   }
 
   componentWillMount() {
-    const {onSeeCompleteClass, routeParams} = this.props;
-    onSeeCompleteClass({
-      id: routeParams.id,
-    });
- }
+  const {onSeeCompleteClass, routeParams} = this.props;
+  onSeeCompleteClass({
+    id: routeParams.id,
+  });
+  }
 
   render() {
-
     const {onCreateClick, classroom, user, status} = this.props;
-
     const handleClick = (e) => {
-    e.preventDefault();
-    onCreateClick({
-      studentname: user.name,
-      studentid: user.id,
-      id: classroom.id,
-    });
-  };
+      e.preventDefault();
+      onCreateClick({
+        studentname: user.name,
+        studentid: user.id,
+        id: classroom.id,
+      });
+    };
 
     return (
       <div className="">
-        {status === 'loading' ? (<div>Test</div>) :
+        {status !== 'done' ? (<div>Test</div>) :
           (
             <div className="panel panel-primary">
               <div className="panel-heading">
                 <h3>{classroom.name}
-                  {classroom.teacher === user.id ? (
-                    <Link to="/edit-classroom">
+                  {!user ? (
+                    <Link to="/home">
                       <span className="label label-primary pull-right">
-                        <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> Editar clase
+                        <span className="glyphicon glyphicon-pencil" aria-hidden="true" />
+                        Ingresa a Klayas para seguir las clases
                       </span>
                     </Link>) :
+                    classroom.teacher === user.id ? (
+                      <Link to="/edit-classroom">
+                        <span className="label label-primary pull-right">
+                          <span className="glyphicon glyphicon-pencil" aria-hidden="true" />
+                          Editar clase
+                        </span>
+                      </Link>) :
                     (
                       <Link to="" onClick={handleClick}>
                         <span className="label label-primary pull-right">
@@ -69,14 +75,8 @@ class CompleteClassroom extends Component {
                 </h3>
               </div>
               <div className="panel-body">
-                {classroom.teacher === user.id ?
+                {!user ?
                   (
-                    <div className="panel panel-default">
-                      <div className="panel-heading">
-                        <h4>Esta clase va a ser impartida por ti</h4>
-                      </div>
-                    </div>
-                  ) : (
                     <div className="panel panel-default">
                       <div className="panel-heading">
                         <h4>
@@ -85,6 +85,12 @@ class CompleteClassroom extends Component {
                       </div>
                       <div className="panel-body">
                         {classroom.teacherName}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="panel panel-default">
+                      <div className="panel-heading">
+                        <h4>Esta clase va a ser impartida por ti</h4>
                       </div>
                     </div>
                   )
@@ -97,9 +103,17 @@ class CompleteClassroom extends Component {
                   </div>
                   <div className="panel-body">
                     <div>
-                      <div className="col-md-6">
-                        <iframe width="560" height="315" src={classroom.url} frameBorder="0" allowFullScreen />
-                      </div>
+                      {!user ?
+                        (
+                          <div className="col-md-6">
+                            Para seguir las clase es necesario estar logueado
+                          </div>
+                        ) : (
+                          <div className="col-md-6">
+                            <iframe width="560" height="315" src={classroom.url} frameBorder="0" allowFullScreen />
+                          </div>
+                        )
+                      }
                     </div>
                   </div>
                 </div>
@@ -118,8 +132,8 @@ class CompleteClassroom extends Component {
           )
         }
       </div>);
-    }
   }
+}
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompleteClassroom);
