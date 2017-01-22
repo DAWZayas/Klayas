@@ -44,9 +44,10 @@ export default (app) => {
 
     classroom.url = url;
 
-    // if (isPublic) {
-    //   classroom.isPublic = isPublic;
-    // }
+    if (classroom.students.find(student => (student.studentid === studentid)) !== undefined) {
+      res.status(403).send({error: 'You have already joined to this classroom'});
+      return;
+    }
 
     if (studentname) {
       if (classroom.isPublic) {
