@@ -7,6 +7,7 @@ import {Link} from 'react-router';
 import {updateClassAction} from '../../store/actions';
 import SimplyUser from '../../components/user/SimplyUser';
 import {getOneClassRoom} from '../../store/actions';
+import {Loader} from '../../components/loader';
 
 const mapStateToProps = state => ({
   classroom: state.classrooms.specificclassroom,
@@ -45,7 +46,7 @@ class CompleteClassroom extends Component {
 
     return (
       <div className="">
-        {status !== 'done' ? (<div>Test</div>) :
+        {status !== 'done' ? (<Loader />) :
           (
             <div className="panel panel-primary">
               <div className="panel-heading">

@@ -6,6 +6,7 @@ import {Link} from 'react-router';
 // our packages
 import {updateClassAction} from '../../store/actions';
 import {getOneProfile} from '../../store/actions';
+import {Loader} from '../../components/loader';
 
 const mapStateToProps = state => ({
   userprofile: state.users.userprofile,
@@ -13,7 +14,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSeeCompleteProfile: params => dispatch(getOneProfile(params)),
+  SeeCompleteProfile: params => dispatch(getOneProfile(params)),
 });
 
 class CompleteProfile extends Component {
@@ -23,8 +24,8 @@ class CompleteProfile extends Component {
   }
 
   componentWillMount() {
-  const {onSeeCompleteProfile, routeParams} = this.props;
-  onSeeCompleteProfile({
+  const {SeeCompleteProfile, routeParams} = this.props;
+  SeeCompleteProfile({
     id: routeParams.id,
   });
   }
@@ -33,19 +34,26 @@ class CompleteProfile extends Component {
     const {userprofile, status} = this.props;
 
     return (
-      <div className="panel panel-primary">
-        <div className="panel-heading">
-          <h4>
-            Perfil de {userprofile.name}
-          </h4>
-        </div>
-        <div className="panel-body">
-          Nombre: {userprofile.name}<br />
-          Apellidos: {userprofile.surname}<br />
-          Nombre de usuario: {userprofile.login}<br />
-          Correo electrónico: {userprofile.email}<br />
-        </div>
-      </div>);
+      <div className="">
+        {status !== 'done' ? (<Loader />) :
+          (
+            <div className="panel panel-primary">
+              <div className="panel-heading">
+                <h4>
+                  Perfil de {userprofile.name}
+                </h4>
+              </div>
+              <div className="panel-body">
+                Nombre: {userprofile.name}<br />
+                Apellidos: {userprofile.surname}<br />
+                Nombre de usuario: {userprofile.login}<br />
+                Correo electrónico: {userprofile.email}<br />
+              </div>
+            </div>
+          )
+        }
+      </div>
+    );
   }
 }
 
