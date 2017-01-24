@@ -19,6 +19,11 @@ export const editProfile = payload => ({
   payload,
 });
 
+export const getOneProfile = payload => ({
+  type: ActionTypes.GET_ONE_PROFILE,
+  payload,
+});
+
 export const createClassAction = payload => ({
   type: ActionTypes.CREATE_CLASSROOM,
   payload,

@@ -5,24 +5,24 @@ import {push} from 'react-router-redux';
 import moment from 'moment';
 
 // our packages
-import {getOneClassRoom} from '../../store/actions';
+import {getOneProfile} from '../../store/actions';
 
 const mapStateToProps = (state, ownProps) => ({
   student: ownProps.student,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  navToCompleteClass: () => dispatch(push('/classroom/complete-classroom')),
-  onSeeCompleteClassClick: params => dispatch(getOneClassRoom(params)),
+  navToCompleteProfile: (id) => dispatch(push(`/user/${id}`)),
+  onSeeCompleteProfileClick: params => dispatch(getOneProfile(params)),
 });
 
-const SimplyUser = ({onSeeCompleteClassClick, navToCompleteClass, student}) => {
-  const handleSeeCompleteClass = (e) => {
+const SimplyUser = ({onSeeCompleteProfileClick, navToCompleteProfile, student}) => {
+  const handleSeeCompleteProfile = (e) => {
     e.preventDefault();
-    onSeeCompleteClassClick({
-      id: classroom.id,
+    onSeeCompleteProfileClick({
+      id: student.studentid,
     });
-    setTimeout(() => navToCompleteClass(), 500);
+    setImmediate(() => navToCompleteProfile(student.studentid));
   };
 
   return (
@@ -30,6 +30,13 @@ const SimplyUser = ({onSeeCompleteClassClick, navToCompleteClass, student}) => {
       <div className="panel panel-primary">
         <div className="panel-heading">
           {student.studentname}
+        </div>
+        <div className="panel-body">
+          <Link to={`/user/${student.studentid}`} onClick={handleSeeCompleteProfile}>
+            <span className="label label-primary pull-right">
+              <span className="glyphicon glyphicon-eye-open" aria-hidden="true" /> Ver perfil completo
+            </span>
+          </Link>
         </div>
       </div>
     </div>
