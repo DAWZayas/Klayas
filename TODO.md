@@ -1,10 +1,7 @@
-Convierto el componente en clase
-
-Al intentar editar clase veo que sigue mostrando complet clase. Pienso que es porque le digo que navege a classroom/:id y piensa que edit-class o serch-class es un id.
-
-Cambio las url de estas aunque me extraña que tenga que ser así.
-
-No se puede entrar directamente a la calse porque dice que no la puedes recuperar porque no estas autentificado. Se puede quitar la autorización en el server pero incluso así da error porque no tiene las props... no se porque ve la classroom como undefined. Si se pasa el status directamente desde los maps state to props al componentWillMount y se hace un console.log se ve que no tiene ni status ni specificclassroom que si están en el redux... ¿porqué?
+Paginación
+Diseño
+Traducción
+YouTube
 
 #
 TODO

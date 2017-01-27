@@ -8,7 +8,7 @@ import _ from 'lodash';
 import {getAllClassRoom} from '../../store/actions';
 
 // our components
-import ClassroomOwner from '../../components/classroom/ClassroomOwner';
+import ClassroomList from '../../components/classroom/ClassroomList';
 import ClassroomLinker from '../../components/classroom/ClassroomLinker';
 
 const mapStateToProps = (state) => ({
@@ -60,11 +60,7 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
               </h4>
             </div>
             <div className="panel-body">
-              <div>
-                {classrooms.map((classroom, index) => (
-                  classroom.teacher === user.id ? <ClassroomOwner key={index} classroom={classroom} /> : null
-                ))}
-              </div>
+            <ClassroomList/>
 
             </div>
           </div>
