@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "db:create": "node util/db/create",
+    "db:create": "node --use_strict util/db/create",
     "db:start": "docker start klayasdb",
     "db:stop": "docker stop klayasdb",
     "db:rm": "docker rm klayasdb",

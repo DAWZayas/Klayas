@@ -41,7 +41,9 @@ class ClassroomList extends Component {
           <button type="button" className="btn btn-default" disabled={questionIndex === 0} onClick={() => handleClick(-1)}>
             <span className="glyphicon glyphicon-arrow-left" />
           </button>
-          <button type="button" className="btn btn-default" disabled={topMore || (!hasMore && questionIndex >= classrooms.length)} onClick={() => handleClick(+1)}>
+          <button type="button"
+            className="btn btn-default"
+            onClick={() => handleClick(+1)}>
             <span className="glyphicon glyphicon-arrow-right" />
           </button>
         </div>
