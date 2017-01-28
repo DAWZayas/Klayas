@@ -5,13 +5,9 @@ import {connect} from 'react-redux';
 import ClassroomOwner from '../../components/classroom/ClassroomOwner';
 
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   classrooms: state.classrooms.classrooms,
   user: state.auth.user,
-  hasMore: 'yes',
-});
-
-const mapDispatchToProps = (dispatch) => ({
 });
 
 class ClassroomList extends Component {
@@ -20,56 +16,60 @@ class ClassroomList extends Component {
     this.state = {
       classroomIndex: 0,
     };
-
   }
 
   componentDidMount() {
     const {classrooms} = this.props;
-
-
-    // loadMore({
-    //   skip: classrooms.length,
-    //   limit: 10,
-    // });
   }
-    render() {
-       const {classrooms, user, hasMore} = this.props;
-       const {classroomIndex} = this.state;
+  render() {
+    const {classrooms, user} = this.props;
+    const {classroomIndex} = this.state;
+    const filterclassrooms = [];
 
-       const classroom = classrooms[classroomIndex];
-       console.log(classroom);
+    for (let i = 0; i < classrooms.length; i += 1){
+      const classroom = classrooms[i];
+      if (classroom.teacher == user.id){
+        filterclassrooms.push(classroom);
+      }
+    }
 
-       const handleClick = (inc) => {
+    const classroom = filterclassrooms[classroomIndex];
 
+    const handleClick = (inc) => {
       this.setState({
         classroomIndex: classroomIndex + inc,
       });
-
       return false;
     };
-  // const ClassroomList = ({classrooms, user, hasMore}) => {
+
     return (
       <div>
+        {filterclassrooms.length === 0
+          ? <div>Aun no has creado ninguna clase</div>
+          : <ClassroomOwner key={classroom.id} classroom={classroom} />
+        }
 
-        {!hasMore && classrooms.length === 0 ? <div>No questions yet!</div> : null}
-        {classroomIndex > classrooms.length ? "hola" : classroom ? <ClassroomOwner onLoad={() => handleClick(+1)} key={classroom.id} classroom={classroom} /> : classrooms.length > 0 ? 'No more questions' : null}
-         <div className="btn-group col-xs-4 col-xs-offset-5" role="group">
-          <button type="button"
+        <div className="btn-group col-xs-4 col-xs-offset-5" role="group">
+          <button
+            type="button"
             className="btn btn-default"
             disabled={classroomIndex === 0}
-            onClick={() => handleClick(-1)}>
+            onClick={() => handleClick(-1)}
+          >
             <span className="glyphicon glyphicon-arrow-left" />
           </button>
-          <button type="button"
+          <button
+            type="button"
             className="btn btn-default"
-            disabled={classroomIndex === classrooms.length - 1}
-            onClick={() => handleClick(+1)}>
+            disabled={classroomIndex === filterclassrooms.length - 1}
+            onClick={() => handleClick(+1)}
+          >
             <span className="glyphicon glyphicon-arrow-right" />
           </button>
         </div>
       </div>
     );
   }
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClassroomList);
+export default connect(mapStateToProps)(ClassroomList);
