@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Modal, Button} from 'react-bootstrap';
+import hello from './ythello';
 
 // our packages
 import {loginAction} from '../../store/actions';
@@ -11,6 +12,10 @@ const mapDispatchToProps = dispatch => ({
   onLoginClick: params => dispatch(loginAction(params)),
 });
 
+hello.init({
+  youtube: '654514520892-8qr21gnh58o285ueeqq1tstes5qjiot0.apps.googleusercontent.com',
+}, {redirect_uri: 'http://localhost:3000/oauth2callback',
+  scope: 'all'});
 
 const LoginModal = ({onLoginClick, show, close}) => {
   LoginModal.propTypes = {
@@ -32,6 +37,12 @@ const LoginModal = ({onLoginClick, show, close}) => {
       remember: rememberInput.checked,
     });
     close();
+  };
+
+  const handleGoogleClick = (e) => {
+    e.preventDefault();
+    hello('youtube').login();
+    console.log(hello);
   };
 
   return (
@@ -77,10 +88,10 @@ const LoginModal = ({onLoginClick, show, close}) => {
             <p>o</p>
           </div>
           <div className={`col-xs-5 col-xs-offset-1 ${styles.verticalAlign}`}>
-            <Button bsStyle="primary" className={styles.btnGoogle} block>
+            <Button bsStyle="primary" className={styles.btnGoogle} block onClick={handleGoogleClick}>
               <i className="fa fa-google fa-lg social" aria-hidden="true" /> Iniciar sesi&oacute;n con Google
             </Button>
-            <Button bsStyle="primary" className={styles.btnGithub} block>
+            <Button bsStyle="primary" className={styles.btnGithub} block onClick={handleGoogleClick}>
               <i className="fa fa-github fa-lg social" aria-hidden="true" /> Iniciar sesi&oacute;n con Github
             </Button>
           </div>
