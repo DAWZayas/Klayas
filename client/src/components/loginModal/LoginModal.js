@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Modal, Button} from 'react-bootstrap';
-import hello from 'hellojs';
+import hello from './ythello';
 
 // our packages
 import {loginAction} from '../../store/actions';
@@ -13,8 +13,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 hello.init({
-  google: '654514520892-8qr21gnh58o285ueeqq1tstes5qjiot0.apps.googleusercontent.com',
-}, {redirect_uri: 'http://localhost:3000/oauth2callback'});
+  youtube: '654514520892-8qr21gnh58o285ueeqq1tstes5qjiot0.apps.googleusercontent.com',
+}, {redirect_uri: 'http://localhost:3000/oauth2callback',
+  scope: 'all'});
 
 const LoginModal = ({onLoginClick, show, close}) => {
   LoginModal.propTypes = {
@@ -40,7 +41,8 @@ const LoginModal = ({onLoginClick, show, close}) => {
 
   const handleGoogleClick = (e) => {
     e.preventDefault();
-    hello('google').login();
+    hello('youtube').login();
+    console.log(hello);
   };
 
   return (
