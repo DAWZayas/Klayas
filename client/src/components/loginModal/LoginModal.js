@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
 
 hello.init({
   youtube: '654514520892-8qr21gnh58o285ueeqq1tstes5qjiot0.apps.googleusercontent.com',
-}, {redirect_uri: 'http://localhost:3000/oauth2callback',
+}, {redirect_uri: 'http://localhost:3000/redirect.html',
   scope: 'all'});
 
 const LoginModal = ({onLoginClick, show, close}) => {
