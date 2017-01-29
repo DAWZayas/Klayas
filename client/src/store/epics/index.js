@@ -1,4 +1,4 @@
-import {login, register, logout, updateProfile} from './auth';
+import {login, oauthLogin, register, logout, updateProfile} from './auth';
 import {createClassroom, getAllClassroom, getOneClassroom, updateClassroomAction} from './classroom';
 import {addNotification} from './notifications';
 import {getOneProfile} from './users';
@@ -6,6 +6,7 @@ import {getOneProfile} from './users';
 export default [
   // auth
   login,
+  oauthLogin,
   register,
   logout,
   updateProfile,
