@@ -53,7 +53,7 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
       <h1>Edita tu perfil {user.name}</h1>
       <form>
         <div className="form-group">
-          <label htmlFor="inputName">Nombre:</label>
+          <label htmlFor="inputName">Name:</label>
           <input
             type="text"
             className="form-control"
@@ -63,7 +63,7 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputSurname">Apellidos:</label>
+          <label htmlFor="inputSurname">Surname:</label>
           <input
             type="text"
             className="form-control"
@@ -73,7 +73,7 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputLogin">Nombre de usuario (el nombre de usuario no puede cambiarse)</label>
+          <label htmlFor="inputLogin">{'Username: '}</label>
           <input
             type="text"
             className="form-control"
@@ -82,7 +82,7 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputEmail">Correo electrónico:</label>
+          <label htmlFor="inputEmail">{'Email address: '}</label>
           <input
             type="text"
             className="form-control"
@@ -92,40 +92,40 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
           />
         </div>
         <div className="form-group">
-          Si desea cambiar su contraseña rellene estos campos, sino, déjelos en blanco
+          {'Type your actual password and the new one if you want to change it.'}
         </div>
         <div className="form-group">
-          <label htmlFor="inputPassword">Password</label>
+          <label htmlFor="inputPassword">Actual password</label>
           <input
             type="password"
             className="form-control"
             id="inputPassword"
-            placeholder="Password Actual"
+            placeholder="Actual password"
             ref={(i) => { actualPasswordInput = i; }}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputPassword">Nueva Password</label>
+          <label htmlFor="inputPassword">New Password</label>
           <input
             type="password"
             className="form-control"
             id="inputPassword"
-            placeholder="Password"
+            placeholder="New password"
             ref={(i) => { passwordInput = i; }}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputPasswordRepeat">Vuelve a escribir la nueva password</label>
+          <label htmlFor="inputPasswordRepeat">{'Repeat new password'}</label>
           <input
             type="password"
             className="form-control"
             id="inputPasswordRepeat"
-            placeholder="Repite la password"
+            placeholder="Repeat new password"
             ref={(i) => { passwordInputRepeat = i; }}
           />
         </div>
-        <button type="submit" className="btn btn-default" onClick={handleClick}>Modificar perfil</button> &nbsp;| &nbsp;
-        <button type="submit" className="btn btn-default" onClick={navToProfile}>Cancelar</button>
+        <button type="submit" className="btn btn-default" onClick={handleClick}>Update your profile</button> {' '};
+        <button type="submit" className="btn btn-default" onClick={navToProfile}>Cancel</button>
       </form>
       <hr />
     </div>

@@ -39,15 +39,13 @@ class CompleteProfile extends Component {
           (
             <div className="panel panel-primary">
               <div className="panel-heading">
-                <h4>
-                  Perfil de {userprofile.name}
-                </h4>
+                <h4>{`${userprofile.name}'s profile`}</h4>
               </div>
               <div className="panel-body">
-                Nombre: {userprofile.name}<br />
-                Apellidos: {userprofile.surname}<br />
-                Nombre de usuario: {userprofile.login}<br />
-                Correo electrónico: {userprofile.email}<br />
+                Name: {userprofile.name}<br />
+                Surname: {userprofile.surname}<br />
+                Username: {userprofile.login}<br />
+                Email address: {userprofile.email}<br />
               </div>
             </div>
           )
