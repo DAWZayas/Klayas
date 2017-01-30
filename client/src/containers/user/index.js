@@ -1,11 +1,11 @@
 // npm packages
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import _ from 'lodash';
 
 // our packages
-import {getAllClassRoom} from '../../store/actions';
+import {getAllClassRoom, getUserTeachedClassRooms} from '../../store/actions';
 
 // our components
 import ClassroomList from '../../components/classroom/ClassroomList';
@@ -18,11 +18,24 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   DoGetAllClassRoom: _.once(() => dispatch(getAllClassRoom())),
+  DoUserTeachedClassRooms: params => dispatch(getUserTeachedClassRooms(params)),
 });
 
-const User = ({user, classrooms, DoGetAllClassRoom}) => {
-  DoGetAllClassRoom();
+class User extends Component {
+  constructor(props) {
+    super(props);
+  }
 
+  componentWillMount() {
+    const {user, DoGetAllClassRoom, DoUserTeachedClassRooms} = this.props;
+    DoGetAllClassRoom();
+    DoUserTeachedClassRooms({
+      user: user.id,
+    })
+  }
+
+render(){
+  const {user, classrooms} = this.props;
   return (
     <div className="container">
       <div className="panel panel-primary">
@@ -84,7 +97,7 @@ const User = ({user, classrooms, DoGetAllClassRoom}) => {
         </div>
       </div>
     </div>
-  );
+  );}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);

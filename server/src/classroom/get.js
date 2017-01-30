@@ -13,4 +13,16 @@ export default (app) => {
     // send question back
     res.send(classroom);
   }));
+  app.get('/api/classroom/teached/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+    try {
+      const classroom = await r.table('Classroom')
+      .filter({teacher: req.params.id})
+      .pluck('name', 'date', 'time', 'id', 'isPublic', 'students', 'teacher', 'teacherName', 'description', 'url')
+      .orderBy(r.desc('date'));
+    // send question back
+      res.send(classroom);
+    } catch (e) {
+      res.status(400).send({error: 'Esto no'});
+    }
+  }));
 };

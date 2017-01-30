@@ -48,6 +48,11 @@ export const getOneClassRoom = payload => ({
   payload,
 });
 
+export const getUserTeachedClassRooms = payload => ({
+  type: ActionTypes.GET_USER_TEACHED_CLASSROOMS,
+  payload,
+});
+
 let nextNotificationId = 0;
 
 /**

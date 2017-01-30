@@ -1,5 +1,5 @@
 import {login, register, logout, updateProfile} from './auth';
-import {createClassroom, getAllClassroom, getOneClassroom, updateClassroomAction} from './classroom';
+import {getUserTeachedClassRooms, createClassroom, getAllClassroom, getOneClassroom, updateClassroomAction} from './classroom';
 import {addNotification} from './notifications';
 import {getOneProfile} from './users';
 
@@ -10,6 +10,7 @@ export default [
   logout,
   updateProfile,
   // classroom
+  getUserTeachedClassRooms,
   createClassroom,
   getAllClassroom,
   getOneClassroom,

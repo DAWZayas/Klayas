@@ -26,7 +26,7 @@ const ClassroomOwner = ({onSeeCompleteClassClick, navToCompleteClass, classroom}
   };
 
   return (
-    <div className="col-md-6">
+    <div className="col-md-3">
       <div className="panel panel-primary">
         <div className="panel-heading">
           {classroom.name}

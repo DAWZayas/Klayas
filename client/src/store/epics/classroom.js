@@ -22,6 +22,22 @@ export const getAllClassroom = action$ => action$
     })),
   );
 
+export const getUserTeachedClassRooms = action$ => action$
+  .ofType(ActionTypes.GET_USER_TEACHED_CLASSROOMS)
+  .map(signRequest)
+  .mergeMap(({headers, payload}) => Observable
+    .ajax.get(`http://localhost:8080/api/classroom/teached/${payload.user}`, headers)
+    .map(res => res.response)
+    .map(userteachedclassrooms => ({
+      type: ActionTypes.GET_USER_TEACHED_CLASSROOMS_SUCCESS,
+      payload: {userteachedclassrooms},
+    }))
+    .catch(error => Observable.of({
+      type: ActionTypes.GET_USER_TEACHED_CLASSROOMS_ERROR,
+      payload: {error},
+    })),
+  );
+
 export const getOneClassroom = action$ => action$
   .ofType(ActionTypes.GET_ONE_CLASSROOM)
   .map(signRequest)

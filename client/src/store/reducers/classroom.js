@@ -9,7 +9,18 @@ export const classrooms = (state = initialState, action) => {
         ...state,
         classrooms: action.payload.classroom,
       };
-    case ActionTypes.GET_ONE_CLASSROOM:
+    case ActionTypes.GET_USER_TEACHED_CLASSROOMS:
+      return {
+        ...state,
+        status: 'loading',
+      };
+    case ActionTypes.GET_USER_TEACHED_CLASSROOMS_SUCCESS:
+      return {
+        ...state,
+        status: 'done',
+        userteachedclassrooms: action.payload.userteachedclassrooms,
+      };
+    case ActionTypes.UPDATE_CLASSROOM:
       return {
         ...state,
         status: 'loading',
