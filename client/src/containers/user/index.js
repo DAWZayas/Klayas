@@ -40,34 +40,34 @@ render(){
     <div className="container">
       <div className="panel panel-primary">
         <div className="panel-heading">
-          <h3>Bienvenido {user.name}</h3>
+          <h3>Welcome {user.name}</h3>
         </div>
         <div className="panel-body">
           <div className="panel panel-default">
             <div className="panel-heading">
               <h4>
-                Tu perfil
+                Your profile
                 <Link to="/user/edit-profile">
                   <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> Editar perfil
+                    <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> {'Editar perfil'}
                   </span>
                 </Link>
               </h4>
             </div>
             <div className="panel-body">
-              Nombre: {user.name}<br />
-              Apellidos: {user.surname}<br />
-              Nombre de usuario: {user.login}<br />
-              Correo electrónico: {user.email}<br />
+              Name: {user.name}<br />
+              Surname: {user.surname}<br />
+              Username: {user.login}<br />
+              Email address: {user.email}<br />
             </div>
           </div>
           <div className="panel panel-default">
             <div className="panel-heading">
               <h4>
-                Clases que vas a impartir, {user.name}
+                Your classrooms
                 <Link to="/create">
                   <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-plus" aria-hidden="true" /> Crear clase
+                    <span className="glyphicon glyphicon-plus" aria-hidden="true" /> {'Create new classroom'}
                   </span>
                 </Link>
               </h4>
@@ -80,10 +80,10 @@ render(){
           <div className="panel panel-default">
             <div className="panel-heading">
               <h4>
-                Clases que sigues
+                Classrooms you follow
                 <Link to="/search-classroom">
                   <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-search" aria-hidden="true" /> Buscar Clases
+                    <span className="glyphicon glyphicon-search" aria-hidden="true" /> {'Search classrooms'}
                   </span>
                 </Link>
               </h4>

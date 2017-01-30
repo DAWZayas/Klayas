@@ -29,17 +29,17 @@ const SearchClassroom = ({classrooms, doSearch, search}) => {
     <div className="panel panel-primary">
       <div className="panel-heading">
         <h3>
-           Buscador de clases
+           Search classroom
         </h3>
       </div>
 
       <div className="input-group">
-        <span className="input-group-addon" id="basic-addon1">Término de búsqueda</span>
+        <span className="input-group-addon" id="basic-addon1">Type your search</span>
         <input
           type="text"
           onChange={handleSearchChange}
           className="form-control"
-          placeholder="Buscar por nombre de la calse, del profesor o descripción"
+          placeholder="Search by classroom's name, teacher or description"
           aria-describedby="basic-addon1"
           ref={(i) => { seachtermInput = i; }}
         />

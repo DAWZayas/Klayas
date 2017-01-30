@@ -48,7 +48,7 @@ const LoginModal = ({onLoginClick, show, close}) => {
   return (
     <Modal show={show} onHide={close}>
       <Modal.Header closeButton>
-        <h4>Inicia sesi&oacute;n en tu cuenta</h4>
+        <h4>Login</h4>
       </Modal.Header>
       <Modal.Body>
         <div className={`row ${styles.rowDivided}`}>
@@ -76,23 +76,23 @@ const LoginModal = ({onLoginClick, show, close}) => {
               <div>
                 <label htmlFor="remember_me">
                   <input type="checkbox" value="1" name="remember_me" ref={(i) => { rememberInput = i; }} />
-                  <span > Recordar mis datos</span>
+                  <span > Remember me</span>
                 </label>
                 <span className="separator"> · </span>
-                <a>¿Olvidaste tu contraseña?</a>
+                <a>Forgot your password?</a>
               </div>
-              <Button type="submit" bsStyle="primary" block onClick={handleLoginClick}>Iniciar sesi&oacute;n</Button>
+              <Button type="submit" bsStyle="primary" block onClick={handleLoginClick}>Login</Button>
             </form>
           </div>
           <div className={styles.verticalDivider}>
-            <p>o</p>
+            <p>or</p>
           </div>
           <div className={`col-xs-5 col-xs-offset-1 ${styles.verticalAlign}`}>
-            <Button bsStyle="primary" className={styles.btnGoogle} block onClick={handleGoogleClick}>
-              <i className="fa fa-google fa-lg social" aria-hidden="true" /> Iniciar sesi&oacute;n con Google
+            <Button bsStyle="primary" className={styles.btnGoogle} block>
+              <i className="fa fa-google fa-lg social" aria-hidden="true" /> Login with your Google account
             </Button>
-            <Button bsStyle="primary" className={styles.btnGithub} block onClick={handleGoogleClick}>
-              <i className="fa fa-github fa-lg social" aria-hidden="true" /> Iniciar sesi&oacute;n con Github
+            <Button bsStyle="primary" className={styles.btnGithub} block>
+              <i className="fa fa-github fa-lg social" aria-hidden="true" /> Login with your Github account
             </Button>
           </div>
         </div>

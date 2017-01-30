@@ -34,7 +34,7 @@ const SimplyUser = ({onSeeCompleteProfileClick, navToCompleteProfile, student}) 
         <div className="panel-body">
           <Link to={`/user/${student.studentid}`} onClick={handleSeeCompleteProfile}>
             <span className="label label-primary pull-right">
-              <span className="glyphicon glyphicon-eye-open" aria-hidden="true" /> Ver perfil completo
+              <span className="glyphicon glyphicon-eye-open" aria-hidden="true" /> {"User's profile"}
             </span>
           </Link>
         </div>

@@ -40,7 +40,7 @@ const ClassroomFollow = ({onSeeCompleteClassClick, navToCompleteClass, classroom
         <div className="panel-body">
           <Link to={`/classroom/${classroom.id}`} onClick={handleSeeCompleteClass}>
             <span className="label label-primary pull-right">
-              <span className="glyphicon glyphicon-eye-open" aria-hidden="true" /> Ver clase completa
+              <span className="glyphicon glyphicon-eye-open" aria-hidden="true" /> See the complete classroom
             </span>
           </Link>
         </div>
