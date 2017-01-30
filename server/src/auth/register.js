@@ -44,7 +44,7 @@ export default (app) => {
     }
 
     // check if email is valid
-    if (!validator.isEmail(email)){
+    if (!validator.isEmail(email)) {
       res.status(400).send({error: 'The email does not seem valid'});
       return;
     }
