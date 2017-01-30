@@ -4,7 +4,9 @@
   "description": "Klayas portal client",
   "main": "index.js",
   "scripts": {
-    "start": "node serve.js"
+    "start": "node serve.js",
+    "dist": "webpack -p --config webpack.production.config.js",
+    "start-prod": "pushstate-server ."
   },
   "repository": "https://github.com/DAWZayas/Klayas.git",
   "author": "Klayas Team",
@@ -41,12 +43,14 @@
     "webpack-hot-middleware": "^2.12.2"
   },
   "dependencies": {
+    "babel-runtime": "^6.22.0",
     "bootstrap": "^3.3.7",
     "history": "^4.4.0",
     "jquery": "^3.1.1",
     "lodash": "^4.17.3",
     "materialize-css": "^0.97.8",
     "moment": "^2.17.1",
+    "pushstate-server": "^2.1.0",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.1",
     "react-bootstrap": "^0.30.7",

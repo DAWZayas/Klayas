@@ -5,12 +5,13 @@ import {Observable} from 'rxjs/Observable';
 import * as ActionTypes from '../actionTypes';
 import {signRequest} from '../../util/signRequest';
 import * as Actions from '../actions';
+import {server as serverConfig} from '../../../config';
 
 export const getAllClassroom = action$ => action$
   .ofType(ActionTypes.GET_ALL_CLASSROOM)
   .map(signRequest)
   .switchMap(({headers}) => Observable
-    .ajax.get('http://localhost:8080/api/classroom', headers)
+    .ajax.get(`http://${serverConfig.host}:${serverConfig.port}/api/classroom`, headers)
     .map(res => res.response)
     .map(classroom => ({
       type: ActionTypes.GET_ALL_CLASSROOM_SUCCESS,
@@ -26,7 +27,7 @@ export const getOneClassroom = action$ => action$
   .ofType(ActionTypes.GET_ONE_CLASSROOM)
   .map(signRequest)
   .mergeMap(({headers, payload}) => Observable
-    .ajax.get(`http://localhost:8080/api/classroom/${payload.id}`, headers)
+    .ajax.get(`http://${serverConfig.host}:${serverConfig.port}/api/classroom/${payload.id}`, headers)
     .map(res => res.response)
     .map(specificclassroom => ({
       type: ActionTypes.GET_ONE_CLASSROOM_SUCCESS,
@@ -42,7 +43,7 @@ export const createClassroom = action$ => action$
   .ofType(ActionTypes.CREATE_CLASSROOM)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.post('http://localhost:8080/api/classroom/create', payload, headers)
+    .ajax.post(`http://${serverConfig.host}:${serverConfig.port}/api/classroom/create`, payload, headers)
     .map(res => res.response)
     .mergeMap(response => Observable.of(
       {
@@ -70,7 +71,7 @@ export const updateClassroomAction = action$ => action$
   .ofType(ActionTypes.UPDATE_CLASSROOM)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.post(`http://localhost:8080/api/classroom/${payload.id}`, payload, headers)
+    .ajax.post(`http://${serverConfig.host}:${serverConfig.port}/api/classroom/${payload.id}`, payload, headers)
     .map(res => res.response)
     .mergeMap(response => Observable.of(
       {

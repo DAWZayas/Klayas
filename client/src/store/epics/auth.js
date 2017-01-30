@@ -5,11 +5,12 @@ import {Observable} from 'rxjs/Observable';
 import * as ActionTypes from '../actionTypes';
 import * as Actions from '../actions';
 import {loginErrorToMessage, registerErrorToMessage, signRequest} from '../../util';
+import {server as serverConfig} from '../../../config';
 
 export const login = action$ => action$
   .ofType(ActionTypes.DO_LOGIN)
   .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/login', payload)
+    .ajax.post(`http://${serverConfig.host}:${serverConfig.port}/api/login`, payload)
     .map(res => res.response)
     .mergeMap(response => Observable.of(
       {
@@ -36,7 +37,7 @@ export const login = action$ => action$
 export const register = action$ => action$
   .ofType(ActionTypes.DO_REGISTER)
   .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/register', payload)
+    .ajax.post(`http://${serverConfig.host}:${serverConfig.port}/api/register`, payload)
     .map(res => res.response)
     .mergeMap(response => Observable.of(
       {
@@ -76,7 +77,7 @@ export const updateProfile = action$ => action$
   .ofType(ActionTypes.UPDATE_PROFILE)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.post(`http://localhost:8080/api/user/${payload.id}`, payload, headers)
+    .ajax.post(`http://${serverConfig.host}:${serverConfig.port}/api/user/${payload.id}`, payload, headers)
     .map(res => res.response)
     .mergeMap(response => Observable.of(
       {
