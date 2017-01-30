@@ -1,6 +1,6 @@
 export const db = { // eslint-disable-line
-  host: 'localhost',
-  port: 28015,
+  host: process.env.KLAYAS_DB_URL || 'localhost',
+  port: process.env.KLAYAS_DB_PORT || 28015,
   db: 'klayasdb',
 };
 

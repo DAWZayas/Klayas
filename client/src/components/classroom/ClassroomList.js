@@ -33,7 +33,7 @@ class ClassroomList extends Component {
       }
     }
 
-    const classroom = filterclassrooms[classroomIndex];
+    const classroom = filterclassrooms.slice(classroomIndex * 4, classroomIndex * 4 + 4);
 
     const handleClick = (inc) => {
       this.setState({
