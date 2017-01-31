@@ -57,7 +57,7 @@ export default (app) => {
     fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', options)
       .then(response => response.json())
       .then(googleUser => userExists(googleUser, provider).then((user) => {
-        const token = jwt.sign(googleUser, authConfig.jwtSecret);
+        const token = jwt.sign(user, authConfig.jwtSecret);
         res.send({user, token});
       })).catch(() => res.status(401).send({error: 'Error logging in!'}));
   });
