@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 
-const initialState = {classrooms: [], search: ''};
+const initialState = {classrooms: [], search: '', userteachedclassrooms: []};
 
 export const classrooms = (state = initialState, action) => {
   switch (action.type) {
