@@ -38,6 +38,22 @@ export const getUserTeachedClassRooms = action$ => action$
     })),
   );
 
+export const getUserFollowedClassRooms = action$ => action$
+  .ofType(ActionTypes.GET_USER_FOLLOWED_CLASSROOMS)
+  .map(signRequest)
+  .mergeMap(({headers, payload}) => Observable
+    .ajax.get(`http://localhost:8080/api/classroom/followed/${payload.user}`, headers)
+    .map(res => res.response)
+    .map(userfollowedclassrooms => ({
+      type: ActionTypes.GET_USER_FOLLOWED_CLASSROOMS_SUCCESS,
+      payload: {userfollowedclassrooms},
+    }))
+    .catch(error => Observable.of({
+      type: ActionTypes.GET_USER_FOLLOWED_CLASSROOMS_ERROR,
+      payload: {error},
+    })),
+  );
+
 export const getOneClassroom = action$ => action$
   .ofType(ActionTypes.GET_ONE_CLASSROOM)
   .map(signRequest)

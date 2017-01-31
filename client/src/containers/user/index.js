@@ -5,11 +5,11 @@ import {Link} from 'react-router';
 import _ from 'lodash';
 
 // our packages
-import {getAllClassRoom, getUserTeachedClassRooms} from '../../store/actions';
+import {getAllClassRoom, getUserTeachedClassRooms, getUserFollowedClassRooms} from '../../store/actions';
 
 // our components
-import ClassroomList from '../../components/classroom/ClassroomList';
-import ClassroomLinker from '../../components/classroom/ClassroomLinker';
+import ClassroomTeachedList from '../../components/classroom/ClassroomTeachedList';
+import ClassroomFollowedList from '../../components/classroom/ClassroomFollowedList';
 
 const mapStateToProps = (state) => ({
   classrooms: state.classrooms.classrooms,
@@ -19,6 +19,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
   DoGetAllClassRoom: _.once(() => dispatch(getAllClassRoom())),
   DoUserTeachedClassRooms: params => dispatch(getUserTeachedClassRooms(params)),
+  DoUserFollowedClassRooms: params => dispatch(getUserFollowedClassRooms(params)),
 });
 
 class User extends Component {
@@ -27,11 +28,14 @@ class User extends Component {
   }
 
   componentWillMount() {
-    const {user, DoGetAllClassRoom, DoUserTeachedClassRooms} = this.props;
+    const {user, DoGetAllClassRoom, DoUserTeachedClassRooms, DoUserFollowedClassRooms} = this.props;
     DoGetAllClassRoom();
     DoUserTeachedClassRooms({
       user: user.id,
-    })
+    });
+    DoUserFollowedClassRooms({
+      user: user.id,
+    });
   }
 
 render(){
@@ -73,7 +77,7 @@ render(){
               </h4>
             </div>
             <div className="panel-body">
-            <ClassroomList/>
+            <ClassroomTeachedList/>
 
             </div>
           </div>
@@ -89,9 +93,7 @@ render(){
               </h4>
             </div>
             <div className="panel-body">
-              {classrooms.map((classroom, index) => (
-                <ClassroomLinker key={index} classroom={classroom} />
-            ))}
+              <ClassroomFollowedList />
             </div>
           </div>
         </div>

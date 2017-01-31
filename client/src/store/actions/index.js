@@ -53,6 +53,11 @@ export const getUserTeachedClassRooms = payload => ({
   payload,
 });
 
+export const getUserFollowedClassRooms = payload => ({
+  type: ActionTypes.GET_USER_FOLLOWED_CLASSROOMS,
+  payload,
+});
+
 let nextNotificationId = 0;
 
 /**
