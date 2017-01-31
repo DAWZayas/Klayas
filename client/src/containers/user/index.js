@@ -5,7 +5,7 @@ import {Link} from 'react-router';
 import _ from 'lodash';
 
 // our packages
-import {getAllClassRoom, getUserTeachedClassRooms, getUserFollowedClassRooms} from '../../store/actions';
+import {getUserTeachedClassRooms, getUserFollowedClassRooms} from '../../store/actions';
 
 // our components
 import ClassroomTeachedList from '../../components/classroom/ClassroomTeachedList';
@@ -17,7 +17,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  DoGetAllClassRoom: _.once(() => dispatch(getAllClassRoom())),
   DoUserTeachedClassRooms: params => dispatch(getUserTeachedClassRooms(params)),
   DoUserFollowedClassRooms: params => dispatch(getUserFollowedClassRooms(params)),
 });
@@ -28,8 +27,7 @@ class User extends Component {
   }
 
   componentWillMount() {
-    const {user, DoGetAllClassRoom, DoUserTeachedClassRooms, DoUserFollowedClassRooms} = this.props;
-    DoGetAllClassRoom();
+    const {user, DoUserTeachedClassRooms, DoUserFollowedClassRooms} = this.props;
     DoUserTeachedClassRooms({
       user: user.id,
     });

@@ -52,7 +52,7 @@ export const classrooms = (state = initialState, action) => {
     case ActionTypes.SEARCH_CLASSROOMS:
       return {
         ...state,
-        search: action.payload.seachterm,
+        search: action.payload.searchterm,
       };
     default:
       return state;
