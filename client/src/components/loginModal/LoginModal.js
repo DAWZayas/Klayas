@@ -1,22 +1,25 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Modal, Button} from 'react-bootstrap';
+import hello from 'hellojs';
 
 // our packages
-import {loginAction} from '../../store/actions';
+import {loginAction, loginOauthAction} from '../../store/actions';
+import {client as clientConfig, oauthId} from '../../../config';
 
 const styles = require('./LoginModal.scss');
 
 const mapDispatchToProps = dispatch => ({
   onLoginClick: params => dispatch(loginAction(params)),
+  oauthLogin: payload => dispatch(loginOauthAction(payload)),
 });
 
-
-const LoginModal = ({onLoginClick, show, close}) => {
+const LoginModal = ({onLoginClick, show, close, oauthLogin}) => {
   LoginModal.propTypes = {
     onLoginClick: PropTypes.func,
     show: PropTypes.bool,
     close: PropTypes.func,
+    oauthLogin: PropTypes.func,
   };
 
   let usernameInput;
@@ -31,6 +34,33 @@ const LoginModal = ({onLoginClick, show, close}) => {
       password: passwordInput.value,
       remember: rememberInput.checked,
     });
+    close();
+  };
+
+  const handleGoogleClick = () => {
+    hello.init({
+      google: oauthId.googleID,
+    }, {
+      redirect_uri: clientConfig.host === 'localhost' ?
+        `http://${clientConfig.host}:${clientConfig.port}/redirect.html` :
+        `http://${clientConfig.host}/redirect.html`,
+      scope: 'email',
+    });
+
+    // hello('google').login(() => {
+    //   console.log(hello('google').getAuthResponse());
+    //   const token = hello('google').getAuthResponse().access_token;
+    //   const myHeaders = new Headers();
+    //   myHeaders.append('Authorization', `Bearer ${token}`);
+    //   const myInit = {method: 'GET',
+    //     headers: myHeaders,
+    //   };
+    //   const myRequest = new Request('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', myInit);
+    //   fetch(myRequest)
+    //   .then(response => response.json().then(json => console.log(json), close()));
+    // });
+
+    oauthLogin({provider: 'google'});
     close();
   };
 
@@ -77,11 +107,11 @@ const LoginModal = ({onLoginClick, show, close}) => {
             <p>or</p>
           </div>
           <div className={`col-xs-5 col-xs-offset-1 ${styles.verticalAlign}`}>
-            <Button bsStyle="primary" className={styles.btnGoogle} block>
-              <i className="fa fa-google fa-lg social" aria-hidden="true" /> Login with your Google account
+            <Button bsStyle="primary" bsSize="small" className={styles.btnGoogle} onClick={handleGoogleClick}>
+              <i className="fa fa-google fa-lg social" aria-hidden="true" /> Login with Google
             </Button>
-            <Button bsStyle="primary" className={styles.btnGithub} block>
-              <i className="fa fa-github fa-lg social" aria-hidden="true" /> Login with your Github account
+            <Button bsStyle="primary" bsSize="small" className={styles.btnGithub}>
+              <i className="fa fa-github fa-lg social" aria-hidden="true" /> Login with Github
             </Button>
           </div>
         </div>

@@ -38,6 +38,8 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
     });
   };
 
+  const d = moment(classroom.date).format('YYYY-MM-DD');
+
   return (
     <div className="jumbotron">
       <h2>Klayas:</h2>
@@ -79,7 +81,7 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
             type="date"
             className="form-control"
             id="inputDate"
-            defaultValue={classroom.date}
+            defaultValue={d}
             ref={(i) => { dateInput = i; }}
           />
         </div>

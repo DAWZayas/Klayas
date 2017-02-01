@@ -19,7 +19,6 @@ export default (app) => {
       return;
     }
 
-
     // check if user is the teacher of the classroom is changing
     // if (classroom.teacher !== req.user.id) {
     //   res.status(403).send({error: "This classroom is not yours. You can't change it"});
@@ -42,13 +41,12 @@ export default (app) => {
       classroom.description = description;
     }
 
-    if (url) {
-      classroom.url = url;
-    }
+    classroom.url = url;
 
-    // if (isPublic) {
-    //   classroom.isPublic = isPublic;
-    // }
+    if (classroom.students.find(student => (student.studentid === studentid)) !== undefined) {
+      res.status(403).send({error: 'You have already joined to this classroom'});
+      return;
+    }
 
     if (studentname) {
       if (classroom.isPublic) {

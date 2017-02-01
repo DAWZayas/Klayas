@@ -1,6 +1,9 @@
+// npm packages
+import http from 'http';
+
 // our packages
 import app from './app';
-import {logger} from './util';
+import {logger, realtime} from './util';
 import {thinky} from './db';
 import {server as serverConfig} from '../config';
 
@@ -8,7 +11,9 @@ import {server as serverConfig} from '../config';
 thinky.dbReady().then(() => {
   logger.info('Database ready, starting server...');
   // start server
-  app.listen(serverConfig.port, function() {
+  const httpServer = http.createServer(app);
+  realtime(httpServer);
+  httpServer.listen(serverConfig.port, function() {
     const host = this.address().address;
     const port = this.address().port;
     logger.info(`Shard listening at http://${host}:${port}`);

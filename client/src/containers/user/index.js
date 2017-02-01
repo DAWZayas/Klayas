@@ -1,94 +1,99 @@
 // npm packages
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import _ from 'lodash';
 
 // our packages
-import {getAllClassRoom} from '../../store/actions';
+import {getUserTeachedClassRooms, getUserFollowedClassRooms} from '../../store/actions';
 
 // our components
-import ClassroomOwner from '../../components/classroom/ClassroomOwner';
-import ClassroomLinker from '../../components/classroom/ClassroomLinker';
+import ClassroomTeachedList from '../../components/classroom/ClassroomTeachedList';
+import ClassroomFollowedList from '../../components/classroom/ClassroomFollowedList';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   classrooms: state.classrooms.classrooms,
-  user: state.auth.user
+  user: state.auth.user,
 });
 
 const mapDispatchToProps = dispatch => ({
-  DoGetAllClassRoom: _.once(() => dispatch(getAllClassRoom())),
+  DoUserTeachedClassRooms: params => dispatch(getUserTeachedClassRooms(params)),
+  DoUserFollowedClassRooms: params => dispatch(getUserFollowedClassRooms(params)),
 });
 
-const User = ({user, classrooms, DoGetAllClassRoom}) => {
-  DoGetAllClassRoom();
+class User extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <div className="container">
-      <div className="panel panel-primary">
-        <div className="panel-heading">
-          <h3>Welcome {user.name}</h3>
-        </div>
-        <div className="panel-body">
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <h4>
-                Your profile
-                <Link to="/user/edit-profile">
-                  <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> {'Editar perfil'}
-                  </span>
-                </Link>
-              </h4>
-            </div>
-            <div className="panel-body">
-              Name: {user.name}<br />
-              Surname: {user.surname}<br />
-              Username: {user.login}<br />
-              Email address: {user.email}<br />
-            </div>
+  componentWillMount() {
+    const {user, DoUserTeachedClassRooms, DoUserFollowedClassRooms} = this.props;
+    DoUserTeachedClassRooms({user: user.id});
+    DoUserFollowedClassRooms({user: user.id});
+  }
+
+  render() {
+    const {user, classrooms} = this.props;
+    return (
+      <div className="container">
+        <div className="panel panel-primary">
+          <div className="panel-heading">
+            <h3>Welcome {user.name}</h3>
           </div>
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <h4>
-                Your classrooms
-                <Link to="/create">
-                  <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-plus" aria-hidden="true" /> {'Create new classroom'}
-                  </span>
-                </Link>
-              </h4>
-            </div>
-            <div className="panel-body">
-              <div>
-                {classrooms.map((classroom, index) => (
-                  classroom.teacher === user.id ? <ClassroomOwner key={index} classroom={classroom} /> : null
-                ))}
+          <div className="panel-body">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h4>
+                  Your profile
+                  <Link to="/user/edit-profile">
+                    <span className="label label-primary pull-right">
+                      <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> {'Edit profile'}
+                    </span>
+                  </Link>
+                </h4>
               </div>
-
+              <div className="panel-body">
+                Name: {user.name}<br />
+                Surname: {user.surname}<br />
+                Username: {user.login}<br />
+                Email address: {user.email}<br />
+              </div>
             </div>
-          </div>
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <h4>
-                Classrooms you follow
-                <Link to="/search-classroom">
-                  <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-search" aria-hidden="true" /> {'Search classrooms'}
-                  </span>
-                </Link>
-              </h4>
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h4>
+                  Your classrooms
+                  <Link to="/create">
+                    <span className="label label-primary pull-right">
+                      <span className="glyphicon glyphicon-plus" aria-hidden="true" /> {'Create new classroom'}
+                    </span>
+                  </Link>
+                </h4>
+              </div>
+              <div className="panel-body">
+                <ClassroomTeachedList />
+              </div>
             </div>
-            <div className="panel-body">
-              {classrooms.map((classroom, index) => (
-                <ClassroomLinker key={index} classroom={classroom} />
-            ))}
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h4>
+                  Classrooms you follow
+                  <Link to="/search-classroom">
+                    <span className="label label-primary pull-right">
+                      <span className="glyphicon glyphicon-search" aria-hidden="true" /> {'Search classrooms'}
+                    </span>
+                  </Link>
+                </h4>
+              </div>
+              <div className="panel-body">
+                <ClassroomFollowedList />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);

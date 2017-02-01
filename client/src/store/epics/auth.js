@@ -1,5 +1,7 @@
 // npm packages
 import {Observable} from 'rxjs/Observable';
+import Rx from 'rxjs/Rx';
+import hello from 'hellojs';
 
 // our packages
 import * as ActionTypes from '../actionTypes';
@@ -31,6 +33,35 @@ export const login = action$ => action$
       Actions.addNotificationAction(
         {text: loginErrorToMessage(error), alertType: 'danger'},
       ),
+    )),
+  );
+
+export const oauthLogin = action$ => action$
+  .ofType(ActionTypes.DO_OAUTH_LOGIN)
+  .mergeMap(({payload}) => Rx.Observable.create(subscriber =>
+    hello(payload.provider).login(token => subscriber.next({
+      payload: {token: token.authResponse.access_token, provider: payload.provider},
+    })),
+  ))
+  .switchMap(({payload}) => Observable
+    .ajax.post(`http://${serverConfig.host}:${serverConfig.port}/api/oauth/login`, payload)
+    .map(res => res.response)
+    .mergeMap(response => Observable.of(
+      {
+        type: ActionTypes.LOGIN_SUCCESS,
+        payload: response,
+      },
+      Actions.addNotificationAction(
+        {text: 'Login success', alertType: 'info'}),
+    ))
+    .catch(error => Observable.of(
+      {
+        type: ActionTypes.LOGIN_ERROR,
+        payload: {
+          error,
+        },
+      },
+      Actions.addNotificationAction({text: loginErrorToMessage(error), alertType: 'danger'}),
     )),
   );
 

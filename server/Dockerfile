@@ -1,4 +1,3 @@
-
 FROM node
 
 # Create app folder
