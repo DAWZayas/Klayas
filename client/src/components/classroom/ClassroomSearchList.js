@@ -8,6 +8,7 @@ import ClassroomOwner from '../../components/classroom/ClassroomOwner';
 const mapStateToProps = (state) => ({
   classrooms: state.classrooms.classrooms,
   user: state.auth.user,
+  search: state.classrooms.search,
 });
 
 class ClassroomSearchList extends Component {
@@ -22,9 +23,20 @@ class ClassroomSearchList extends Component {
     const {classrooms} = this.props;
   }
   render() {
-    const {classrooms, user} = this.props;
+    const {classrooms, user, search} = this.props;
     const {pageIndex} = this.state;
-    const classroomPage = classrooms.slice(pageIndex * 4, pageIndex * 4 + 4);
+    const filterclassrooms = [];
+    console.log(classrooms);
+    for (let i = 0; i < classrooms.length; i += 1){
+      const classroom = classrooms[i];
+      console.log(classroom.name);
+      if (classroom.name.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
+          classroom.teacher.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
+          classroom.description.toLowerCase().indexOf(search.toLowerCase()) !== -1){
+        filterclassrooms.push(classroom);
+      }
+   }
+    const classroomPage = filterclassrooms.slice(pageIndex * 4, pageIndex * 4 + 4);
     const handleClick = (inc) => {
       this.setState({
         pageIndex: pageIndex + inc,
@@ -33,8 +45,8 @@ class ClassroomSearchList extends Component {
     };
     return (
       <div>
-        {classrooms.length === 0
-          ? <div>Aun no has creado ninguna clase</div>
+        {filterclassrooms.length === 0
+          ? <div>Ninguna clase cumple los requisitos de búsqueda</div>
           : (<div className="panel-body">
             {classroomPage.map((classroom) => (
               <ClassroomOwner key={classroom.id} classroom={classroom} />
