@@ -19,24 +19,24 @@ class ClassroomSearchList extends Component {
     };
   }
 
-  componentDidMount() {
-    const {classrooms} = this.props;
-  }
   render() {
     const {classrooms, user, search} = this.props;
     const {pageIndex} = this.state;
+
+
     const filterclassrooms = [];
-    console.log(classrooms);
+
     for (let i = 0; i < classrooms.length; i += 1){
       const classroom = classrooms[i];
-      console.log(classroom.name);
       if (classroom.name.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
           classroom.teacher.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
           classroom.description.toLowerCase().indexOf(search.toLowerCase()) !== -1){
         filterclassrooms.push(classroom);
       }
    }
-    const classroomPage = filterclassrooms.slice(pageIndex * 4, pageIndex * 4 + 4);
+
+
+    const classroomPage = filterclassrooms.slice(pageIndex * 12, pageIndex * 12 + 12);
     const handleClick = (inc) => {
       this.setState({
         pageIndex: pageIndex + inc,
@@ -45,8 +45,8 @@ class ClassroomSearchList extends Component {
     };
     return (
       <div>
-        {filterclassrooms.length === 0
-          ? <div>Ninguna clase cumple los requisitos de búsqueda</div>
+        {classrooms.length === 0
+          ? <div>No classroom meets search requirements</div>
           : (<div className="panel-body">
             {classroomPage.map((classroom) => (
               <ClassroomOwner key={classroom.id} classroom={classroom} />
@@ -66,7 +66,7 @@ class ClassroomSearchList extends Component {
           <button
             type="button"
             className="btn btn-default"
-            disabled={(pageIndex + 1)  * 4 >= classrooms.length - 1}
+            disabled={(pageIndex + 1)  * 12 >= classrooms.length - 1}
             onClick={() => handleClick(+1)}
           >
             <span className="glyphicon glyphicon-arrow-right" />

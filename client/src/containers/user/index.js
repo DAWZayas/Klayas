@@ -51,7 +51,7 @@ render(){
                 Your profile
                 <Link to="/user/edit-profile">
                   <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> {'Editar perfil'}
+                    <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> {'Edit profile'}
                   </span>
                 </Link>
               </h4>

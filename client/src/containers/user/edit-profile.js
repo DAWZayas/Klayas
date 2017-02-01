@@ -50,7 +50,7 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
 
   return (
     <div className="jumbotron">
-      <h1>Edita tu perfil {user.name}</h1>
+      <h1>{user.name}, edit your profile</h1>
       <form>
         <div className="form-group">
           <label htmlFor="inputName">Name:</label>

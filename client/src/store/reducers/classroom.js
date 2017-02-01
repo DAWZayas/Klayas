@@ -32,6 +32,11 @@ export const classrooms = (state = initialState, action) => {
         ...state,
         status: 'loading',
       };
+    case ActionTypes.GET_ONE_CLASSROOM:
+      return {
+        ...state,
+        status: 'loading',
+      };
     case ActionTypes.GET_ONE_CLASSROOM_SUCCESS:
       return {
         ...state,

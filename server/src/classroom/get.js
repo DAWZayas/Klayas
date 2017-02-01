@@ -28,7 +28,7 @@ export default (app) => {
   app.get('/api/classroom/followed/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     try {
       const classroom = await r.table('Classroom')
-      .filter({teacher: req.params.id})
+      .filter(r.row('students').contains(function(student) {return student('studentid').match(req.params.id)}))
       .pluck('name', 'date', 'time', 'id', 'isPublic', 'students', 'teacher', 'teacherName', 'description', 'url')
       .orderBy(r.desc('date'));
     // send question back
