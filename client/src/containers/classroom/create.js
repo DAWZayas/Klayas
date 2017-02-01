@@ -37,25 +37,25 @@ const CreateClassroom = ({onCreateClick, error}) => {
   return (
     <div className="jumbotron">
       <h2>Klayas:</h2>
-      <p>Crea ahora tu clase en Klayas</p>
+      <p>{"Create new Klayas' classroom"}</p>
       <form>
         <div className="form-group">
-          <label htmlFor="inputName">Nombre:</label>
+          <label htmlFor="inputName">Classroom name:</label>
           <input
             type="text"
             className="form-control"
             id="inputName"
-            placeholder="Nombre"
+            placeholder="Classroom name"
             ref={(i) => { nameInput = i; }}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputDescription">Descripción:</label>
+          <label htmlFor="inputDescription">Description:</label>
           <input
             type="text"
             className="form-control"
             id="inputDescription"
-            placeholder="Descripción"
+            placeholder="Description"
             ref={(i) => { descriptionInput = i; }}
           />
         </div>
@@ -70,22 +70,22 @@ const CreateClassroom = ({onCreateClick, error}) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputDate">Fecha:</label>
+          <label htmlFor="inputDate">{'Date'}:</label>
           <input
             type="date"
             className="form-control"
             id="inputDate"
-            placeholder="Fecha"
+            placeholder="Date"
             ref={(i) => { dateInput = i; }}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputLogin">Hora:</label>
+          <label htmlFor="inputLogin">Hour:</label>
           <input
             type="time"
             className="form-control"
             id="inputTime"
-            placeholder="Hora"
+            placeholder="Hour"
             ref={(i) => { timeInput = i; }}
           />
         </div>
@@ -95,7 +95,7 @@ const CreateClassroom = ({onCreateClick, error}) => {
               type="checkbox"
               id="inputPublic"
               ref={(i) => { publicInput = i; }}
-            /> Es pública
+            /> {'Is public'}
           </label>
         </div>
         <button type="submit" className="btn btn-default" onClick={handleClick}>Crear Clase</button>

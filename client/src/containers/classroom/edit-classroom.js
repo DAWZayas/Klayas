@@ -41,10 +41,10 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
   return (
     <div className="jumbotron">
       <h2>Klayas:</h2>
-      <p>Edita tu clase en Klayas</p>
+      <p>{"Edit your Klayas' classroom"}</p>
       <form>
         <div className="form-group">
-          <label htmlFor="inputName">Nombre:</label>
+          <label htmlFor="inputName">Classroom name:</label>
           <input
             type="text"
             className="form-control"
@@ -54,7 +54,7 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputDescription">Descripción:</label>
+          <label htmlFor="inputDescription">Description:</label>
           <input
             type="text"
             className="form-control"
@@ -74,7 +74,7 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputDate">Fecha:</label>
+          <label htmlFor="inputDate">{'Date'}:</label>
           <input
             type="date"
             className="form-control"
@@ -84,7 +84,7 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputLogin">Hora:</label>
+          <label htmlFor="inputLogin">Hour:</label>
           <input
             type="time"
             className="form-control"
@@ -99,7 +99,7 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
               type="checkbox"
               id="inputPublic"
               ref={(i) => { publicInput = i; }}
-            /> Es pública
+            /> {'Is public'}
           </label>
         </div>
         <button type="submit" className="btn btn-default" onClick={handleClick}>Modificar Clase</button> &nbsp;| &nbsp;

@@ -32,13 +32,13 @@ const ClassroomOwner = ({onSeeCompleteClassClick, navToCompleteClass, classroom}
           {classroom.name}
         </div>
         <div className="panel-body">
-          <strong>Dia:</strong> {moment(classroom.date).locale('es').format('ll')}<br />
-          <strong>Hora:</strong> {classroom.time}
+          <strong>Date:</strong> {moment(classroom.date).locale('es').format('ll')}<br />
+          <strong>Hour:</strong> {classroom.time}
         </div>
         <div className="panel-body">
           <Link to={`/classroom/${classroom.id}`} onClick={handleSeeCompleteClass}>
             <span className="label label-primary pull-right">
-              <span className="glyphicon glyphicon-eye-open" aria-hidden="true" /> Ver clase completa
+              <span className="glyphicon glyphicon-eye-open" aria-hidden="true" /> See complete classroom
             </span>
           </Link>
         </div>
