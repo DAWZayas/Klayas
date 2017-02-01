@@ -52,9 +52,11 @@
     "jsonwebtoken": "^7.1.9",
     "moment": "^2.16.0",
     "morgan": "^1.7.0",
+    "node-fetch": "^1.6.3",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.0",
     "passport-local": "^1.0.0",
+    "rethinkdb-websocket-server": "^0.6.0",
     "thinky": "^2.3.7",
     "validator": "^6.2.0",
     "winston": "^2.2.0"

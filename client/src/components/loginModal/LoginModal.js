@@ -4,24 +4,21 @@ import {Modal, Button} from 'react-bootstrap';
 import hello from './ythello';
 
 // our packages
-import {loginAction} from '../../store/actions';
+import {loginAction, loginOauthAction} from '../../store/actions';
 
 const styles = require('./LoginModal.scss');
 
 const mapDispatchToProps = dispatch => ({
   onLoginClick: params => dispatch(loginAction(params)),
+  oauthLogin: payload => dispatch(loginOauthAction(payload)),
 });
 
-hello.init({
-  youtube: '654514520892-8qr21gnh58o285ueeqq1tstes5qjiot0.apps.googleusercontent.com',
-}, {redirect_uri: 'http://localhost:3000/redirect.html',
-  scope: 'all'});
-
-const LoginModal = ({onLoginClick, show, close}) => {
+const LoginModal = ({onLoginClick, show, close, oauthLogin}) => {
   LoginModal.propTypes = {
     onLoginClick: PropTypes.func,
     show: PropTypes.bool,
     close: PropTypes.func,
+    oauthLogin: PropTypes.func,
   };
 
   let usernameInput;
@@ -39,10 +36,29 @@ const LoginModal = ({onLoginClick, show, close}) => {
     close();
   };
 
-  const handleGoogleClick = (e) => {
-    e.preventDefault();
-    hello('youtube').login();
-    console.log(hello);
+  const handleGoogleClick = () => {
+    hello.init({
+      google: '654514520892-8qr21gnh58o285ueeqq1tstes5qjiot0.apps.googleusercontent.com',
+    }, {
+      redirect_uri: 'http://localhost:3000/redirect.html',
+      scope: 'email',
+    });
+
+    // hello('google').login(() => {
+    //   console.log(hello('google').getAuthResponse());
+    //   const token = hello('google').getAuthResponse().access_token;
+    //   const myHeaders = new Headers();
+    //   myHeaders.append('Authorization', `Bearer ${token}`);
+    //   const myInit = {method: 'GET',
+    //     headers: myHeaders,
+    //   };
+    //   const myRequest = new Request('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', myInit);
+    //   fetch(myRequest)
+    //   .then(response => response.json().then(json => console.log(json), close()));
+    // });
+
+    oauthLogin({provider: 'google'});
+    close();
   };
 
   return (
@@ -88,7 +104,7 @@ const LoginModal = ({onLoginClick, show, close}) => {
             <p>or</p>
           </div>
           <div className={`col-xs-5 col-xs-offset-1 ${styles.verticalAlign}`}>
-            <Button bsStyle="primary" className={styles.btnGoogle} block>
+            <Button bsStyle="primary" className={styles.btnGoogle} block onClick={handleGoogleClick}>
               <i className="fa fa-google fa-lg social" aria-hidden="true" /> Login with your Google account
             </Button>
             <Button bsStyle="primary" className={styles.btnGithub} block>

@@ -11,9 +11,9 @@ import {getUserTeachedClassRooms, getUserFollowedClassRooms} from '../../store/a
 import ClassroomTeachedList from '../../components/classroom/ClassroomTeachedList';
 import ClassroomFollowedList from '../../components/classroom/ClassroomFollowedList';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   classrooms: state.classrooms.classrooms,
-  user: state.auth.user
+  user: state.auth.user,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -75,8 +75,7 @@ render(){
               </h4>
             </div>
             <div className="panel-body">
-            <ClassroomTeachedList/>
-
+              <ClassroomTeachedList />
             </div>
           </div>
           <div className="panel panel-default">
@@ -97,7 +96,7 @@ render(){
         </div>
       </div>
     </div>
-  );}
-};
+  );
+}}
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);

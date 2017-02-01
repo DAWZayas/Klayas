@@ -5,6 +5,11 @@ export const loginAction = payload => ({
   payload,
 });
 
+export const loginOauthAction = payload => ({
+  type: ActionTypes.DO_OAUTH_LOGIN,
+  payload,
+});
+
 export const registerAction = payload => ({
   type: ActionTypes.DO_REGISTER,
   payload,
@@ -82,4 +87,14 @@ export const addNotificationAction = ({text, alertType}) => ({
 export const removeNotificationAction = notificationId => ({
   type: ActionTypes.REMOVE_NOTIFICATION,
   payload: {notificationId},
+});
+
+export const addObservable = observable => ({
+  type: ActionTypes.ADD_OBSERVABLE,
+  payload: observable,
+});
+
+export const removeObservable = observable => ({
+  type: ActionTypes.REMOVE_OBSERVABLE,
+  payload: observable,
 });
