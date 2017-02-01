@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 // our components
-import ClassroomOwner from '../../components/classroom/ClassroomOwner';
+import ClassroomFollow from '../../components/classroom/ClassroomFollow';
 
 
 const mapStateToProps = (state) => ({
@@ -36,7 +36,7 @@ class ClassroomSearchList extends Component {
    }
 
 
-    const classroomPage = filterclassrooms.slice(pageIndex * 12, pageIndex * 12 + 12);
+    const classroomPage = filterclassrooms.slice(pageIndex * 4, pageIndex * 4 + 4);
     const handleClick = (inc) => {
       this.setState({
         pageIndex: pageIndex + inc,
@@ -49,7 +49,7 @@ class ClassroomSearchList extends Component {
           ? <div>No classroom meets search requirements</div>
           : (<div className="panel-body">
             {classroomPage.map((classroom) => (
-              <ClassroomOwner key={classroom.id} classroom={classroom} />
+              <ClassroomFollow key={classroom.id} classroom={classroom} />
           ))}
           </div>)
         }
@@ -66,7 +66,7 @@ class ClassroomSearchList extends Component {
           <button
             type="button"
             className="btn btn-default"
-            disabled={(pageIndex + 1)  * 12 >= classrooms.length - 1}
+            disabled={(pageIndex + 1)  * 4 >= classrooms.length}
             onClick={() => handleClick(+1)}
           >
             <span className="glyphicon glyphicon-arrow-right" />

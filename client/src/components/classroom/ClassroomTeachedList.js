@@ -54,7 +54,7 @@ class ClassroomTeachedList extends Component {
           <button
             type="button"
             className="btn btn-default"
-            disabled={(pageIndex + 1)  * 4 >= classrooms.length - 1}
+            disabled={(pageIndex + 1)  * 4 >= classrooms.length}
             onClick={() => handleClick(+1)}
           >
             <span className="glyphicon glyphicon-arrow-right" />

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Modal, Button} from 'react-bootstrap';
-import hello from './ythello';
+import hello from 'hellojs';
 
 // our packages
 import {loginAction, loginOauthAction} from '../../store/actions';
