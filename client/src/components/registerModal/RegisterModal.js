@@ -39,56 +39,56 @@ const RegisterModal = ({show, close, onRegisterClick}) => {
         <form>
           <div className="row form-group">
             <div className="col-xs-3 col-xs-offset-1">
-              <label htmlFor="inputName">Nombre:</label>
+              <label htmlFor="inputName">Name:</label>
             </div>
             <div className="col-xs-7">
               <input
                 type="text"
                 className="form-control"
                 id="inputName"
-                placeholder="Nombre"
+                placeholder="Your name"
                 ref={(i) => { nameInput = i; }}
               />
             </div>
           </div>
           <div className="row form-group">
             <div className="col-xs-3 col-xs-offset-1">
-              <label htmlFor="inputSurname">Apellidos:</label>
+              <label htmlFor="inputSurname">Surname:</label>
             </div>
             <div className="col-xs-7">
               <input
                 type="text"
                 className="form-control"
                 id="inputName"
-                placeholder="Apellidos"
+                placeholder="Your surname"
                 ref={(i) => { surnameInput = i; }}
               />
             </div>
           </div>
           <div className="row form-group">
             <div className="col-xs-3 col-xs-offset-1">
-              <label htmlFor="inputLogin">Nombre de usuario:</label>
+              <label htmlFor="inputLogin">Username:</label>
             </div>
             <div className="col-xs-7">
               <input
                 type="text"
                 className="form-control"
                 id="inputLogin"
-                placeholder="Nombre de usuario"
+                placeholder="Username"
                 ref={(i) => { loginInput = i; }}
               />
             </div>
           </div>
           <div className="row form-group">
             <div className="col-xs-3 col-xs-offset-1">
-              <label htmlFor="inputEmail">Correo electrónico:</label>
+              <label htmlFor="inputEmail">Email address:</label>
             </div>
             <div className="col-xs-7">
               <input
                 type="text"
                 className="form-control"
                 id="inputLogin"
-                placeholder="Correo electrónico"
+                placeholder="Your email address"
                 ref={(i) => { emailInput = i; }}
               />
             </div>
@@ -109,14 +109,14 @@ const RegisterModal = ({show, close, onRegisterClick}) => {
           </div>
           <div className="row form-group">
             <div className="col-xs-3 col-xs-offset-1">
-              <label htmlFor="inputPasswordRepeat">Vuelve a escribir la password</label>
+              <label htmlFor="inputPasswordRepeat">Repeat password</label>
             </div>
             <div className="col-xs-7">
               <input
                 type="password"
                 className="form-control"
                 id="inputPasswordRepeat"
-                placeholder="Repite la password"
+                placeholder="Repeat password"
                 ref={(i) => { passwordInputRepeat = i; }}
               />
             </div>

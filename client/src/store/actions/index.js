@@ -5,6 +5,11 @@ export const loginAction = payload => ({
   payload,
 });
 
+export const loginOauthAction = payload => ({
+  type: ActionTypes.DO_OAUTH_LOGIN,
+  payload,
+});
+
 export const registerAction = payload => ({
   type: ActionTypes.DO_REGISTER,
   payload,
@@ -16,6 +21,11 @@ export const logoutAction = () => ({
 
 export const editProfile = payload => ({
   type: ActionTypes.UPDATE_PROFILE,
+  payload,
+});
+
+export const getOneProfile = payload => ({
+  type: ActionTypes.GET_ONE_PROFILE,
   payload,
 });
 

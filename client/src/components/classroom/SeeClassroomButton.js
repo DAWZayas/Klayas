@@ -8,7 +8,7 @@ import {getOneClassRoom, addObservable} from '../../store/actions';
 import {registerClassroomObservable} from '../../store/realtime';
 
 const mapDispatchToProps = (dispatch) => ({
-  navToCompleteClass: () => dispatch(push('/classroom/complete-classroom')),
+  navToCompleteClass: (id) => dispatch(push(`/classroom/${id}`)),
   onSeeCompleteClassClick: params => dispatch(getOneClassRoom(params)),
   addObservable: observable => dispatch(addObservable(observable)),
 });
@@ -20,7 +20,7 @@ const SeeClassroomButton = ({onSeeCompleteClassClick, addObservable, navToComple
       id: classroomId,
     });
     addObservable(registerClassroomObservable(classroomId));
-    setImmediate(() => navToCompleteClass());
+    setImmediate(() => navToCompleteClass(classroomId));
   };
 
   return (

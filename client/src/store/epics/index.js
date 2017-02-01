@@ -1,11 +1,13 @@
-import {login, register, logout, updateProfile} from './auth';
+import {login, oauthLogin, register, logout, updateProfile} from './auth';
 import {createClassroom, getAllClassroom, getOneClassroom, updateClassroomAction} from './classroom';
 import {addNotification} from './notifications';
 import {addObservable} from './realtime';
+import {getOneProfile} from './users';
 
 export default [
   // auth
   login,
+  oauthLogin,
   register,
   logout,
   updateProfile,
@@ -17,4 +19,6 @@ export default [
   // notirications
   addNotification,
   addObservable,
+  // users
+  getOneProfile,
 ];

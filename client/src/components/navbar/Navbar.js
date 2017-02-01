@@ -39,7 +39,6 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-default navbar-static-top">
         <div className="container-fluid">
-          {/* Brand and toggle get grouped for better mobile display */}
           <div className="navbar-header">
             <button
               type="button"
@@ -62,13 +61,13 @@ class Navbar extends Component {
               {!token ? (
                 <li>
                   <Button bsStyle="primary" className={styles.LoginBtn} onClick={handleLoginClick}>
-                    <span className="glyphicon glyphicon-log-in" /> Inicia sesi&oacute;n
+                    <span className="glyphicon glyphicon-log-in" /> Login
                   </Button>
                 </li>
               ) : (
                 <li>
                   <Button bsStyle="primary" className={styles.LoginBtn} onClick={handleLogoutClick}>
-                    <span className="glyphicon glyphicon-log-out" /> Cerrar sesi&oacute;n
+                    <span className="glyphicon glyphicon-log-out" /> Logout
                   </Button>
                 </li>
               )}

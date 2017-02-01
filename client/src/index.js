@@ -26,6 +26,7 @@ import CompleteClassroom from './containers/classroom/complete-classroom';
 import EditClassroom from './containers/classroom/edit-classroom';
 import CreateClassroom from './containers/classroom/create';
 import SearchClassroom from './containers/classroom/search-classroom';
+import CompleteProfile from './containers/user/complete-profile';
 import NotFound from './containers/notfound';
 
 // JQuery for Bootstrap
@@ -47,11 +48,12 @@ ReactDOM.render((
         <Route path="register" component={Register} />
         <Route path="user" component={User} />
         <Route path="user/edit-profile" component={EditProfile} />
-        <Route path="classroom/complete-classroom" component={CompleteClassroom} />
-        <Route path="classroom/edit-classroom" component={EditClassroom} />
-        <Route path="classroom/search-classroom" component={SearchClassroom} />
+        <Route path="classroom/:id" component={CompleteClassroom} />
+        <Route path="user/:id" component={CompleteProfile} />
+        <Route path="edit-classroom" component={EditClassroom} />
+        <Route path="search-classroom" component={SearchClassroom} />
         <Route path="user/edit-profile" component={EditProfile} />
-        <Route path="classroom/create" component={CreateClassroom} />
+        <Route path="create" component={CreateClassroom} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>
