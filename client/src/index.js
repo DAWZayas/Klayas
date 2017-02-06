@@ -29,10 +29,6 @@ import SearchClassroom from './containers/classroom/search-classroom';
 import CompleteProfile from './containers/user/complete-profile';
 import NotFound from './containers/notfound';
 
-// JQuery for Bootstrap
-global.jQuery = require('jquery/dist/jquery.min.js');
-require('bootstrap/dist/js/bootstrap.min.js');
-
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
 
