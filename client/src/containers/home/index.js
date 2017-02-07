@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Button, Modal} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 
-import {RegisterModal} from '../../components';
+import RegisterModal from '../../components/registerModal/RegisterModal';
 
 class Home extends Component {
   constructor(props) {

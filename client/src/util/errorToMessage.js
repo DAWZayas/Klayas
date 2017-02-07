@@ -1,5 +1,9 @@
 export const loginErrorToMessage = (error) => {
-  if (error.status === 401) {
+  if (error.xhr.response && error.xhr.response.error) {
+    return error.xhr.response.error;
+  }
+
+  if (error.status === 401 || error.status === 400) {
     return 'Wrong login or password. Please, try again!';
   }
 

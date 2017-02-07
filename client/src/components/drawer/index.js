@@ -22,33 +22,14 @@ class NavbarDrawer extends Component {
   }
 
   handleToggle = () => this.setState({open: !this.state.open});
-
   handleClose = () => this.setState({open: false});
 
   render() {
     const {navToRoot, navToLogin, navToRegister, onLogoutClick, token} = this.props;
 
-    const handleTitleClick = (e) => {
+    const handleClick = (e, fn) => {
       e.preventDefault();
-      navToRoot();
-      this.handleClose();
-    };
-
-    const handleLoginClick = (e) => {
-      e.preventDefault();
-      navToLogin();
-      this.handleClose();
-    };
-
-    const handleLogoutClick = (e) => {
-      e.preventDefault();
-      onLogoutClick();
-      this.handleClose();
-    };
-
-    const handleRegisterClick = (e) => {
-      e.preventDefault();
-      navToRegister();
+      fn();
       this.handleClose();
     };
 
@@ -65,13 +46,16 @@ class NavbarDrawer extends Component {
           open={this.state.open}
           onRequestChange={open => this.setState({open})}
         >
-          <AppBar title="Klayas" showMenuIconButton={false} onTitleTouchTap={handleTitleClick} />
+          <AppBar title="Klayas" showMenuIconButton={false} onTitleTouchTap={e => handleClick(e, navToRoot)} />
           {token ? (
-            <MenuItem onTouchTap={handleLogoutClick} rightIcon={<FontIcon className="fa fa-sign-in" />}>Logout</MenuItem>
+            <MenuItem onTouchTap={e => handleClick(e, onLogoutClick)} rightIcon={<FontIcon className="fa fa-sign-out" />}>Logout</MenuItem>
           ) : (
             <div>
-              <MenuItem onTouchTap={handleLoginClick} rightIcon={<FontIcon className="fa fa-sign-in" />}>Login</MenuItem>
-              <MenuItem onTouchTap={handleRegisterClick} rightIcon={<FontIcon className="fa fa-user-circle-o" />}>Sign in</MenuItem>
+              <MenuItem onTouchTap={e => handleClick(e, navToLogin)} rightIcon={<FontIcon className="fa fa-sign-in" />}>Login</MenuItem>
+              <MenuItem
+                onTouchTap={e => handleClick(e, navToRegister)}
+                rightIcon={<FontIcon className="fa fa-user-circle-o" />}
+              >Sign in</MenuItem>
             </div>
           )}
           <MenuItem onTouchTap={this.handleClose} rightIcon={<FontIcon className="fa fa-users" />}>About us</MenuItem>

@@ -32,9 +32,10 @@ const Navbar = ({currentPath, navToRoot, token}) => {
   return (
     <AppBar
       title={transformPath(currentPath)}
+      zDepth={2}
       iconElementLeft={currentPath !== '/' && currentPath !== '/home' && currentPath !== '/user' ? (
         <IconButton
-          iconClassName="fa fa-arrow-left"
+          iconClassName="fa fa-angle-left"
           iconStyle={{color: 'white'}}
           onTouchTap={handleBackClick}
         />

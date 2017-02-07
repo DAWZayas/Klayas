@@ -1,0 +1,32 @@
+.container {
+  text-align: center;
+}
+
+/* Util */
+
+.divider {
+  overflow: hidden;
+  text-align: center;
+  &:before,
+  &:after {
+      background-color: rgba(10, 10, 10, 0.2);;
+      content: "";
+      display: inline-block;
+      height: 1px;
+      position: relative;
+      vertical-align: middle;
+      width: 50%;
+  }
+  &:before {
+      right: 0.5em;
+      margin-left: -50%;
+  }
+  &:after {
+      left: 0.5em;
+      margin-right: -50%;
+  }
+}
+
+.marTop1_5em {
+  margin-top: 1.5em;
+}
