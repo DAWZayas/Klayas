@@ -18,7 +18,7 @@ const Navbar = ({currentPath, navToRoot, token}) => {
       case '/login':
         return 'Login';
       case '/register':
-        return 'Sign in';
+        return 'Sign up';
       default:
         return 'Klayas';
     }

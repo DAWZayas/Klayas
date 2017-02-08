@@ -1,118 +1,106 @@
 // npm packages
-import React from 'react';
-import {Link} from 'react-router';
+import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
+import {Paper, RaisedButton, TextField} from 'material-ui';
 
 // our packages
 import {registerAction} from '../../store/actions';
-import {registerErrorToMessage} from '../../util';
+import FormsFooter from '../../components/formsFooter';
 
-const mapStateToProps = state => ({
-  error: state.auth.error,
-});
+import styles from './Register.scss';
 
 const mapDispatchToProps = dispatch => ({
   onRegisterClick: params => dispatch(registerAction(params)),
 });
 
-const Register = ({onRegisterClick, error}) => {
+const Register = ({onRegisterClick}) => {
+  Register.propTypes = {
+    onRegisterClick: PropTypes.func,
+  };
+
   let nameInput;
   let surnameInput;
   let loginInput;
   let emailInput;
   let passwordInput;
-  let passwordInputRepeat;
+  let repeatPasswordInput;
 
   const handleClick = (e) => {
     e.preventDefault();
 
     onRegisterClick({
-      name: nameInput.value,
-      surname: surnameInput.value,
-      login: loginInput.value,
-      email: emailInput.value,
-      password: passwordInput.value,
-      passwordRepeat: passwordInputRepeat.value,
+      name: nameInput.getValue(),
+      surname: surnameInput.getValue(),
+      login: loginInput.getValue(),
+      email: emailInput.getValue(),
+      password: passwordInput.getValue(),
+      passwordRepeat: repeatPasswordInput.getValue(),
     });
   };
 
   return (
-    <div className="container">
-      <div className="jumbotron">
-        <h2>Klayas:</h2>
-        <p>Registrate en Klayas o si ya eres usuario <Link to="/login">accede al portal</Link></p>
-
-        {error ? (
-          <div className="alert alert-danger" role="alert">{registerErrorToMessage(error)}</div>
-        ) : ''}
-
-        <form>
-          <div className="form-group">
-            <label htmlFor="inputName">Nombre:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputName"
-              placeholder="Nombre"
+    <Paper zDepth={3} className={styles.container}>
+      <div className="row">
+        <p className="h4">
+          {'Create a new Klayas account now!'}
+        </p>
+      </div>
+      <form className={styles.marTop1_5em}>
+        <div className="row">
+          <div className="col-xs">
+            <TextField
+              hintText="Your name"
+              floatingLabelText="Name"
               ref={(i) => { nameInput = i; }}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="inputSurname">Apellidos:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputName"
-              placeholder="Apellidos"
+          <div className="col-xs">
+            <TextField
+              hintText="Your surname"
+              floatingLabelText="Surname"
               ref={(i) => { surnameInput = i; }}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="inputLogin">Nombre de usuario:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputLogin"
-              placeholder="Nombre de usuario"
+          <div className="col-xs">
+            <TextField
+              hintText="Choose a username"
+              floatingLabelText="Username"
               ref={(i) => { loginInput = i; }}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="inputEmail">Correo electrónico:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputLogin"
-              placeholder="Correo electrónico"
+          <div className="col-xs">
+            <TextField
+              hintText="Your email address"
+              floatingLabelText="Email"
               ref={(i) => { emailInput = i; }}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="inputPassword">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="inputPassword"
-              placeholder="Password"
+          <div className="col-xs">
+            <TextField
+              hintText="Type a strong password"
+              floatingLabelText="Password"
               ref={(i) => { passwordInput = i; }}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="inputPasswordRepeat">Vuelve a escribir la password</label>
-            <input
               type="password"
-              className="form-control"
-              id="inputPasswordRepeat"
-              placeholder="Repite la password"
-              ref={(i) => { passwordInputRepeat = i; }}
             />
           </div>
-          <button type="submit" className="btn btn-default" onClick={handleClick}>Registrar</button>
-        </form>
-      </div>
-    </div>
+          <div className="col-xs">
+            <TextField
+              hintText="Repeat the password"
+              floatingLabelText="Repeat password"
+              ref={(i) => { repeatPasswordInput = i; }}
+              type="password"
+            />
+          </div>
+        </div>
+        <div className={`row ${styles.marTop1_5em}`}>
+          <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
+            <RaisedButton label="Sing up" primary onTouchTap={handleClick} fullWidth />
+          </div>
+        </div>
+      </form>
+      <FormsFooter />
+    </Paper>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(null, mapDispatchToProps)(Register);

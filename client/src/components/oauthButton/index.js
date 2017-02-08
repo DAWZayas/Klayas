@@ -42,7 +42,7 @@ const oauthButton = ({oauthLogin}) => {
   };
   return (
     <RaisedButton
-      label="Sign up with Google"
+      label="Sign in with Google"
       backgroundColor="#dd4b39"
       labelColor="white"
       icon={<FontIcon className="fa fa-google-plus" />}

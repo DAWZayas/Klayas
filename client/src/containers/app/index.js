@@ -2,7 +2,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import {Paper} from 'material-ui';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -14,10 +13,6 @@ import Footer from '../../components/footer';
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
-
-const styles = {
-  card: {marginTop: '1em', padding: '1em 0'},
-};
 
 const mapStateToProps = state => ({
   currentPath: state.routing.locationBeforeTransitions && state.routing.locationBeforeTransitions.pathname,
@@ -59,10 +54,8 @@ class App extends React.Component {
         <div>
           <Navbar {...this.props} />
           <div className="container">
-            <Paper zDepth={3} style={styles.card}>
-              {children}
-              <Footer />
-            </Paper>
+            {children}
+            <Footer />
           </div>
         </div>
       </MuiThemeProvider>

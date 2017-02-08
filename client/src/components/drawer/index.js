@@ -9,6 +9,7 @@ import {logoutAction} from '../../store/actions';
 
 const mapDispatchToProps = dispatch => ({
   navToRoot: () => dispatch(push('/')),
+  navToHome: () => dispatch(push('/home')),
   navToLogin: () => dispatch(push('/login')),
   navToRegister: () => dispatch(push('/register')),
   onLogoutClick: () => dispatch(logoutAction()),
@@ -25,10 +26,13 @@ class NavbarDrawer extends Component {
   handleClose = () => this.setState({open: false});
 
   render() {
-    const {navToRoot, navToLogin, navToRegister, onLogoutClick, token} = this.props;
+    const {navToRoot, navToHome, navToLogin, navToRegister, onLogoutClick, token} = this.props;
 
     const handleClick = (e, fn) => {
       e.preventDefault();
+      if (fn === onLogoutClick) {
+        navToHome();
+      }
       fn();
       this.handleClose();
     };
@@ -55,7 +59,7 @@ class NavbarDrawer extends Component {
               <MenuItem
                 onTouchTap={e => handleClick(e, navToRegister)}
                 rightIcon={<FontIcon className="fa fa-user-circle-o" />}
-              >Sign in</MenuItem>
+              >Sign up</MenuItem>
             </div>
           )}
           <MenuItem onTouchTap={this.handleClose} rightIcon={<FontIcon className="fa fa-users" />}>About us</MenuItem>
@@ -67,6 +71,7 @@ class NavbarDrawer extends Component {
 
 NavbarDrawer.propTypes = {
   navToRoot: PropTypes.func,
+  navToHome: PropTypes.func,
   navToLogin: PropTypes.func,
   navToRegister: PropTypes.func,
   onLogoutClick: PropTypes.func,

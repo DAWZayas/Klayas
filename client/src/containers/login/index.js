@@ -1,12 +1,11 @@
 // npm packages
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
-import {RaisedButton, TextField} from 'material-ui';
+import {Paper, RaisedButton, TextField} from 'material-ui';
 
 // our packages
 import {loginAction} from '../../store/actions';
-import OauthButton from '../../components/oauthButton';
+import FormsFooter from '../../components/formsFooter';
 
 import styles from './Login.scss';
 
@@ -36,7 +35,7 @@ const Login = ({onLoginClick}) => {
   };
 
   return (
-    <div className={styles.container}>
+    <Paper zDepth={3} className={styles.container}>
       <div className="row">
         <p className="h4">
           Welcome again to Klayas!
@@ -49,14 +48,14 @@ const Login = ({onLoginClick}) => {
         <div className="row">
           <div className="col-md-4 col-md-offset-2">
             <TextField
-              hintText="Username"
+              hintText="Your username"
               floatingLabelText="Username"
               ref={(i) => { usernameInput = i; }}
             />
           </div>
           <div className="col-md-4">
             <TextField
-              hintText="Password"
+              hintText="Type your password"
               floatingLabelText="Password"
               ref={(i) => { passwordInput = i; }}
               type="password"
@@ -69,31 +68,8 @@ const Login = ({onLoginClick}) => {
           </div>
         </div>
       </form>
-
-      <div className={`row ${styles.marTop1_5em}`}>
-        <div className="col-xs-10 col-xs-offset-1 col-md-9 col-md-offset-1">
-          <p className={styles.divider}>or</p>
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
-          <OauthButton />
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-md-9 col-md-offset-1">
-          <hr style={{}} />
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-xs-6 pull-right">
-          {"Haven't an account yet? "}<Link to="/register">Register now!</Link>
-        </div>
-      </div>
-    </div>
+      <FormsFooter type="login" />
+    </Paper>
   );
 };
 
