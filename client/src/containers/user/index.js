@@ -3,13 +3,13 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import _ from 'lodash';
+import {Card} from 'material-ui';
 
 // our packages
 import {getUserTeachedClassRooms, getUserFollowedClassRooms} from '../../store/actions';
+import {ClassroomFollowedList, ClassroomTeachedList} from '../../components/classroom/';
 
-// our components
-import ClassroomTeachedList from '../../components/classroom/ClassroomTeachedList';
-import ClassroomFollowedList from '../../components/classroom/ClassroomFollowedList';
+import styles from './User.scss';
 
 const mapStateToProps = state => ({
   classrooms: state.classrooms.classrooms,
@@ -22,10 +22,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class User extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     const {user, DoUserTeachedClassRooms, DoUserFollowedClassRooms} = this.props;
     DoUserTeachedClassRooms({
@@ -36,15 +32,11 @@ class User extends Component {
     });
   }
 
-render(){
-  const {user, classrooms} = this.props;
-  return (
-    <div className="container">
-      <div className="panel panel-primary">
-        <div className="panel-heading">
-          <h3>Welcome {user.name}</h3>
-        </div>
-        <div className="panel-body">
+  render() {
+    const {user, classrooms} = this.props;
+    return (
+      <div className="container">
+        <Card zDepth={3} className={styles.container}>
           <div className="panel panel-default">
             <div className="panel-heading">
               <h4>
@@ -63,13 +55,16 @@ render(){
               Email address: {user.email}<br />
             </div>
           </div>
+        </Card>
+
+        <Card zDepth={3} className={styles.container}>
           <div className="panel panel-default">
             <div className="panel-heading">
               <h4>
                 Your classrooms
                 <Link to="/create">
                   <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-plus" aria-hidden="true" /> {'Create new classroom'}
+                    <span className="glyphicon glyphicon-plus" aria-hidden="true" /> {'New classroom'}
                   </span>
                 </Link>
               </h4>
@@ -78,13 +73,16 @@ render(){
               <ClassroomTeachedList />
             </div>
           </div>
+        </Card>
+
+        <Card zDepth={3} className={styles.container}>
           <div className="panel panel-default">
             <div className="panel-heading">
               <h4>
                 Classrooms you follow
                 <Link to="/search-classroom">
                   <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-search" aria-hidden="true" /> {'Search classrooms'}
+                    <span className="glyphicon glyphicon-search" aria-hidden="true" /> {'Search'}
                   </span>
                 </Link>
               </h4>
@@ -93,10 +91,11 @@ render(){
               <ClassroomFollowedList />
             </div>
           </div>
-        </div>
+        </Card>
+
       </div>
-    </div>
-  );
-}}
+    );
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);
