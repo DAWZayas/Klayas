@@ -7,7 +7,9 @@ import {Paper, RaisedButton, TextField} from 'material-ui';
 import {loginAction} from '../../store/actions';
 import FormsFooter from '../../components/formsFooter';
 
-import styles from './Login.scss';
+const styles = {
+  marTop1_5em: {marginTop: '1.5em'},
+};
 
 const mapStateToProps = state => ({
   token: state.auth.token,
@@ -35,7 +37,7 @@ const Login = ({onLoginClick}) => {
   };
 
   return (
-    <Paper zDepth={3} className={styles.container}>
+    <Paper zDepth={3} className="containerPaper">
       <div className="row">
         <p className="h4">
           Welcome again to Klayas!
@@ -44,7 +46,7 @@ const Login = ({onLoginClick}) => {
       <div className="row">
         <img src="../../../static/logo.png" alt="Klayas logo" width="100" height="auto" />
       </div>
-      <form className={styles.marTop1_5em}>
+      <form style={styles.marTop1_5em}>
         <div className="row">
           <div className="col-md-4 col-md-offset-2">
             <TextField
@@ -62,7 +64,7 @@ const Login = ({onLoginClick}) => {
             />
           </div>
         </div>
-        <div className={`row ${styles.marTop1_5em}`}>
+        <div className="row" style={styles.marTop1_5em}>
           <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
             <RaisedButton label="Login" primary onTouchTap={handleClick} fullWidth />
           </div>

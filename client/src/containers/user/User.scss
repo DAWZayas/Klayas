@@ -1,5 +1,8 @@
 .container {
-  margin-top: 1em;
-  padding: 1em;
-  text-align: center;
+  & > .card:first-child {
+    margin-top: 5.5em;
+  }
+  .card {
+    margin-top: 1em;
+  }
 }

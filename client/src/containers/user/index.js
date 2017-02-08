@@ -35,8 +35,8 @@ class User extends Component {
   render() {
     const {user, classrooms} = this.props;
     return (
-      <div className="container">
-        <Card zDepth={3} className={styles.container}>
+      <div className={styles.container}>
+        <Card zDepth={3} className={styles.card}>
           <div className="panel panel-default">
             <div className="panel-heading">
               <h4>
@@ -57,7 +57,7 @@ class User extends Component {
           </div>
         </Card>
 
-        <Card zDepth={3} className={styles.container}>
+        <Card zDepth={3} className={styles.card}>
           <div className="panel panel-default">
             <div className="panel-heading">
               <h4>
@@ -75,7 +75,7 @@ class User extends Component {
           </div>
         </Card>
 
-        <Card zDepth={3} className={styles.container}>
+        <Card zDepth={3} className={styles.card}>
           <div className="panel panel-default">
             <div className="panel-heading">
               <h4>

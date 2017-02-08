@@ -49,6 +49,7 @@ const Navbar = ({currentPath, navToRoot, token}) => {
             iconClassName="fa fa-github"
           /> : null)
       }
+      style={{position: 'fixed'}}
     />
   );
 };

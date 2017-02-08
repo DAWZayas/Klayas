@@ -7,7 +7,9 @@ import {Paper, RaisedButton, TextField} from 'material-ui';
 import {registerAction} from '../../store/actions';
 import FormsFooter from '../../components/formsFooter';
 
-import styles from './Register.scss';
+const styles = {
+  marTop1_5em: {marginTop: '1.5em'},
+};
 
 const mapDispatchToProps = dispatch => ({
   onRegisterClick: params => dispatch(registerAction(params)),
@@ -39,13 +41,13 @@ const Register = ({onRegisterClick}) => {
   };
 
   return (
-    <Paper zDepth={3} className={styles.container}>
+    <Paper zDepth={3} className="containerPaper">
       <div className="row">
         <p className="h4">
           {'Create a new Klayas account now!'}
         </p>
       </div>
-      <form className={styles.marTop1_5em}>
+      <form style={styles.marTop1_5em}>
         <div className="row">
           <div className="col-xs">
             <TextField
@@ -92,7 +94,7 @@ const Register = ({onRegisterClick}) => {
             />
           </div>
         </div>
-        <div className={`row ${styles.marTop1_5em}`}>
+        <div className="row" style={styles.marTop1_5em}>
           <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
             <RaisedButton label="Sing up" primary onTouchTap={handleClick} fullWidth />
           </div>
