@@ -2,15 +2,16 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import {AppBar, IconButton} from 'material-ui';
+import {AppBar, FontIcon, IconButton, IconMenu, MenuItem} from 'material-ui';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 // our packages
 import NavbarDrawer from '../drawer';
+import Logout from '../logout';
 
 const mapDispatchToProps = dispatch => ({
   navToRoot: () => dispatch(push('/')),
 });
-
 
 const Navbar = ({currentPath, navToRoot, token}) => {
   const transformPath = (path) => {
@@ -43,11 +44,21 @@ const Navbar = ({currentPath, navToRoot, token}) => {
         <NavbarDrawer token={token} />
       )}
       iconElementRight={
-        (!token ?
+        (!token ? (
           <IconButton
             href="https://github.com/DAWZayas/Klayas"
             iconClassName="fa fa-github"
-          /> : null)
+          />
+        ) : (
+          <IconMenu
+            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+            targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          >
+            <MenuItem primaryText="Profile" leftIcon={<FontIcon className="fa fa-user" />} />
+            <Logout />
+          </IconMenu>
+        ))
       }
       style={{position: 'fixed'}}
     />

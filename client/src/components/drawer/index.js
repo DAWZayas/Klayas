@@ -5,14 +5,13 @@ import {push} from 'react-router-redux';
 import {AppBar, Drawer, FontIcon, IconButton, MenuItem} from 'material-ui';
 
 // our packages
-import {logoutAction} from '../../store/actions';
+import Logout from '../logout';
 
 const mapDispatchToProps = dispatch => ({
   navToRoot: () => dispatch(push('/')),
   navToHome: () => dispatch(push('/home')),
   navToLogin: () => dispatch(push('/login')),
   navToRegister: () => dispatch(push('/register')),
-  onLogoutClick: () => dispatch(logoutAction()),
 });
 
 class NavbarDrawer extends Component {
@@ -26,13 +25,10 @@ class NavbarDrawer extends Component {
   handleClose = () => this.setState({open: false});
 
   render() {
-    const {navToRoot, navToHome, navToLogin, navToRegister, onLogoutClick, token} = this.props;
+    const {navToRoot, navToLogin, navToRegister, token} = this.props;
 
     const handleClick = (e, fn) => {
       e.preventDefault();
-      if (fn === onLogoutClick) {
-        navToHome();
-      }
       fn();
       this.handleClose();
     };
@@ -52,7 +48,7 @@ class NavbarDrawer extends Component {
         >
           <AppBar title="Klayas" showMenuIconButton={false} onTitleTouchTap={e => handleClick(e, navToRoot)} />
           {token ? (
-            <MenuItem onTouchTap={e => handleClick(e, onLogoutClick)} rightIcon={<FontIcon className="fa fa-sign-out" />}>Logout</MenuItem>
+            <Logout close={this.handleClose} rightIcon />
           ) : (
             <div>
               <MenuItem onTouchTap={e => handleClick(e, navToLogin)} rightIcon={<FontIcon className="fa fa-sign-in" />}>Login</MenuItem>
@@ -71,10 +67,8 @@ class NavbarDrawer extends Component {
 
 NavbarDrawer.propTypes = {
   navToRoot: PropTypes.func,
-  navToHome: PropTypes.func,
   navToLogin: PropTypes.func,
   navToRegister: PropTypes.func,
-  onLogoutClick: PropTypes.func,
   token: PropTypes.string,
 };
 
