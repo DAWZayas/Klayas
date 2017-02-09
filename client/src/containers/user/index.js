@@ -2,7 +2,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import _ from 'lodash';
 import {Card} from 'material-ui';
 
 // our packages
@@ -36,27 +35,6 @@ class User extends Component {
     const {user, classrooms} = this.props;
     return (
       <div className={styles.container}>
-        <Card zDepth={3} className={styles.card}>
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <h4>
-                Your profile
-                <Link to="/user/edit-profile">
-                  <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-pencil" aria-hidden="true" /> {'Edit profile'}
-                  </span>
-                </Link>
-              </h4>
-            </div>
-            <div className="panel-body">
-              Name: {user.name}<br />
-              Surname: {user.surname}<br />
-              Username: {user.login}<br />
-              Email address: {user.email}<br />
-            </div>
-          </div>
-        </Card>
-
         <Card zDepth={3} className={styles.card}>
           <div className="panel panel-default">
             <div className="panel-heading">

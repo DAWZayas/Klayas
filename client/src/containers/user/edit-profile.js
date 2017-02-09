@@ -1,6 +1,5 @@
 // npm packages
 import React from 'react';
-import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
@@ -8,11 +7,11 @@ import {push} from 'react-router-redux';
 import {editProfile} from '../../store/actions';
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.auth.user,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   navToHome: () => dispatch(push('/login')),
   navToProfile: () => dispatch(push('/user')),
   onEditClick: params => dispatch(editProfile(params)),
@@ -22,7 +21,6 @@ const mapDispatchToProps = (dispatch) => ({
 const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin, error, user}) => {
   let nameInput;
   let surnameInput;
-  let loginInput;
   let emailInput;
   let actualPasswordInput;
   let passwordInput;

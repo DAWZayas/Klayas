@@ -29,6 +29,7 @@ const userExists = async (oauthUser, provider) => {
       login: `${oauthUser.family_name.toLowerCase()}#${oauthUser.id.substr(oauthUser.id.length - 5)}`,
       email: oauthUser.email,
       password: hashedPassword,
+      avatarURL: oauthUser.picture,
     });
     // save user
     await user.save();

@@ -39,7 +39,7 @@ const Logout = ({close, navToHome, rightIcon, onLogoutClick}) => {
 Logout.propTypes = {
   close: PropTypes.func,
   navToHome: PropTypes.func,
-  right: PropTypes.bool,
+  rightIcon: PropTypes.bool,
   onLogoutClick: PropTypes.func,
 };
 

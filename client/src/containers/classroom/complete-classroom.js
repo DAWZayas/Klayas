@@ -2,12 +2,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import {CircularProgress} from 'material-ui';
 
 // our packages
-import {updateClassAction} from '../../store/actions';
+import {getOneClassRoom, updateClassAction} from '../../store/actions';
 import SimplyUser from '../../components/user/SimplyUser';
-import {getOneClassRoom} from '../../store/actions';
-import {Loader} from '../../components/loader';
 
 const mapStateToProps = state => ({
   classroom: state.classrooms.specificclassroom,
@@ -46,7 +45,7 @@ class CompleteClassroom extends Component {
 
     return (
       <div className="">
-        {status !== 'done' ? (<Loader />) :
+        {status !== 'done' ? (<CircularProgress />) :
           (
             <div className="panel panel-primary">
               <div className="panel-heading">

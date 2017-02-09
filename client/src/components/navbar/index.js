@@ -2,7 +2,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import {AppBar, FontIcon, IconButton, IconMenu, MenuItem} from 'material-ui';
+import {AppBar, Avatar, FontIcon, IconButton, IconMenu, MenuItem} from 'material-ui';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 // our packages
@@ -10,10 +10,11 @@ import NavbarDrawer from '../drawer';
 import Logout from '../logout';
 
 const mapDispatchToProps = dispatch => ({
+  navToProfile: userID => dispatch(push(`/user/${userID}`)),
   navToRoot: () => dispatch(push('/')),
 });
 
-const Navbar = ({currentPath, navToRoot, token}) => {
+const Navbar = ({currentPath, navToProfile, navToRoot, user, token}) => {
   const transformPath = (path) => {
     switch (path) {
       case '/login':
@@ -28,6 +29,11 @@ const Navbar = ({currentPath, navToRoot, token}) => {
   const handleBackClick = (e) => {
     e.preventDefault();
     navToRoot();
+  };
+
+  const handleProfileClick = (e) => {
+    e.preventDefault();
+    navToProfile(user.id);
   };
 
   return (
@@ -55,7 +61,7 @@ const Navbar = ({currentPath, navToRoot, token}) => {
             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
           >
-            <MenuItem primaryText="Profile" leftIcon={<FontIcon className="fa fa-user" />} />
+            <MenuItem primaryText="Profile" leftIcon={<Avatar src={user.avatarURL} />} onTouchTap={handleProfileClick} />
             <Logout />
           </IconMenu>
         ))
@@ -67,7 +73,16 @@ const Navbar = ({currentPath, navToRoot, token}) => {
 
 Navbar.propTypes = {
   currentPath: PropTypes.string,
+  navToProfile: PropTypes.func,
   navToRoot: PropTypes.func,
+  user: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    login: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    registrationDate: PropTypes.string.isRequired,
+    surname: PropTypes.string.isRequired,
+  }),
   token: PropTypes.string,
 };
 

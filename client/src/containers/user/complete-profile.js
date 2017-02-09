@@ -1,59 +1,67 @@
 // npm packages
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
+import {Avatar, Card, CircularProgress} from 'material-ui';
 
 // our packages
-import {updateClassAction} from '../../store/actions';
 import {getOneProfile} from '../../store/actions';
-import {Loader} from '../../components/loader';
+
+import styles from './User.scss';
 
 const mapStateToProps = state => ({
   userprofile: state.users.userprofile,
-  status: state.users.status,
+  status: state.users.status === 'loading',
 });
 
 const mapDispatchToProps = dispatch => ({
-  SeeCompleteProfile: params => dispatch(getOneProfile(params)),
+  getProfile: params => dispatch(getOneProfile(params)),
 });
 
 class CompleteProfile extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
-  const {SeeCompleteProfile, routeParams} = this.props;
-  SeeCompleteProfile({
-    id: routeParams.id,
-  });
+    const {getProfile, routeParams} = this.props;
+    getProfile({
+      id: routeParams.id,
+    });
   }
 
   render() {
     const {userprofile, status} = this.props;
-
     return (
-      <div className="">
-        {status !== 'done' ? (<Loader />) :
-          (
-            <div className="panel panel-primary">
-              <div className="panel-heading">
-                <h4>{`${userprofile.name}'s profile`}</h4>
-              </div>
-              <div className="panel-body">
-                Name: {userprofile.name}<br />
-                Surname: {userprofile.surname}<br />
-                Username: {userprofile.login}<br />
-                Email address: {userprofile.email}<br />
-              </div>
+      <div className={styles.container}>
+        {status ? (
+          <CircularProgress mode="indeterminate" />
+        ) : (
+          <Card zDepth={3} className={styles.card} style={{textAlign: 'center'}}>
+            <Avatar src={userprofile.avatarURL} size={100} style={{marginTop: '0.5em'}} />
+            <div className="">
+              Name: {userprofile.name}<br />
+              Surname: {userprofile.surname}<br />
+              Username: {userprofile.login}<br />
+              Email address: {userprofile.email}<br />
             </div>
-          )
-        }
+          </Card>
+        )}
       </div>
     );
   }
 }
 
+CompleteProfile.propTypes = {
+  getProfile: PropTypes.func,
+  routeParams: PropTypes.shape({
+    id: PropTypes.string,
+  }),
+  status: PropTypes.bool,
+  // userprofile: PropTypes.shape({
+  //   email: PropTypes.string,
+  //   id: PropTypes.string,
+  //   login: PropTypes.string,
+  //   name: PropTypes.string,
+  //   registrationDate: PropTypes.string,
+  //   surname: PropTypes.string,
+  // }),
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompleteProfile);
