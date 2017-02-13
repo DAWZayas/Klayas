@@ -8,8 +8,8 @@ import OauthButton from '../../components/oauthButton';
 import styles from './FormsFooter.scss';
 
 const FormsFooter = ({type}) => (
-  <div className="">
-    <div className={`row ${styles.marTop1_5em}`}>
+  <div>
+    <div className="row marTop1_5em">
       <div className="col-xs-10 col-xs-offset-1 col-md-9 col-md-offset-1">
         <p className={styles.divider}>or</p>
       </div>

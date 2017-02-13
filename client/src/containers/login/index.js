@@ -7,10 +7,6 @@ import {Paper, RaisedButton, TextField} from 'material-ui';
 import {loginAction} from '../../store/actions';
 import FormsFooter from '../../components/formsFooter';
 
-const styles = {
-  marTop1_5em: {marginTop: '1.5em'},
-};
-
 const mapStateToProps = state => ({
   token: state.auth.token,
 });
@@ -46,7 +42,7 @@ const Login = ({onLoginClick}) => {
       <div className="row">
         <img src="../../../static/logo.png" alt="Klayas logo" width="100" height="auto" />
       </div>
-      <form style={styles.marTop1_5em}>
+      <form className="marTop1_5em">
         <div className="row">
           <div className="col-md-4 col-md-offset-2">
             <TextField
@@ -64,7 +60,7 @@ const Login = ({onLoginClick}) => {
             />
           </div>
         </div>
-        <div className="row" style={styles.marTop1_5em}>
+        <div className="row marTop1_5em">
           <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
             <RaisedButton label="Login" primary onTouchTap={handleClick} fullWidth />
           </div>

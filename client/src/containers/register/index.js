@@ -47,7 +47,7 @@ const Register = ({onRegisterClick}) => {
           {'Create a new Klayas account now!'}
         </p>
       </div>
-      <form style={styles.marTop1_5em}>
+      <form className="marTop1_5em">
         <div className="row">
           <div className="col-xs">
             <TextField
@@ -94,7 +94,7 @@ const Register = ({onRegisterClick}) => {
             />
           </div>
         </div>
-        <div className="row" style={styles.marTop1_5em}>
+        <div className="row marTop1_5em">
           <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
             <RaisedButton label="Sing up" primary onTouchTap={handleClick} fullWidth />
           </div>

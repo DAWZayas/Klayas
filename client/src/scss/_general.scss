@@ -31,3 +31,7 @@ div[class="containerPaper"] {
   padding: 1em;
   text-align: center;
 }
+
+div[class*="marTop1_5em"] {
+  margin-top: 1.5em;
+}
