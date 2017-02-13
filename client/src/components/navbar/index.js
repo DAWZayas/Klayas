@@ -10,7 +10,7 @@ import NavbarDrawer from '../drawer';
 import Logout from '../logout';
 
 const mapDispatchToProps = dispatch => ({
-  navToProfile: userID => dispatch(push(`/user/${userID}`)),
+  navToProfile: userID => dispatch(push(`/profile/${userID}`)),
 });
 
 const Navbar = ({currentPath, navToProfile, user, router, token}) => {
