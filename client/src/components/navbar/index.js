@@ -2,7 +2,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import {AppBar, Avatar, FontIcon, IconButton, IconMenu, MenuItem} from 'material-ui';
+import {AppBar, Avatar, IconButton, IconMenu, MenuItem} from 'material-ui';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 // our packages
@@ -11,10 +11,9 @@ import Logout from '../logout';
 
 const mapDispatchToProps = dispatch => ({
   navToProfile: userID => dispatch(push(`/user/${userID}`)),
-  navToRoot: () => dispatch(push('/')),
 });
 
-const Navbar = ({currentPath, navToProfile, navToRoot, user, token}) => {
+const Navbar = ({currentPath, navToProfile, user, router, token}) => {
   const transformPath = (path) => {
     switch (path) {
       case '/login':
@@ -28,7 +27,7 @@ const Navbar = ({currentPath, navToProfile, navToRoot, user, token}) => {
 
   const handleBackClick = (e) => {
     e.preventDefault();
-    navToRoot();
+    router.goBack();
   };
 
   const handleProfileClick = (e) => {
@@ -74,7 +73,6 @@ const Navbar = ({currentPath, navToProfile, navToRoot, user, token}) => {
 Navbar.propTypes = {
   currentPath: PropTypes.string,
   navToProfile: PropTypes.func,
-  navToRoot: PropTypes.func,
   user: PropTypes.shape({
     email: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
