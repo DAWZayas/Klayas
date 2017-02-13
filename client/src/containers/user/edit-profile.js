@@ -2,6 +2,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
+import {Paper} from 'material-ui';
 
 // our packages
 import {editProfile} from '../../store/actions';
@@ -18,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin, error, user}) => {
+const Update = ({onEditClick, navToLogin, navToProfile, user}) => {
   let nameInput;
   let surnameInput;
   let emailInput;
@@ -41,14 +42,8 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
     });
   };
 
-  if (redirectToLogin) {
-    // TODO: figure out a better way to do nav
-    setImmediate(() => navToLogin());
-  }
-
   return (
-    <div className="jumbotron">
-      <h1>{user.name}, edit your profile</h1>
+    <Paper zDepth={3} className="containerPaper">
       <form>
         <div className="form-group">
           <label htmlFor="inputName">Name:</label>
@@ -122,12 +117,14 @@ const Update = ({onEditClick, onClick, navToLogin, navToProfile, redirectToLogin
             ref={(i) => { passwordInputRepeat = i; }}
           />
         </div>
-        <button type="submit" className="btn btn-default" onClick={handleClick}>Update your profile</button> {' '};
+        <button type="submit" className="btn btn-default" onClick={handleClick}>Update your profile</button>{' '}
         <button type="submit" className="btn btn-default" onClick={navToProfile}>Cancel</button>
       </form>
       <hr />
-    </div>
+    </Paper>
   );
 };
+
+//
 
 export default connect(mapStateToProps, mapDispatchToProps)(Update);
