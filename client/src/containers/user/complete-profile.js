@@ -31,7 +31,7 @@ class CompleteProfile extends Component {
     return (
       <div className={styles.container}>
         {status ? (
-          <CircularProgress mode="indeterminate" />
+          <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{marginTop: '6em'}} />
         ) : (
           <Card zDepth={3} className={styles.card} style={{textAlign: 'center'}}>
             <Avatar src={userprofile.avatarURL} size={100} style={{marginTop: '0.5em'}} />
