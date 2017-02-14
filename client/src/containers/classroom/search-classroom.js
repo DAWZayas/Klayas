@@ -1,10 +1,10 @@
 // npm packages
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import _ from 'lodash';
 
 // our components
 import ClassroomSearchList from '../../components/classroom/ClassroomSearchList';
-import ClassroomFollow from '../../components/classroom/ClassroomFollow';
 import {getAllClassRoom, doSearchClassroom} from '../../store/actions';
 
 const mapStateToProps = state => ({
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
   search: state.classrooms.search,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   DoGetAllClassRoom: _.once(() => dispatch(getAllClassRoom())),
   doSearch: params => dispatch(doSearchClassroom(params)),
 });
@@ -25,17 +25,16 @@ class SearchClassroom extends Component {
     DoGetAllClassRoom();
   }
 
-
-  render(){
+  render() {
     let searchtermInput;
     const {classrooms, doSearch, search} = this.props;
 
     const handleSearchChange = (e) => {
-    e.preventDefault();
-    doSearch({
-      searchterm: searchtermInput.value,
-    });
-  };
+      e.preventDefault();
+      doSearch({
+        searchterm: searchtermInput.value,
+      });
+    };
 
     return (
       <div className="panel panel-primary">
@@ -57,12 +56,12 @@ class SearchClassroom extends Component {
           />
         </div>
         <div className="panel-body">
-        <ClassroomSearchList />
-
+          <ClassroomSearchList />
         </div>
       </div>
-    );}
-  };
+    );
+  }
+}
 
   // <div>
   //   {classrooms.map((classroom, index) => (
