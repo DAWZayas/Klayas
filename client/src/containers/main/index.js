@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import {Card} from 'material-ui';
+import {Card, FloatingActionButton, Tabs, Tab} from 'material-ui';
 
 // our packages
 import {getUserTeachedClassRooms, getUserFollowedClassRooms} from '../../store/actions';
@@ -34,44 +34,56 @@ class User extends Component {
   render() {
     const {user, classrooms} = this.props;
     return (
-      <div className="animated fadeIn">
-        <div className={styles.container}>
-          <Card zDepth={3} className={styles.card}>
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h4>
-                  Your classrooms
-                  <Link to="/create">
-                    <span className="label label-primary pull-right">
-                      <span className="glyphicon glyphicon-plus" aria-hidden="true" /> {'New classroom'}
-                    </span>
-                  </Link>
-                </h4>
-              </div>
-              <div className="panel-body">
-                <ClassroomTeachedList />
-              </div>
+      <div className={styles.container}>
+        <Tabs className={styles.tabs}>
+          <Tab label="Created classrooms">
+            <div className="animated fadeIn">
+              <Card zDepth={3} className={styles.card}>
+                <div className="panel panel-default">
+                  <div className="panel-heading">
+                    <div className="row">
+                      <div className="col-xs-10">
+                        <h4>Create new classroom</h4>
+                      </div>
+                      <div className="col-xs-2">
+                        <Link to="/create">
+                          <FloatingActionButton iconClassName="fa fa-plus" mini />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="panel-body">
+                    <ClassroomTeachedList />
+                  </div>
+                </div>
+              </Card>
             </div>
-          </Card>
+          </Tab>
 
-          <Card zDepth={3} className={styles.card}>
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h4>
-                  Classrooms you follow
-                  <Link to="/search-classroom">
-                    <span className="label label-primary pull-right">
-                      <span className="glyphicon glyphicon-search" aria-hidden="true" /> {'Search'}
-                    </span>
-                  </Link>
-                </h4>
-              </div>
-              <div className="panel-body">
-                <ClassroomFollowedList />
-              </div>
+          <Tab label="Followed classrooms" >
+            <div className="animated fadeIn">
+              <Card zDepth={3} className={styles.card}>
+                <div className="panel panel-default">
+                  <div className="panel-heading">
+                    <div className="row">
+                      <div className="col-xs-10">
+                        <h4>Search new classrooms</h4>
+                      </div>
+                      <div className="col-xs-2">
+                        <Link to="/search-classroom">
+                          <FloatingActionButton iconClassName="fa fa-search" mini />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="panel-body">
+                    <ClassroomFollowedList />
+                  </div>
+                </div>
+              </Card>
             </div>
-          </Card>
-        </div>
+          </Tab>
+        </Tabs>
       </div>
     );
   }
