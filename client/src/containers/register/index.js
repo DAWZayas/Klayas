@@ -50,35 +50,35 @@ const Register = ({onRegisterClick}) => {
         </div>
         <form className="marTop1_5em">
           <div className="row">
-            <div className="col-xs">
+            <div className="col-xs-12">
               <TextField
                 hintText="Your name"
                 floatingLabelText="Name"
                 ref={(i) => { nameInput = i; }}
               />
             </div>
-            <div className="col-xs">
+            <div className="col-xs-12">
               <TextField
                 hintText="Your surname"
                 floatingLabelText="Surname"
                 ref={(i) => { surnameInput = i; }}
               />
             </div>
-            <div className="col-xs">
+            <div className="col-xs-12">
               <TextField
                 hintText="Choose a username"
                 floatingLabelText="Username"
                 ref={(i) => { loginInput = i; }}
               />
             </div>
-            <div className="col-xs">
+            <div className="col-xs-12">
               <TextField
                 hintText="Your email address"
                 floatingLabelText="Email"
                 ref={(i) => { emailInput = i; }}
               />
             </div>
-            <div className="col-xs">
+            <div className="col-xs-12">
               <TextField
                 hintText="Type a strong password"
                 floatingLabelText="Password"
@@ -86,7 +86,7 @@ const Register = ({onRegisterClick}) => {
                 type="password"
               />
             </div>
-            <div className="col-xs">
+            <div className="col-xs-12">
               <TextField
                 hintText="Repeat the password"
                 floatingLabelText="Repeat password"

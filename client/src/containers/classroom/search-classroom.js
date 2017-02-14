@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import _ from 'lodash';
+import {Card} from 'material-ui';
 
 // our components
 import ClassroomSearchList from '../../components/classroom/ClassroomSearchList';
@@ -37,28 +38,30 @@ class SearchClassroom extends Component {
     };
 
     return (
-      <div className="panel panel-primary">
-        <div className="panel-heading">
-          <h3>
-             Search classroom
-          </h3>
-        </div>
+      <Card className="containerPaper">
+        <div className="panel panel-primary">
+          <div className="panel-heading">
+            <h3>
+               Search classroom
+            </h3>
+          </div>
 
-        <div className="input-group">
-          <span className="input-group-addon" id="basic-addon1">Type your search</span>
-          <input
-            type="text"
-            onChange={handleSearchChange}
-            className="form-control"
-            placeholder="Search by classroom's name, teacher or description"
-            aria-describedby="basic-addon1"
-            ref={(i) => { searchtermInput = i; }}
-          />
+          <div className="input-group">
+            <span className="input-group-addon" id="basic-addon1">Type your search</span>
+            <input
+              type="text"
+              onChange={handleSearchChange}
+              className="form-control"
+              placeholder="Search by classroom's name, teacher or description"
+              aria-describedby="basic-addon1"
+              ref={(i) => { searchtermInput = i; }}
+            />
+          </div>
+          <div className="panel-body">
+            <ClassroomSearchList />
+          </div>
         </div>
-        <div className="panel-body">
-          <ClassroomSearchList />
-        </div>
-      </div>
+      </Card>
     );
   }
 }
