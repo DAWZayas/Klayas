@@ -150,15 +150,17 @@ class Profile extends Component {
     );
 
     return (
-      <div className={styles.container}>
-        {status ? (
-          <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{marginTop: '6em'}} />
-        ) : (
-          <Card zDepth={3} className={styles.card} style={{textAlign: 'center'}}>
-            <Avatar src={user.avatarURL} size={100} style={{marginTop: '0.5em'}} />
-            {content}
-          </Card>
-        )}
+      <div className="animated fadeIn">
+        <div className={styles.container}>
+          {status ? (
+            <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{marginTop: '6em'}} />
+          ) : (
+            <Card zDepth={3} className={styles.card} style={{textAlign: 'center'}}>
+              <Avatar src={user.avatarURL} size={100} style={{marginTop: '0.5em'}} />
+              {content}
+            </Card>
+          )}
+        </div>
       </div>
     );
   }

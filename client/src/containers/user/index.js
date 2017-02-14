@@ -34,43 +34,44 @@ class User extends Component {
   render() {
     const {user, classrooms} = this.props;
     return (
-      <div className={styles.container}>
-        <Card zDepth={3} className={styles.card}>
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <h4>
-                Your classrooms
-                <Link to="/create">
-                  <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-plus" aria-hidden="true" /> {'New classroom'}
-                  </span>
-                </Link>
-              </h4>
+      <div className="animated fadeIn">
+        <div className={styles.container}>
+          <Card zDepth={3} className={styles.card}>
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h4>
+                  Your classrooms
+                  <Link to="/create">
+                    <span className="label label-primary pull-right">
+                      <span className="glyphicon glyphicon-plus" aria-hidden="true" /> {'New classroom'}
+                    </span>
+                  </Link>
+                </h4>
+              </div>
+              <div className="panel-body">
+                <ClassroomTeachedList />
+              </div>
             </div>
-            <div className="panel-body">
-              <ClassroomTeachedList />
-            </div>
-          </div>
-        </Card>
+          </Card>
 
-        <Card zDepth={3} className={styles.card}>
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <h4>
-                Classrooms you follow
-                <Link to="/search-classroom">
-                  <span className="label label-primary pull-right">
-                    <span className="glyphicon glyphicon-search" aria-hidden="true" /> {'Search'}
-                  </span>
-                </Link>
-              </h4>
+          <Card zDepth={3} className={styles.card}>
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h4>
+                  Classrooms you follow
+                  <Link to="/search-classroom">
+                    <span className="label label-primary pull-right">
+                      <span className="glyphicon glyphicon-search" aria-hidden="true" /> {'Search'}
+                    </span>
+                  </Link>
+                </h4>
+              </div>
+              <div className="panel-body">
+                <ClassroomFollowedList />
+              </div>
             </div>
-            <div className="panel-body">
-              <ClassroomFollowedList />
-            </div>
-          </div>
-        </Card>
-
+          </Card>
+        </div>
       </div>
     );
   }

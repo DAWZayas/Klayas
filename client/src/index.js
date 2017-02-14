@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 
 // styles
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'animate.css/animate.min.css';
 import './scss/main.scss';
 
 // our packages
