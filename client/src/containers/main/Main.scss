@@ -1,0 +1,9 @@
+.container {
+  & > .card:first-child {
+    margin-top: 5.5em;
+  }
+  .card {
+    margin-top: 1em;
+    padding-bottom: 20px;
+  }
+}

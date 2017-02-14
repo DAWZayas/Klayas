@@ -8,7 +8,7 @@ import {Card} from 'material-ui';
 import {getUserTeachedClassRooms, getUserFollowedClassRooms} from '../../store/actions';
 import {ClassroomFollowedList, ClassroomTeachedList} from '../../components/classroom/';
 
-import styles from './User.scss';
+import styles from './Main.scss';
 
 const mapStateToProps = state => ({
   classrooms: state.classrooms.classrooms,

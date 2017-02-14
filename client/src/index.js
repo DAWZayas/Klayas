@@ -21,8 +21,8 @@ import Home from './containers/home';
 import Login from './containers/login';
 import TestPage from './containers/testpage';
 import Register from './containers/register';
-import User from './containers/user';
-import Profile from './containers/user/Profile';
+import Main from './containers/main';
+import Profile from './containers/profile';
 import CompleteClassroom from './containers/classroom/complete-classroom';
 import EditClassroom from './containers/classroom/edit-classroom';
 import CreateClassroom from './containers/classroom/create';
@@ -37,12 +37,11 @@ ReactDOM.render((
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={User} onEnter={requireAuth} />
+        <IndexRoute component={Main} onEnter={requireAuth} />
         <Route path="home" component={Home} />
         <Route path="login" component={Login} />
         <Route path="testpage" component={TestPage} />
         <Route path="register" component={Register} />
-        <Route path="user" component={User} />
         <Route path="profile/:id" component={Profile} />
         <Route path="classroom/:id" component={CompleteClassroom} />
         <Route path="edit-classroom" component={EditClassroom} />

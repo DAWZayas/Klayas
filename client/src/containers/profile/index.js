@@ -6,7 +6,7 @@ import {Avatar, Card, CircularProgress, RaisedButton, TextField} from 'material-
 // our packages
 import {editProfile, getOneProfile} from '../../store/actions';
 
-import styles from './User.scss';
+import styles from './Profile.scss';
 
 const mapStateToProps = state => ({
   user: state.auth.user,
@@ -143,7 +143,7 @@ class Profile extends Component {
             <RaisedButton label="Update" primary onTouchTap={handleRequestUpdateProfile} />
           </div>
           <div className="col-xs-6">
-            <RaisedButton label="Cancel" backgroundColor="#dd4b39" onTouchTap={handleRequestCancelSettings} />
+            <RaisedButton label="Cancel" backgroundColor="#C62828" labelColor="white" onTouchTap={handleRequestCancelSettings} />
           </div>
         </div>
       </form>
