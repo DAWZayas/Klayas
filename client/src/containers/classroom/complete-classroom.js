@@ -8,6 +8,7 @@ import {updateClassAction} from '../../store/actions';
 import SimplyUser from '../../components/user/SimplyUser';
 import {getOneClassRoom} from '../../store/actions';
 import {Loader} from '../../components/loader';
+import ClassroomChat from '../../components/classroom/ClassroomChat';
 
 const mapStateToProps = state => ({
   classroom: state.classrooms.specificclassroom,
@@ -97,7 +98,7 @@ class CompleteClassroom extends Component {
                 <div className="panel panel-default">
                   <div className="panel-heading">
                     <h4>
-                      Streaming
+                      Share and learn
                     </h4>
                   </div>
                   <div className="panel-body">
@@ -109,7 +110,7 @@ class CompleteClassroom extends Component {
                           </div>
                         ) : (
                           <div className="col-md-6">
-                            <iframe width="560" height="315" src={classroom.url} frameBorder="0" allowFullScreen />
+                            <ClassroomChat />
                           </div>
                         )
                       }

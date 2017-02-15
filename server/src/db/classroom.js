@@ -10,6 +10,14 @@ export const Classroom = thinky.createModel('Classroom', {
   teacher: thinky.type.string().required(),
   teacherName: thinky.type.string().required(),
   isPublic: thinky.type.boolean().default(true),
+  chat: thinky.type.array().schema(thinky.type.object().schema(
+    {
+      studentname: thinky.type.string(),
+      studentid: thinky.type.string(),
+      date: thinky.type.date(),
+      text: thinky.type.string(),
+    }
+  ).default([])),
   students: thinky.type.array().schema(thinky.type.object().schema(
     {
       studentname: thinky.type.string(),

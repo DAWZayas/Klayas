@@ -82,7 +82,7 @@ export const createClassroom = action$ => action$
         payload: response,
       },
       Actions.addNotificationAction(
-        {text: 'Clase creada correctamente', alertType: 'success'},
+        {text: 'Classroom created correctly', alertType: 'success'},
       ),
     ))
     .catch(error => Observable.of(
@@ -93,7 +93,7 @@ export const createClassroom = action$ => action$
         },
       },
       Actions.addNotificationAction(
-        {text: 'Ha ocurrido un error durante la creación de la clase', alertType: 'danger'},
+        {text: 'An error occurred during classroom creation', alertType: 'danger'},
       ),
     )),
   );

@@ -38,6 +38,7 @@ export default (app) => {
       time,
       teacher: req.user.id,
       teacherName: req.user.login,
+      chat: [],
       students: [],
       isPublic,
     });
