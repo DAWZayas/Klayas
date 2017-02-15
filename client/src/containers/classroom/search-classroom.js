@@ -6,15 +6,14 @@ import {Card} from 'material-ui';
 
 // our components
 import ClassroomSearchList from '../../components/classroom/ClassroomSearchList';
-import {getAllClassRoom, doSearchClassroom} from '../../store/actions';
+import {getAllClassroom, doSearchClassroom} from '../../store/actions';
 
 const mapStateToProps = state => ({
-  classrooms: state.classrooms.classrooms,
   search: state.classrooms.search,
 });
 
 const mapDispatchToProps = dispatch => ({
-  DoGetAllClassRoom: _.once(() => dispatch(getAllClassRoom())),
+  DoGetAllClassroom: _.once(() => dispatch(getAllClassroom())),
   doSearch: params => dispatch(doSearchClassroom(params)),
 });
 
@@ -22,13 +21,13 @@ class SearchClassroom extends Component {
 
 
   componentWillMount() {
-    const {DoGetAllClassRoom} = this.props;
-    DoGetAllClassRoom();
+    const {DoGetAllClassroom} = this.props;
+    DoGetAllClassroom();
   }
 
   render() {
     let searchtermInput;
-    const {classrooms, doSearch, search} = this.props;
+    const {doSearch} = this.props;
 
     const handleSearchChange = (e) => {
       e.preventDefault();
@@ -39,20 +38,14 @@ class SearchClassroom extends Component {
 
     return (
       <Card className="containerPaper">
-        <div className="panel panel-primary">
-          <div className="panel-heading">
-            <h3>
-               Search classroom
-            </h3>
-          </div>
-
+        <div className="panel panel-default">
           <div className="input-group">
-            <span className="input-group-addon" id="basic-addon1">Type your search</span>
+            <span className="input-group-addon" id="basic-addon1">Search</span>
             <input
               type="text"
               onChange={handleSearchChange}
               className="form-control"
-              placeholder="Search by classroom's name, teacher or description"
+              placeholder="by name, teacher or description"
               aria-describedby="basic-addon1"
               ref={(i) => { searchtermInput = i; }}
             />

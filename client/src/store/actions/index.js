@@ -44,7 +44,7 @@ export const doSearchClassroom = payload => ({
   payload,
 });
 
-export const getAllClassRoom = () => ({
+export const getAllClassroom = () => ({
   type: ActionTypes.GET_ALL_CLASSROOM,
 });
 

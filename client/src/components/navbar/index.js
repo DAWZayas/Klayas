@@ -20,6 +20,10 @@ const Navbar = ({currentPath, navToProfile, user, router, token}) => {
         return 'Login';
       case '/register':
         return 'Sign up';
+      case '/create':
+        return 'New classroom';
+      case '/search-classroom':
+        return 'Search';
       default:
         return 'Klayas';
     }
