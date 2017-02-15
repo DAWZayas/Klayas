@@ -5,16 +5,16 @@ import hello from 'hellojs';
 import {FontIcon, RaisedButton} from 'material-ui';
 
 // our packages
-import {loginOauthAction} from '../../store/actions';
+import {googleOauthAction} from '../../store/actions';
 import {auth as authConfig} from '../../../config';
 
 const mapDispatchToProps = dispatch => ({
-  oauthLogin: payload => dispatch(loginOauthAction(payload)),
+  googleLogin: payload => dispatch(googleOauthAction(payload)),
 });
 
-const oauthButton = ({oauthLogin}) => {
+const oauthButton = ({googleLogin}) => {
   oauthButton.propTypes = {
-    oauthLogin: PropTypes.func,
+    googleLogin: PropTypes.func,
   };
 
   const handleGoogleClick = () => {
@@ -25,20 +25,7 @@ const oauthButton = ({oauthLogin}) => {
       scope: 'email',
     });
 
-    // hello('google').login(() => {
-    //   console.log(hello('google').getAuthResponse());
-    //   const token = hello('google').getAuthResponse().access_token;
-    //   const myHeaders = new Headers();
-    //   myHeaders.append('Authorization', `Bearer ${token}`);
-    //   const myInit = {method: 'GET',
-    //     headers: myHeaders,
-    //   };
-    //   const myRequest = new Request('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', myInit);
-    //   fetch(myRequest)
-    //   .then(response => response.json().then(json => console.log(json), close()));
-    // });
-
-    oauthLogin({provider: 'google'});
+    googleLogin({provider: 'google'});
   };
   return (
     <RaisedButton

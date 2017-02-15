@@ -5,7 +5,7 @@ export const loginAction = payload => ({
   payload,
 });
 
-export const loginOauthAction = payload => ({
+export const googleOauthAction = payload => ({
   type: ActionTypes.DO_OAUTH_LOGIN,
   payload,
 });
