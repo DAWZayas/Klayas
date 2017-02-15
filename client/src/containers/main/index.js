@@ -35,7 +35,7 @@ class User extends Component {
     const {user, classrooms} = this.props;
     return (
       <div className={styles.container}>
-        <Tabs className={styles.tabs}>
+        <Tabs className={styles.tabs} inkBarStyle={{background: '#F44336'}}>
           <Tab label="Created classrooms">
             <div className="animated fadeIn">
               <Card zDepth={3} className={styles.card}>
