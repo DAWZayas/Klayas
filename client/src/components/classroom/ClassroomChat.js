@@ -5,6 +5,7 @@ import moment from 'moment';
 // our packages
 import SeeClassroomButton from './SeeClassroomButton';
 import {updateClassAction} from '../../store/actions';
+import LineChat from '../../components/classroom/LineChat';
 
 const styles = require('../../../styles/ClassroomChat.scss');
 
@@ -34,7 +35,7 @@ const ClassroomChat = ({onChatClick, chat, user, classroom}) => {
   };
 
   return (
-    <div className="col-md-3">
+    <div className="col-md-12">
       <div className="panel panel-primary">
         <div className="panel-heading">
           Sala de Chat
@@ -44,9 +45,9 @@ const ClassroomChat = ({onChatClick, chat, user, classroom}) => {
            <tbody>
             <tr>
               <td className={styles.td}>
-                <p>Aquí va todas las conversaciones</p>
-                <p>Aquí va todas las conversaciones</p>
-                <p>Aquí va todas las conversaciones</p>
+              {chat.map((line, index) => (
+                <LineChat key={index} line={line} />
+              ))}
               </td>
             </tr>
            </tbody>
@@ -63,9 +64,6 @@ const ClassroomChat = ({onChatClick, chat, user, classroom}) => {
           </div>
           <button type="submit" className="btn btn-default" onClick={handleClick}>Chat</button>
         </form>
-        </div>
-        <div className="panel-body">
-          <SeeClassroomButton />
         </div>
       </div>
     </div>

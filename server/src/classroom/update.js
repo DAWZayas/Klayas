@@ -54,18 +54,17 @@ export default (app) => {
         res.status(403).send({error: 'You have already joined to this classroom'});
         return;
       }
-    }
 
-    if (studentname) {
-      if (classroom.isPublic) {
-        const student = {studentname, studentid};
-        classroom.students.push(student);
-      } else {
-        res.status(403).send({error: 'This classroom is private. Plese contact with the teacher'});
-        return;
+      if (studentname) {
+        if (classroom.isPublic) {
+          const student = {studentname, studentid};
+          classroom.students.push(student);
+        } else {
+          res.status(403).send({error: 'This classroom is private. Plese contact with the teacher'});
+          return;
+        }
       }
     }
-
 
     // try to save
     try {

@@ -105,11 +105,11 @@ class CompleteClassroom extends Component {
                     <div>
                       {!user ?
                         (
-                          <div className="col-md-6">
+                          <div className="col-md-12">
                             Login to join this classroom
                           </div>
                         ) : (
-                          <div className="col-md-6">
+                          <div className="col-md-12">
                             <ClassroomChat />
                           </div>
                         )
