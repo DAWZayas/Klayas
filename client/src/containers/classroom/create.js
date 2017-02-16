@@ -1,8 +1,7 @@
 // npm packages
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import moment from 'moment';
-import {Card, DatePicker, RaisedButton, TextField, TimePicker} from 'material-ui';
+import {Card, RaisedButton, TextField} from 'material-ui';
 
 // our packages
 import {createClassAction} from '../../store/actions';
@@ -14,18 +13,12 @@ const mapDispatchToProps = dispatch => ({
 const CreateClassroom = ({onCreateClick}) => {
   let nameInput;
   let descriptionInput;
-  let urlInput;
-  let dateInput;
-  let timeInput;
 
   const handleClick = (e) => {
     e.preventDefault();
     onCreateClick({
       name: nameInput.getValue(),
       description: descriptionInput.getValue(),
-      url: urlInput.getValue(),
-      date: moment(dateInput.value).toISOString(),
-      time: timeInput.getValue(),
     });
   };
 
@@ -48,19 +41,6 @@ const CreateClassroom = ({onCreateClick}) => {
                 floatingLabelText="Description"
                 ref={(i) => { descriptionInput = i; }}
               />
-            </div>
-            <div className="col-xs-12">
-              <TextField
-                hintText="Url"
-                floatingLabelText="Url"
-                ref={(i) => { urlInput = i; }}
-              />
-            </div>
-            <div className="col-xs-12">
-              <DatePicker hintText="Start date" ref={(i) => { dateInput = i; }} />
-            </div>
-            <div className="col-xs-12">
-              <TimePicker hintText="Hour" format="24hr" ref={(i) => { timeInput = i; }} />
             </div>
           </div>
           <div className="row marTop1_5em">
