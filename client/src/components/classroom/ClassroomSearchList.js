@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {FontIcon, IconButton} from 'material-ui';
+import {IconButton} from 'material-ui';
 
 // our components
 import ClassroomFollow from '../../components/classroom/ClassroomFollow';
-
+import {Arrows} from '../paginators';
 
 const mapStateToProps = state => ({
   classrooms: state.classrooms.classrooms,
@@ -36,7 +36,7 @@ class ClassroomSearchList extends Component {
       }
     }
 
-    const classroomPage = filterclassrooms.slice(pageIndex * 4, (pageIndex * N_CLASSROOMS) + N_CLASSROOMS);
+    const classroomPage = filterclassrooms.slice(pageIndex * N_CLASSROOMS, (pageIndex * N_CLASSROOMS) + N_CLASSROOMS);
     const handleClick = (inc) => {
       this.setState({
         pageIndex: pageIndex + inc,
@@ -56,22 +56,7 @@ class ClassroomSearchList extends Component {
           </div>
         )}
 
-        <div className="row">
-          <div className="col-xs-6" style={{textAlign: 'right'}}>
-            <IconButton
-              iconClassName="fa fa-angle-left"
-              disabled={pageIndex === 0}
-              onTouchTap={() => handleClick(-1)}
-            />
-          </div>
-          <div className="col-xs-6" style={{textAlign: 'left'}}>
-            <IconButton
-              iconClassName="fa fa-angle-right"
-              disabled={(pageIndex + 1) * N_CLASSROOMS >= classrooms.length}
-              onTouchTap={() => handleClick(+1)}
-            />
-          </div>
-        </div>
+        <Arrows click={handleClick} pageIndex={pageIndex} nClassroom={N_CLASSROOMS} classroomsLength={classrooms.length} />
       </div>
     );
   }
