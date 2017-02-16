@@ -45,6 +45,15 @@ class CompleteClassroom extends Component {
       });
     };
 
+    function searchuser(id){
+      console.log(id);
+      for (let i = 0; i < classroom.students.length; i++){
+          if (classroom.students[i].studentid === id)
+            return true;
+      }
+      return false;
+    }
+
     return (
       <div className="">
         {status !== 'done' ? (<Loader />) :
@@ -108,11 +117,18 @@ class CompleteClassroom extends Component {
                           <div className="col-md-12">
                             Login to join this classroom
                           </div>
-                        ) : (
-                          <div className="col-md-12">
-                            <ClassroomChat />
-                          </div>
-                        )
+                        ) :
+                        searchuser(user.id) ?
+                          (
+                            <div className="col-md-12">
+                              <ClassroomChat />
+                            </div>
+                          ) :
+                          (
+                            <div className="col-md-12">
+                              Login to join this classroom
+                            </div>
+                          )
                       }
                     </div>
                   </div>
