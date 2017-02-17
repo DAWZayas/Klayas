@@ -81,9 +81,9 @@ class CompleteClassroom extends Component {
                       </Link>) :
                       searchuser(user.id) ?
                       (
-                        <Link to="" onClick={handleClick}>
+                        <Link to="">
                           <span className="label label-primary pull-right">
-                            <span className="glyphicon glyphicon-hand-up" aria-hidden="true" /> You follow this classroom
+                            <span className="glyphicon glyphicon-thumbs-up" aria-hidden="true" /> You follow this classroom
                           </span>
                         </Link>
                       ) :
@@ -113,14 +113,14 @@ class CompleteClassroom extends Component {
                   (
                     <div className="panel panel-default">
                       <div className="panel-heading">
-                        <h4>Classroom teached by {classroom.teacherName}</h4>
+                        <h4>You teached this classroom</h4>
                       </div>
                     </div>
                   ) :
                       (
                         <div className="panel panel-default">
                       <div className="panel-heading">
-                        <h4>This is NOT classroom</h4>
+                        <h4>Classroom teached by {classroom.teacherName}</h4>
                       </div>
                     </div>
                       )
