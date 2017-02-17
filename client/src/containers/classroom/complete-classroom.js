@@ -79,13 +79,21 @@ class CompleteClassroom extends Component {
                           Edit classroom
                         </span>
                       </Link>) :
-                    (
-                      <Link to="" onClick={handleClick}>
-                        <span className="label label-primary pull-right">
-                          <span className="glyphicon glyphicon-hand-up" aria-hidden="true" /> Join this classroom
-                        </span>
-                      </Link>
-                    )
+                      searchuser(user.id) ?
+                      (
+                        <Link to="" onClick={handleClick}>
+                          <span className="label label-primary pull-right">
+                            <span className="glyphicon glyphicon-hand-up" aria-hidden="true" /> You follow this classroom
+                          </span>
+                        </Link>
+                      ) :
+                          (
+                            <Link to="" onClick={handleClick}>
+                              <span className="label label-primary pull-right">
+                                <span className="glyphicon glyphicon-hand-up" aria-hidden="true" /> Join this classroom
+                              </span>
+                            </Link>
+                          )
                   }
                 </h3>
               </div>
@@ -100,13 +108,22 @@ class CompleteClassroom extends Component {
                         {classroom.teacherName}
                       </div>
                     </div>
-                  ) : (
+                  ) :
+                  classroom.teacher === user.id ?
+                  (
                     <div className="panel panel-default">
                       <div className="panel-heading">
-                        <h4>This is your classroom</h4>
+                        <h4>Classroom teached by {classroom.teacherName}</h4>
                       </div>
                     </div>
-                  )
+                  ) :
+                      (
+                        <div className="panel panel-default">
+                      <div className="panel-heading">
+                        <h4>This is NOT classroom</h4>
+                      </div>
+                    </div>
+                      )
               }
                 <div className="panel panel-default">
                   <div className="panel-heading">
