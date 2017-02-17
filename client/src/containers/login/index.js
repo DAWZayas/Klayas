@@ -1,80 +1,74 @@
 // npm packages
-import React from 'react';
-import {Link} from 'react-router';
+import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
+import {Paper, RaisedButton, TextField} from 'material-ui';
 
 // our packages
 import {loginAction} from '../../store/actions';
-import {loginErrorToMessage} from '../../util';
+import FormsFooter from '../../components/formsFooter';
 
 const mapStateToProps = state => ({
   token: state.auth.token,
-  error: state.auth.error,
 });
 
 const mapDispatchToProps = dispatch => ({
   onLoginClick: params => dispatch(loginAction(params)),
 });
 
-const Login = ({onLoginClick, token, error}) => {
+const Login = ({onLoginClick}) => {
+  Login.propTypes = {
+    onLoginClick: PropTypes.func,
+  };
+
   let usernameInput;
   let passwordInput;
-  let rememberInput;
 
   const handleClick = (e) => {
     e.preventDefault();
 
     onLoginClick({
-      login: usernameInput.value,
-      password: passwordInput.value,
-      remember: rememberInput.checked,
+      login: usernameInput.getValue(),
+      password: passwordInput.getValue(),
     });
   };
 
   return (
-    <div className="container">
-      <div className="jumbotron">
-        <h2>Klayas:</h2>
-        <p>Accede al portal o si aún no eres mienbro de Klayas, <Link to="/register">registrate</Link></p>
-
-        {error ? (
-          <div className="alert alert-danger" role="alert">{loginErrorToMessage(error)}</div>
-        ) : ''}
-
-        <form>
-          <div className="form-group">
-            <label htmlFor="inputUsername">Username:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputUsername"
-              placeholder="Username"
-              ref={(i) => { usernameInput = i; }}
-            />
+    <div className="animated fadeIn">
+      <Paper zDepth={3} className="containerPaper">
+        <div className="row">
+          <p className="h4">
+            Welcome again to Klayas!
+          </p>
+        </div>
+        <div className="row">
+          <img src="../../../static/logo.png" alt="Klayas logo" width="100" height="auto" />
+        </div>
+        <form className="marTop1_5em">
+          <div className="row">
+            <div className="col-md-4 col-md-offset-2">
+              <TextField
+                hintText="Your username"
+                floatingLabelText="Username"
+                ref={(i) => { usernameInput = i; }}
+              />
+            </div>
+            <div className="col-md-4">
+              <TextField
+                hintText="Type your password"
+                floatingLabelText="Password"
+                ref={(i) => { passwordInput = i; }}
+                type="password"
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="inputPassword">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="inputPassword"
-              placeholder="Password"
-              ref={(i) => { passwordInput = i; }}
-            />
+          <div className="row marTop1_5em">
+            <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
+              <RaisedButton label="Login" primary onTouchTap={handleClick} fullWidth />
+            </div>
           </div>
-          <div className="checkbox">
-            <label htmlFor="inputRemember">
-              <input
-                type="checkbox"
-                id="inputRemember"
-                ref={(i) => { rememberInput = i; }}
-              /> Recordar
-            </label>
-          </div>
-          <button type="submit" className="btn btn-default" onClick={handleClick}>Login</button>
         </form>
-      </div>
+        <FormsFooter type="login" />
+      </Paper>
     </div>
   );
 };

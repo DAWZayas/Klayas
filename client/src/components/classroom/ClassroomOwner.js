@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import moment from 'moment';
+import React from 'react';
 
 // our packages
 import SeeClassroomButton from './SeeClassroomButton';
@@ -9,10 +8,6 @@ const ClassroomOwner = ({classroom}) => (
     <div className="panel panel-primary">
       <div className="panel-heading">
         {classroom.name}
-      </div>
-      <div className="panel-body">
-        <strong>Dia:</strong> {moment(classroom.date).locale('es').format('ll')}<br />
-        <strong>Hora:</strong> {classroom.time}
       </div>
       <div className="panel-body">
         <SeeClassroomButton classroomId={classroom.id} />

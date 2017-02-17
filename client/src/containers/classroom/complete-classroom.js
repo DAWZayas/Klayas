@@ -2,18 +2,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import {Card, CircularProgress} from 'material-ui';
 
 // our packages
-import {updateClassAction} from '../../store/actions';
+import {getOneClassRoom, updateClassAction} from '../../store/actions';
 import SimplyUser from '../../components/user/SimplyUser';
-import {getOneClassRoom} from '../../store/actions';
-import {Loader} from '../../components/loader';
 import ClassroomChat from '../../components/classroom/ClassroomChat';
 
 const mapStateToProps = state => ({
   classroom: state.classrooms.specificclassroom,
   user: state.auth.user,
-  status: state.classrooms.status,
+  status: state.classrooms.status === 'loading',
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -46,7 +45,7 @@ class CompleteClassroom extends Component {
     };
 
     function searchuser(id){
-      if (true) {
+      if (classroom.teacher === id) {
         return true;
       } else {
         for (let i = 0; i < classroom.students.length; i++){
@@ -59,8 +58,10 @@ class CompleteClassroom extends Component {
 
     return (
       <div className="">
-        {status !== 'done' ? (<Loader />) :
-          (
+        {status ? (
+          <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{marginTop: '6em'}} />
+        ) : (
+          <Card className="containerPaper">
             <div className="panel panel-primary">
               <div className="panel-heading">
                 <h3>{classroom.name}
@@ -148,9 +149,10 @@ class CompleteClassroom extends Component {
                 </div>
               </div>
             </div>
-          )
-        }
-      </div>);
+          </Card>
+        )}
+      </div>
+    );
   }
 }
 

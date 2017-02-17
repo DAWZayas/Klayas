@@ -29,6 +29,7 @@ const userExists = async (oauthUser, provider) => {
       login: `${oauthUser.family_name.toLowerCase()}#${oauthUser.id.substr(oauthUser.id.length - 5)}`,
       email: oauthUser.email,
       password: hashedPassword,
+      avatarURL: oauthUser.picture,
     });
     // save user
     await user.save();
@@ -48,17 +49,19 @@ export default (app) => {
     }
   });
 
-  app.post('/api/oauth/login', (req, res) => {
+  app.post('/api/login/google', (req, res) => {
     const provider = req.body.provider;
     const options = {
       method: 'GET',
       headers: {Authorization: `Bearer ${req.body.token}`},
     };
     fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', options)
-      .then(response => response.json())
-      .then(googleUser => userExists(googleUser, provider).then((user) => {
+      .then(resp => resp.json())
+      .then(googleUser => userExists(googleUser, provider)
+      .then((user) => {
         const token = jwt.sign(user, authConfig.jwtSecret);
         res.send({user, token});
-      })).catch(() => res.status(401).send({error: 'Error logging in!'}));
+      }))
+      .catch(() => res.status(401).send({error: 'Error logging in!'}));
   });
 };

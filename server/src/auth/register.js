@@ -34,6 +34,7 @@ export default (app) => {
       surname,
       login,
       email,
+      avatarURL: 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg',
       password: hashedPassword,
     });
     // check if login is already taken

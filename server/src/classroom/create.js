@@ -1,5 +1,4 @@
 // npm packages
-import moment from 'moment';
 import passport from 'passport';
 
 // our packages
@@ -9,7 +8,7 @@ import {asyncRequest} from '../util';
 export default (app) => {
   app.post('/api/classroom/create', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get classroom input
-    const {name, date, time, isPublic, description, url} = req.body;
+    const {name, description} = req.body;
 
     // make sure name is not empty
     if (!name || !name.length) {
@@ -17,30 +16,14 @@ export default (app) => {
       return;
     }
 
-    // validate date is not in the past
-    if (moment(date) < moment()) {
-      res.status(400).send({error: 'Date should be in the future!'});
-      return;
-    }
-
-    // Check if date have a correct format
-    if (!moment(date, moment.ISO_8601).isValid()) {
-      res.status(400).send({error: 'Date should be valid ISO Date!'});
-      return;
-    }
-
     // create classroom
     const classroom = new Classroom({
       name,
       description,
-      url,
-      date: moment(date).toDate(),
-      time,
       teacher: req.user.id,
       teacherName: req.user.login,
       chat: [],
       students: [],
-      isPublic,
     });
 
     // save classroom

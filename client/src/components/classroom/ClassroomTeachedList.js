@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 // our components
 import ClassroomOwner from '../../components/classroom/ClassroomOwner';
-
+import {Arrows} from '../paginators';
 
 const mapStateToProps = (state) => ({
   classrooms: state.classrooms.userteachedclassrooms,
@@ -24,7 +24,9 @@ class ClassroomTeachedList extends Component {
   render() {
     const {classrooms, user} = this.props;
     const {pageIndex} = this.state;
-    const classroomPage = classrooms.slice(pageIndex * 4, pageIndex * 4 + 4);
+    const N_CLASSROOMS = 2;
+
+    const classroomPage = classrooms.slice(pageIndex * N_CLASSROOMS, (pageIndex * N_CLASSROOMS) + N_CLASSROOMS);
     const handleClick = (inc) => {
       this.setState({
         pageIndex: pageIndex + inc,
@@ -33,33 +35,16 @@ class ClassroomTeachedList extends Component {
     };
     return (
       <div>
-        {classrooms.length === 0
-          ? <div>Aun no has creado ninguna clase</div>
-          : (<div className="panel-body">
-            {classroomPage.map((classroom) => (
+        {classrooms.length === 0 ? (
+          <div>Aun no has creado ninguna clase</div>
+        ) : (
+          <div className="panel-body">
+            {classroomPage.map(classroom => (
               <ClassroomOwner key={classroom.id} classroom={classroom} />
-          ))}
-          </div>)
-        }
-
-        <div className="btn-group col-xs-4 col-xs-offset-5" role="group">
-          <button
-            type="button"
-            className="btn btn-default"
-            disabled={pageIndex === 0}
-            onClick={() => handleClick(-1)}
-          >
-            <span className="glyphicon glyphicon-arrow-left" />
-          </button>
-          <button
-            type="button"
-            className="btn btn-default"
-            disabled={(pageIndex + 1)  * 4 >= classrooms.length}
-            onClick={() => handleClick(+1)}
-          >
-            <span className="glyphicon glyphicon-arrow-right" />
-          </button>
-        </div>
+            ))}
+          </div>
+        )}
+        <Arrows click={handleClick} pageIndex={pageIndex} nClassroom={N_CLASSROOMS} classroomsLength={classrooms.length} />
       </div>
     );
   }

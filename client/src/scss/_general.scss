@@ -1,3 +1,11 @@
+html {
+  font-family: Roboto;
+}
+
+body {
+  background-image: url('../assets/cork-wallet.png');
+}
+
 section {
   text-align: center;
 }
@@ -16,4 +24,14 @@ button[class*="btn-primary"] {
     background-color: #672f67;
     border-color: #632d65;
   }
+}
+
+div[class="containerPaper"] {
+  margin-top: 5.5em;
+  padding: 1em;
+  text-align: center;
+}
+
+div[class*="marTop1_5em"] {
+  margin-top: 1.5em;
 }

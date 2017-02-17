@@ -3,6 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import {push} from 'react-router-redux';
+import {Card} from 'material-ui';
 
 // our packages
 import {updateClassAction} from '../../store/actions';
@@ -41,7 +42,7 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
   const d = moment(classroom.date).format('YYYY-MM-DD');
 
   return (
-    <div className="jumbotron">
+    <Card className="containerPaper">
       <h2>Klayas:</h2>
       <p>{"Edit your Klayas' classroom"}</p>
       <form>
@@ -107,7 +108,7 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
         <button type="submit" className="btn btn-default" onClick={handleClick}>Modificar Clase</button> &nbsp;| &nbsp;
         <button type="submit" className="btn btn-default" onClick={navToClassroom}>Cancelar</button>
       </form>
-    </div>
+    </Card>
   );
 };
 

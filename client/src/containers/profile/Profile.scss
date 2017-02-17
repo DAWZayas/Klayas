@@ -1,0 +1,19 @@
+.container {
+  & > .card:first-child {
+    margin-top: 5.5em;
+  }
+  .card {
+    margin-top: 1em;
+    padding-bottom: 20px;
+    .editProfileForm {
+      padding: 20px;
+    }
+    .userData {
+      text-align: left;
+      padding: 20px;
+    }
+    .rowHeader {
+      font-weight: bold;
+    }
+  }
+}

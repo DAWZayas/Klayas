@@ -37,13 +37,13 @@ export const login = action$ => action$
 
 export const oauthLogin = action$ => action$
   .ofType(ActionTypes.DO_OAUTH_LOGIN)
-  .mergeMap(({payload}) => Rx.Observable.create(subscriber =>
-    hello(payload.provider).login(token => subscriber.next({
+  .mergeMap(({payload}) => Rx.Observable.create(subs =>
+    hello(payload.provider).login(token => subs.next({
       payload: {token: token.authResponse.access_token, provider: payload.provider},
     })),
   ))
   .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/oauth/login', payload)
+    .ajax.post('http://localhost:8080/api/login/google', payload)
     .map(res => res.response)
     .mergeMap(response => Observable.of(
       {
