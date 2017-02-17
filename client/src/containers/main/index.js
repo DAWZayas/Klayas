@@ -5,34 +5,36 @@ import {Link} from 'react-router';
 import {Card, FloatingActionButton, Tabs, Tab} from 'material-ui';
 
 // our packages
-import {getUserTeachedClassRooms, getUserFollowedClassRooms} from '../../store/actions';
-import {ClassroomFollowedList, ClassroomTeachedList} from '../../components/classroom/';
+import {getClassroomsByTeachedUser, getClassroomsByFollowedUser} from '../../store/actions';
+import {ClassroomList} from '../../components/classroom';
 
 import styles from './Main.scss';
 
 const mapStateToProps = state => ({
-  classrooms: state.classrooms.classrooms,
+  teachedClassrooms: state.classrooms.userteachedclassrooms,
+  followedClassrooms: state.classrooms.userfollowedclassrooms,
   user: state.auth.user,
 });
 
 const mapDispatchToProps = dispatch => ({
-  DoUserTeachedClassRooms: params => dispatch(getUserTeachedClassRooms(params)),
-  DoUserFollowedClassRooms: params => dispatch(getUserFollowedClassRooms(params)),
+  doUserTeachedClassRooms: params => dispatch(getClassroomsByTeachedUser(params)),
+  doUserFollowedClassRooms: params => dispatch(getClassroomsByFollowedUser(params)),
 });
 
-class User extends Component {
+class Main extends Component {
+
   componentWillMount() {
-    const {user, DoUserTeachedClassRooms, DoUserFollowedClassRooms} = this.props;
-    DoUserTeachedClassRooms({
+    const {user, doUserTeachedClassRooms, doUserFollowedClassRooms} = this.props;
+    doUserTeachedClassRooms({
       user: user.id,
     });
-    DoUserFollowedClassRooms({
+    doUserFollowedClassRooms({
       user: user.id,
     });
   }
 
   render() {
-    const {user, classrooms} = this.props;
+    const {followedClassrooms, teachedClassrooms} = this.props;
     return (
       <div className={styles.container}>
         <Tabs className={styles.tabs} inkBarStyle={{background: '#F44336'}}>
@@ -53,7 +55,7 @@ class User extends Component {
                     </div>
                   </div>
                   <div className="panel-body">
-                    <ClassroomTeachedList />
+                    <ClassroomList classrooms={teachedClassrooms} />
                   </div>
                 </div>
               </Card>
@@ -77,7 +79,7 @@ class User extends Component {
                     </div>
                   </div>
                   <div className="panel-body">
-                    <ClassroomFollowedList />
+                    <ClassroomList classrooms={followedClassrooms} />
                   </div>
                 </div>
               </Card>
@@ -89,4 +91,4 @@ class User extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {IconButton} from 'material-ui';
 
 // our components
-import ClassroomFollow from '../../components/classroom/ClassroomFollow';
+import {Classroom} from '../../components/classroom';
 import {Arrows} from '../paginators';
 
 const mapStateToProps = state => ({
@@ -51,7 +51,7 @@ class ClassroomSearchList extends Component {
         ) : (
           <div className="panel-body">
             {classroomPage.map(classroom => (
-              <ClassroomFollow key={classroom.id} classroom={classroom} />
+              <Classroom key={classroom.id} classroom={classroom} />
             ))}
           </div>
         )}

@@ -2,10 +2,8 @@
   & > .tabs {
     margin-top: 5.5em;
   }
-  & > .card:first-child {
-    margin-top: 5.5em;
-  }
   .card {
     margin-top: 1em;
+    min-height: 75vh;
   }
 }

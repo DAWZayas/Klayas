@@ -1,16 +1,10 @@
 import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
 
 // our components
-import ClassroomFollow from '../../components/classroom/ClassroomFollow';
+import {Classroom} from '../../components/classroom';
 import {Arrows} from '../paginators';
 
-const mapStateToProps = state => ({
-  classrooms: state.classrooms.userfollowedclassrooms,
-  user: state.auth.user,
-});
-
-class ClassroomFollowedList extends Component {
+class ClassroomList extends Component {
 
   constructor(props) {
     super(props);
@@ -36,25 +30,21 @@ class ClassroomFollowedList extends Component {
         {classrooms.length === 0 ? (
           <div>Aun no sigues ninguna clase</div>
         ) : (
-          <div className="panel-body">
+          <div>
             {classroomPage.map(classroom => (
-              <ClassroomFollow key={classroom.id} classroom={classroom} />
-              ))}
+              <Classroom key={classroom.id} classroom={classroom} />
+            ))}
+            <Arrows click={handleClick} pageIndex={pageIndex} nClassroom={N_CLASSROOMS} classroomsLength={classrooms.length} />
           </div>
         )}
 
-        <Arrows click={handleClick} pageIndex={pageIndex} nClassroom={N_CLASSROOMS} classroomsLength={classrooms.length} />
       </div>
     );
   }
 }
 
-ClassroomFollowedList.propTypes = {
-  classrooms: PropTypes.arrayOf(
-    PropTypes.objectOf(
-      PropTypes.string,
-    ),
-  ),
+ClassroomList.propTypes = {
+  classrooms: PropTypes.array,
 };
 
-export default connect(mapStateToProps)(ClassroomFollowedList);
+export default ClassroomList;

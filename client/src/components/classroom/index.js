@@ -1,15 +1,9 @@
-import ClassroomFollow from './ClassroomFollow';
-import ClassroomFollowedList from './ClassroomFollowedList';
-import ClassroomOwner from './ClassroomOwner';
+import Classroom from './Classroom';
+import ClassroomList from './ClassroomList';
 import ClassroomSearchList from './ClassroomSearchList';
-import ClassroomTeachedList from './ClassroomTeachedList';
-import SeeClassroomButton from './SeeClassroomButton';
 
 export {
-  ClassroomFollow,
-  ClassroomFollowedList,
-  ClassroomOwner,
+  Classroom,
+  ClassroomList,
   ClassroomSearchList,
-  ClassroomTeachedList,
-  SeeClassroomButton,
 };
