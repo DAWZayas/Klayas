@@ -22,7 +22,7 @@ export const getAllClassroom = action$ => action$
     })),
   );
 
-export const getUserTeachedClassRooms = action$ => action$
+export const getClassroomsByTeachedUser = action$ => action$
   .ofType(ActionTypes.GET_USER_TEACHED_CLASSROOMS)
   .map(signRequest)
   .mergeMap(({headers, payload}) => Observable
@@ -38,7 +38,7 @@ export const getUserTeachedClassRooms = action$ => action$
     })),
   );
 
-export const getUserFollowedClassRooms = action$ => action$
+export const getClassroomsByFollowedUser = action$ => action$
   .ofType(ActionTypes.GET_USER_FOLLOWED_CLASSROOMS)
   .map(signRequest)
   .mergeMap(({headers, payload}) => Observable

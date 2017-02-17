@@ -53,12 +53,12 @@ export const getOneClassRoom = payload => ({
   payload,
 });
 
-export const getUserTeachedClassRooms = payload => ({
+export const getClassroomsByTeachedUser = payload => ({
   type: ActionTypes.GET_USER_TEACHED_CLASSROOMS,
   payload,
 });
 
-export const getUserFollowedClassRooms = payload => ({
+export const getClassroomsByFollowedUser = payload => ({
   type: ActionTypes.GET_USER_FOLLOWED_CLASSROOMS,
   payload,
 });
