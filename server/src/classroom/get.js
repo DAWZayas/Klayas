@@ -9,7 +9,6 @@ export default (app) => {
   app.get('/api/classroom', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     const classroom = await r.table('Classroom')
       .pluck('name', 'id', 'students', 'teacher', 'teacherName', 'description')
-      .orderBy(r.desc('date'));
     // send question back
     res.send(classroom);
   }));
@@ -18,7 +17,6 @@ export default (app) => {
       const classroom = await r.table('Classroom')
       .filter({teacher: req.params.id})
       .pluck('name', 'id', 'students', 'teacher', 'teacherName', 'description')
-      .orderBy(r.desc('date'));
     // send question back
       res.send(classroom);
     } catch (e) {
@@ -30,7 +28,6 @@ export default (app) => {
       const classroom = await r.table('Classroom')
       .filter(r.row('students').contains(function(student) {return student('studentid').match(req.params.id)}))
       .pluck('name', 'id', 'students', 'teacher', 'teacherName', 'description')
-      .orderBy(r.desc('date'));
     // send question back
       res.send(classroom);
     } catch (e) {
