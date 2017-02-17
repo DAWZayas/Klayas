@@ -11,7 +11,7 @@ import SimplyUser from '../../components/user/SimplyUser';
 const mapStateToProps = state => ({
   classroom: state.classrooms.specificclassroom,
   user: state.auth.user,
-  status: state.classrooms.status === 'loading',
+  isLoading: state.classrooms.status === 'loading',
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,17 +23,14 @@ class CompleteClassroom extends Component {
 
   constructor(props) {
     super(props);
-  }
-
-  componentWillMount() {
-  const {onSeeCompleteClass, routeParams} = this.props;
-  onSeeCompleteClass({
-    id: routeParams.id,
-  });
+    const {onSeeCompleteClass, routeParams} = this.props;
+    onSeeCompleteClass({
+      id: routeParams.id,
+    });
   }
 
   render() {
-    const {onCreateClick, classroom, user, status} = this.props;
+    const {onCreateClick, classroom, user, isLoading} = this.props;
     const handleClick = (e) => {
       e.preventDefault();
       onCreateClick({
@@ -45,35 +42,34 @@ class CompleteClassroom extends Component {
 
     return (
       <div className="">
-        {status ? (
-          <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{marginTop: '6em'}} />
+        {isLoading ? (
+          <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{top: '50vh'}} />
         ) : (
           <Card className="containerPaper">
             <div className="panel panel-primary">
               <div className="panel-heading">
-                <h3>{classroom.name}
+                <h3>
                   {!user ? (
                     <Link to="/home">
                       <span className="label label-primary pull-right">
                         <span className="glyphicon glyphicon-pencil" aria-hidden="true" />
                         Login to join this classroom
                       </span>
-                    </Link>) :
-                    classroom.teacher === user.id ? (
-                      <Link to="/edit-classroom">
-                        <span className="label label-primary pull-right">
-                          <span className="glyphicon glyphicon-pencil" aria-hidden="true" />
-                          Edit classroom
-                        </span>
-                      </Link>) :
-                    (
-                      <Link to="" onClick={handleClick}>
-                        <span className="label label-primary pull-right">
-                          <span className="glyphicon glyphicon-hand-up" aria-hidden="true" /> Join this classroom
-                        </span>
-                      </Link>
-                    )
-                  }
+                    </Link>
+                  ) : classroom.teacher === user.id ? (
+                    <Link to="/edit-classroom">
+                      <span className="label label-primary pull-right">
+                        <span className="glyphicon glyphicon-pencil" aria-hidden="true" />
+                        Edit classroom
+                      </span>
+                    </Link>
+                  ) : (
+                    <Link to="" onClick={handleClick}>
+                      <span className="label label-primary pull-right">
+                        <span className="glyphicon glyphicon-hand-up" aria-hidden="true" /> Join this classroom
+                      </span>
+                    </Link>
+                  )}
                 </h3>
               </div>
               <div className="panel-body">

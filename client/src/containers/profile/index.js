@@ -10,7 +10,7 @@ import styles from './Profile.scss';
 
 const mapStateToProps = state => ({
   user: state.auth.user,
-  status: state.users.status === 'loading',
+  isLoading: state.users.status === 'loading',
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -34,7 +34,7 @@ class Profile extends Component {
 
   render() {
     const {editing} = this.state;
-    const {onEditClick, user, status} = this.props;
+    const {onEditClick, user, isLoading} = this.props;
 
     let nameInput;
     let surnameInput;
@@ -152,8 +152,8 @@ class Profile extends Component {
     return (
       <div className="animated fadeIn">
         <div className={styles.container}>
-          {status ? (
-            <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{marginTop: '6em'}} />
+          {isLoading ? (
+            <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{top: '50vh'}} />
           ) : (
             <Card zDepth={3} className={styles.card} style={{textAlign: 'center'}}>
               <Avatar src={user.avatarURL} size={100} style={{marginTop: '0.5em'}} />
