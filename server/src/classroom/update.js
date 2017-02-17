@@ -8,7 +8,7 @@ import {Classroom} from '../db';
 export default (app) => {
   app.post('/api/classroom/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get classroom input
-    const {name, date, hour, studentname, studentid, description, url, text} = req.body;
+    const {name, date, hour, studentname, studentid, description, url, text, studentavatar} = req.body;
 
     // get classroom data
     let classroom;
@@ -45,7 +45,7 @@ export default (app) => {
     classroom.url = url;
 
     if (text) {
-      const line = {studentname, studentid, text, date};
+      const line = {studentname, studentid, text, date, studentavatar};
       classroom.chat.push(line);
     }
 

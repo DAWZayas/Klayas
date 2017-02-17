@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Avatar, Chip} from 'material-ui';
 
 // our packages
 import {getOneClassRoom, addObservable} from '../../store/actions';
@@ -13,7 +14,17 @@ const LineChat = ({line}) => {
 
   return (
     <div>
-      {line.studentname}: {line.text}
+      <Chip>
+        <Avatar src={line.studentavatar} />
+          <div style={{fontSize: 'smaller', color: 'red'}}>
+            {line.studentname}
+          </div>
+          <div>
+            {line.text}
+          </div>
+      </Chip>
+      <br/>
+
     </div>
   );
 };

@@ -28,9 +28,11 @@ const ClassroomChat = ({onChatClick, chat, user, classroom}) => {
     onChatClick({
       id: classroom.id,
       studentname: user.name,
+      studentavatar: user.avatarURL,
       studentid: user.id,
       text: chatInput.value,
       date: moment(),
+
     });
   };
 
@@ -40,7 +42,7 @@ const ClassroomChat = ({onChatClick, chat, user, classroom}) => {
         <div className="panel-heading">
           Sala de Chat
         </div>
-        <div className="panel-body">
+        <div className="panel-body" style={{textAlign: 'left'}}>
           <table className={styles.table}>
            <tbody>
             <tr>
