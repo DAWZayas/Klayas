@@ -56,13 +56,8 @@ export default (app) => {
       }
 
       if (studentname) {
-        if (classroom.isPublic) {
-          const student = {studentname, studentid};
-          classroom.students.push(student);
-        } else {
-          res.status(403).send({error: 'This classroom is private. Plese contact with the teacher'});
-          return;
-        }
+        const student = {studentname, studentid};
+        classroom.students.push(student);
       }
     }
 
