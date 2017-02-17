@@ -1,6 +1,13 @@
 import * as ActionTypes from '../actionTypes';
 
-const initialState = {classrooms: [], search: '', userteachedclassrooms: [], userfollowedclassrooms: []};
+const initialState = {
+  classrooms: [],
+  status: 'loading',
+  search: '',
+  userteachedclassrooms: [],
+  userfollowedclassrooms: [],
+  specificclassroom: [],
+};
 
 export const classrooms = (state = initialState, action) => {
   switch (action.type) {
@@ -17,20 +24,12 @@ export const classrooms = (state = initialState, action) => {
     case ActionTypes.GET_USER_TEACHED_CLASSROOMS_SUCCESS:
       return {
         ...state,
-        status: 'done',
         userteachedclassrooms: action.payload.userteachedclassrooms,
       };
     case ActionTypes.GET_USER_FOLLOWED_CLASSROOMS_SUCCESS:
       return {
         ...state,
-        status: 'done',
         userfollowedclassrooms: action.payload.userfollowedclassrooms,
-      };
-
-    case ActionTypes.UPDATE_CLASSROOM:
-      return {
-        ...state,
-        status: 'loading',
       };
     case ActionTypes.GET_ONE_CLASSROOM:
       return {
