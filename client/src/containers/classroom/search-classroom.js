@@ -59,13 +59,4 @@ class SearchClassroom extends Component {
   }
 }
 
-  // <div>
-  //   {classrooms.map((classroom, index) => (
-  //     classroom.name.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
-  //     classroom.teacher.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
-  //     classroom.description.toLowerCase().indexOf(search.toLowerCase()) !== -1
-  //     ? <ClassroomFollow key={index} classroom={classroom} /> : null
-  //   ))}
-  // </div>
-
 export default connect(mapStateToProps, mapDispatchToProps)(SearchClassroom);

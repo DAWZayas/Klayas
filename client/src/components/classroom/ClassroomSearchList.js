@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {IconButton} from 'material-ui';
 
 // our components
 import {Classroom} from '../../components/classroom';
@@ -49,7 +48,7 @@ class ClassroomSearchList extends Component {
         {classrooms.length === 0 ? (
           <div>No classroom meets search requirements</div>
         ) : (
-          <div className="panel-body">
+          <div>
             {classroomPage.map(classroom => (
               <Classroom key={classroom.id} classroom={classroom} />
             ))}

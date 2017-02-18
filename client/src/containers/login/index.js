@@ -40,7 +40,7 @@ const Login = ({onLoginClick}) => {
             Welcome again to Klayas!
           </p>
         </div>
-        <div className="row">
+        <div className="row" style={{textAlign: 'center'}}>
           <img src="../../../static/logo.png" alt="Klayas logo" width="100" height="auto" />
         </div>
         <form className="marTop1_5em">

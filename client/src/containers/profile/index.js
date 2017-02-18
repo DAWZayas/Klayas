@@ -169,9 +169,9 @@ class Profile extends Component {
 Profile.propTypes = {
   getProfile: PropTypes.func,
   routeParams: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.string.isRequired,
   }),
-  status: PropTypes.bool,
+  isLoading: PropTypes.bool,
   // userprofile: PropTypes.shape({
   //   email: PropTypes.string,
   //   id: PropTypes.string,
