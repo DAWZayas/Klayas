@@ -21,8 +21,7 @@ const mapDispatchToProps = dispatch => ({
 
 class CompleteClassroom extends Component {
 
-  constructor(props) {
-    super(props);
+  componentWillMount() {
     const {onSeeCompleteClass, routeParams} = this.props;
     onSeeCompleteClass({
       id: routeParams.id,
@@ -31,7 +30,7 @@ class CompleteClassroom extends Component {
 
   render() {
     const {onCreateClick, classroom, user, isLoading} = this.props;
-    const handleClick = (e) => {
+    const handleJoinClick = (e) => {
       e.preventDefault();
       onCreateClick({
         studentname: user.name,
@@ -45,26 +44,12 @@ class CompleteClassroom extends Component {
         {isLoading ? (
           <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{top: '50vh'}} />
         ) : (
-          <Card className="containerPaper">
+          <div className="containerPaper">
             <div className="panel panel-primary">
               <div className="panel-heading">
                 <h3>
-                  {!user ? (
-                    <Link to="/home">
-                      <span className="label label-primary pull-right">
-                        <span className="glyphicon glyphicon-pencil" aria-hidden="true" />
-                        Login to join this classroom
-                      </span>
-                    </Link>
-                  ) : classroom.teacher === user.id ? (
-                    <Link to="/edit-classroom">
-                      <span className="label label-primary pull-right">
-                        <span className="glyphicon glyphicon-pencil" aria-hidden="true" />
-                        Edit classroom
-                      </span>
-                    </Link>
-                  ) : (
-                    <Link to="" onClick={handleClick}>
+                  {!(classroom.teacher === user.id) && (
+                    <Link to="" onClick={handleJoinClick}>
                       <span className="label label-primary pull-right">
                         <span className="glyphicon glyphicon-hand-up" aria-hidden="true" /> Join this classroom
                       </span>
@@ -73,24 +58,16 @@ class CompleteClassroom extends Component {
                 </h3>
               </div>
               <div className="panel-body">
-                {!user ?
-                  (
-                    <div className="panel panel-default">
-                      <div className="panel-heading">
-                        <h4>{"Teacher's classroom: "}</h4>
-                      </div>
-                      <div className="panel-body">
-                        {classroom.teacherName}
-                      </div>
+                {!user && (
+                  <div className="panel panel-default">
+                    <div className="panel-heading">
+                      <h4>{"Teacher's classroom: "}</h4>
                     </div>
-                  ) : (
-                    <div className="panel panel-default">
-                      <div className="panel-heading">
-                        <h4>This is your classroom</h4>
-                      </div>
+                    <div className="panel-body">
+                      {classroom.teacherName}
                     </div>
-                  )
-              }
+                  </div>
+                )}
                 <div className="panel panel-default">
                   <div className="panel-heading">
                     <h4>
@@ -113,19 +90,9 @@ class CompleteClassroom extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="panel panel-default">
-                  <div className="panel-heading">
-                    <h4>Studens joined to this classroom</h4>
-                  </div>
-                  <div className="panel-body">
-                    {classroom.students.map((student, index) => (
-                      <SimplyUser key={index} student={student} />
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
-          </Card>
+          </div>
         )}
       </div>
     );

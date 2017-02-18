@@ -2,7 +2,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import {AppBar, Avatar, IconButton, IconMenu, MenuItem} from 'material-ui';
+import {AppBar, Avatar, FontIcon, IconButton, IconMenu, MenuItem} from 'material-ui';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 // our packages
@@ -15,9 +15,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   navToProfile: userID => dispatch(push(`/profile/${userID}`)),
+  navToEditClassroom: () => dispatch(push('/edit-classroom')),
 });
 
-const Navbar = ({classroom, currentPath, navToProfile, user, router, token}) => {
+const Navbar = ({classroom, currentPath, navToEditClassroom, navToProfile, user, router, token}) => {
   const transformPath = (path) => {
     switch (true) {
       case /^\/login$/.test(path):
@@ -42,10 +43,15 @@ const Navbar = ({classroom, currentPath, navToProfile, user, router, token}) => 
     router.goBack();
   };
 
-  const handleProfileClick = (e) => {
-    e.preventDefault();
+  const handleProfileClick = () => {
     navToProfile(user.id);
   };
+
+  const isClassroom = path => (
+    (/^\/classroom\/.+/.test(path)) && (classroom.teacher === user.id) && (
+      <MenuItem primaryText="Edit classroom" leftIcon={<FontIcon className="fa fa-pencil-square-o" />} onTouchTap={navToEditClassroom} />
+    )
+  );
 
   return (
     <AppBar
@@ -62,10 +68,7 @@ const Navbar = ({classroom, currentPath, navToProfile, user, router, token}) => 
       )}
       iconElementRight={
         (!token ? (
-          <IconButton
-            href="https://github.com/DAWZayas/Klayas"
-            iconClassName="fa fa-github"
-          />
+          <IconButton href="https://github.com/DAWZayas/Klayas" iconClassName="fa fa-github" />
         ) : (
           <IconMenu
             iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
@@ -73,6 +76,7 @@ const Navbar = ({classroom, currentPath, navToProfile, user, router, token}) => 
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
           >
             <MenuItem primaryText="Profile" leftIcon={<Avatar src={user.avatarURL} />} onTouchTap={handleProfileClick} />
+            {isClassroom(currentPath)}
             <Logout />
           </IconMenu>
         ))
@@ -84,6 +88,7 @@ const Navbar = ({classroom, currentPath, navToProfile, user, router, token}) => 
 
 Navbar.propTypes = {
   currentPath: PropTypes.string,
+  navToEditClassroom: PropTypes.func,
   navToProfile: PropTypes.func,
   user: PropTypes.shape({
     email: PropTypes.string.isRequired,
