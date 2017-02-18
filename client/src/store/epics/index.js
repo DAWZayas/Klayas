@@ -1,5 +1,5 @@
 import {login, oauthLogin, register, logout, updateProfile} from './auth';
-import {getUserFollowedClassRooms, getUserTeachedClassRooms, createClassroom, getAllClassroom, getOneClassroom, updateClassroomAction} from './classroom';
+import {getUserFollowedClassRooms, getUserTeachedClassRooms, createClassroom, deleteClassroomAction, getAllClassroom, getOneClassroom, updateClassroomAction} from './classroom';
 import {addNotification} from './notifications';
 import {addObservable} from './realtime';
 import {getOneProfile} from './users';
@@ -15,6 +15,7 @@ export default [
   getUserFollowedClassRooms,
   getUserTeachedClassRooms,
   createClassroom,
+  deleteClassroomAction,
   getAllClassroom,
   getOneClassroom,
   updateClassroomAction,

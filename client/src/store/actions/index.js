@@ -39,6 +39,11 @@ export const updateClassAction = payload => ({
   payload,
 });
 
+export const deleteClassAction = payload => ({
+  type: ActionTypes.DELETE_CLASSROOM,
+  payload,
+});
+
 export const doSearchClassroom = payload => ({
   type: ActionTypes.SEARCH_CLASSROOMS,
   payload,

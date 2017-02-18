@@ -98,6 +98,34 @@ export const createClassroom = action$ => action$
     )),
   );
 
+export const deleteClassroomAction = action$ => action$
+.ofType(ActionTypes.DELETE_CLASSROOM)
+.map(signRequest)
+.switchMap(({headers, payload}) => Observable
+  .ajax.delete(`http://localhost:8080/api/classroom/${payload.id}`, payload, headers)
+  .map(res => res.response)
+  .mergeMap(response => Observable.of(
+    {
+      type: ActionTypes.DELETE_CLASSROOM_SUCCESS,
+      payload: response,
+    },
+    Actions.addNotificationAction(
+      {text: 'The Classroom has been successfully update', alertType: 'success'},
+    ),
+  ))
+  .catch(error => Observable.of(
+    {
+      type: ActionTypes.DELETE_CLASSROOM_ERROR,
+      payload: {
+        error,
+      },
+    },
+    Actions.addNotificationAction(
+      {text: 'An error occurred while updating the Classroom', alertType: 'danger'},
+    ),
+  )),
+);
+
 export const updateClassroomAction = action$ => action$
   .ofType(ActionTypes.UPDATE_CLASSROOM)
   .map(signRequest)
@@ -110,7 +138,7 @@ export const updateClassroomAction = action$ => action$
         payload: response,
       },
       Actions.addNotificationAction(
-        {text: 'Clase actualizada correctamente', alertType: 'success'},
+        {text: 'The Classroom has been successfully update', alertType: 'success'},
       ),
     ))
     .catch(error => Observable.of(
@@ -121,7 +149,7 @@ export const updateClassroomAction = action$ => action$
         },
       },
       Actions.addNotificationAction(
-        {text: 'Ha ocurrido un error durante la actualización de la clase', alertType: 'danger'},
+        {text: 'An error occurred while updating the Classroom', alertType: 'danger'},
       ),
     )),
   );
