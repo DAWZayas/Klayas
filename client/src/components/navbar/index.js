@@ -9,21 +9,29 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavbarDrawer from '../drawer';
 import Logout from '../logout';
 
+const mapStateToProps = state => ({
+  classroom: state.classrooms.specificclassroom,
+});
+
 const mapDispatchToProps = dispatch => ({
   navToProfile: userID => dispatch(push(`/profile/${userID}`)),
 });
 
-const Navbar = ({currentPath, navToProfile, user, router, token}) => {
+const Navbar = ({classroom, currentPath, navToProfile, user, router, token}) => {
   const transformPath = (path) => {
-    switch (path) {
-      case '/login':
+    switch (true) {
+      case /^\/login$/.test(path):
         return 'Login';
-      case '/register':
+      case /^\/register$/.test(path):
         return 'Sign up';
-      case '/create':
+      case /^\/create$/.test(path):
         return 'New classroom';
-      case '/search-classroom':
+      case /^\/search-classroom$/.test(path):
         return 'Search';
+      case /^\/profile\/.+/.test(path):
+        return 'Profile';
+      case /^\/classroom\/.+/.test(path):
+        return classroom.name;
       default:
         return 'Klayas';
     }
@@ -88,4 +96,4 @@ Navbar.propTypes = {
   token: PropTypes.string,
 };
 
-export default connect(null, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

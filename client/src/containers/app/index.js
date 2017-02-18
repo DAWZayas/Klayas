@@ -5,7 +5,6 @@ import {push} from 'react-router-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-
 // our components
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
