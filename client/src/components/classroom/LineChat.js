@@ -30,7 +30,7 @@ const LineChat = ({line, user}) => {
         <br/>
       </div>
     ): (
-      <div>
+      <div style={{float: 'left', clear: 'both'}}>
         <Chip>
           <Avatar src={line.studentavatar} />
             <div style={{fontSize: 'smaller', color: 'red'}}>
