@@ -9,41 +9,35 @@ const mapStateToProps = (state, ownProps) => ({
 
 const LineChat = ({line, user}) => {
 
-  const divStyleRight = {
-    float: 'rigth',
-    color: 'red',
-  };
-
   return (
     <div>
-    { user.id === line.studentid ? (
-      <div style={{float: 'right', clear: 'both'}} >
-        <Chip>
-          <Avatar src={line.studentavatar} />
+      {user.id === line.studentid ? (
+        <div style={{float: 'right', clear: 'both'}} >
+          <Chip>
+            <Avatar src={line.studentavatar} />
             <div style={{fontSize: 'smaller', color: 'red'}}>
               You says
             </div>
             <div>
               <p>{line.text}</p>
             </div>
-        </Chip>
-        <br/>
-      </div>
-    ): (
-      <div style={{float: 'left', clear: 'both'}}>
-        <Chip>
-          <Avatar src={line.studentavatar} />
+          </Chip>
+          <br />
+        </div>
+      ) : (
+        <div style={{float: 'left', clear: 'both'}}>
+          <Chip>
+            <Avatar src={line.studentavatar} />
             <div style={{fontSize: 'smaller', color: 'red'}}>
               {line.studentname} says
             </div>
             <div>
               <p>{line.text}</p>
             </div>
-        </Chip>
-        <br/>
-      </div>
-    ) }
-
+          </Chip>
+          <br />
+        </div>
+      ) }
     </div>
   );
 };
