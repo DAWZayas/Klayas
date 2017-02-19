@@ -26,7 +26,7 @@ const SeeClassroomButton = ({onSeeCompleteClassClick, addObservable, navToComple
   return (
     <Link to="/classroom/complete-classroom" onClick={handleSeeCompleteClass}>
       <span className="label label-primary pull-right">
-        <span className="glyphicon glyphicon-eye-open" aria-hidden="true" /> Ver clase completa
+        <span className="glyphicon glyphicon-eye-open" aria-hidden="true" /> See complet classroom
       </span>
     </Link>
   );

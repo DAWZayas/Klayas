@@ -65,7 +65,8 @@ const EditClassroom = ({onCreateClick, onDeleteClick, navToHome, classroom, erro
           />
         </div>
         <button type="submit" className="btn btn-default" onClick={handleClick}>Update Classroom</button> &nbsp;| &nbsp;
-        <button type="submit" className="btn btn-default" onClick={navToHome}>Cancel</button> &nbsp;| &nbsp;
+        <button type="submit" className="btn btn-default" onClick={navToHome}>Cancel</button> <br />
+        <p> - or - </p>
         <button type="submit" className="btn btn-danger" onClick={handleDelete}>Delete Classroom</button>
       </form>
     </Card>

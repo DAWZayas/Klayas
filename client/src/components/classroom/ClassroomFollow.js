@@ -10,7 +10,7 @@ const ClassroomFollow = ({classroom}) => (
         {classroom.name}
       </div>
       <div className="panel-body">
-        <strong>Impartida por:</strong> {classroom.teacherName}<br />
+        <strong>Teached by:</strong> {classroom.teacherName}<br />
         {classroom.description}<br />
       </div>
       <div className="panel-body">
