@@ -52,7 +52,7 @@ class App extends React.Component {
       <MuiThemeProvider>
         <div>
           <Navbar {...this.props} />
-          <div className="container">
+          <div>
             {children}
             <Footer />
           </div>

@@ -36,7 +36,7 @@ class Main extends Component {
   render() {
     const {followedClassrooms, teachedClassrooms} = this.props;
     return (
-      <div className={styles.container}>
+      <div className="containerPaper">
         <Tabs className={styles.tabs} inkBarStyle={{background: '#F44336'}}>
           <Tab label="Created classrooms">
             <div className="animated fadeIn">
@@ -54,10 +54,8 @@ class Main extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="panel-body">
-                    <ClassroomList classrooms={teachedClassrooms} />
-                  </div>
                 </div>
+                <ClassroomList classrooms={teachedClassrooms} />
               </Card>
             </div>
           </Tab>
@@ -78,10 +76,8 @@ class Main extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="panel-body">
-                    <ClassroomList classrooms={followedClassrooms} />
-                  </div>
                 </div>
+                <ClassroomList classrooms={followedClassrooms} />
               </Card>
             </div>
           </Tab>

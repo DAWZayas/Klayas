@@ -27,8 +27,10 @@ button[class*="btn-primary"] {
 }
 
 div[class="containerPaper"] {
-  margin-top: 5.5em;
-  padding: 1em;
+  position: relative;
+  top: 5em;
+  padding: 0.5em;
+  min-height: 100vh - 14vh;
   & p, form {
     text-align: center;
   }
@@ -36,4 +38,8 @@ div[class="containerPaper"] {
 
 div[class*="marTop1_5em"] {
   margin-top: 1.5em;
+}
+
+div[class="panel panel-default"] {
+  margin-bottom: 10px;
 }
