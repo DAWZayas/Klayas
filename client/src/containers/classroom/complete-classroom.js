@@ -40,17 +40,18 @@ class CompleteClassroom extends Component {
       });
     };
 
-    function searchuser(id){
-      if (classroom.teacher === id) {
-        return true;
-      } else {
-        for (let i = 0; i < classroom.students.length; i++){
-          if (classroom.students[i].studentid === id)
-            return true;
-        }
+    const searchUser = (id) => {
+      const isStudent = student => (student.studentid === id);
+
+      if (classroom.teacher !== id) {
         return false;
       }
-    }
+
+      if (classroom.students.find(isStudent) === undefined) {
+        return false;
+      }
+      return true;
+    };
 
     return (
       <div className="">
@@ -61,7 +62,7 @@ class CompleteClassroom extends Component {
             <div className="panel panel-primary">
               <div className="panel-heading">
                 <h3>
-                  {!(classroom.teacher === user.id) && (
+                  {user && !(classroom.teacher === user.id) && (
                     <Link to="" onClick={handleJoinClick}>
                       <span className="label label-primary pull-right">
                         <span className="glyphicon glyphicon-hand-up" aria-hidden="true" /> Join this classroom
@@ -95,7 +96,7 @@ class CompleteClassroom extends Component {
                             Login to join this classroom
                           </div>
                         ) :
-                        searchuser(user.id) ?
+                        searchUser(user.id) ?
                           (
                             <div className="col-md-12">
                               <ClassroomChat />
