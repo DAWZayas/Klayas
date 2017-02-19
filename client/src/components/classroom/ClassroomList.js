@@ -28,7 +28,7 @@ class ClassroomList extends Component {
     return (
       <div>
         {classrooms.length === 0 ? (
-          <div>Aun no sigues ninguna clase</div>
+          <div>Not classrooms yet</div>
         ) : (
           <div>
             {classroomPage.map(classroom => (
