@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {updateClassAction} from '../../store/actions';
 import LineChat from '../../components/classroom/LineChat';
 
-const styles = require('../../../styles/ClassroomChat.scss');
+const styles = require('./ClassroomChat.scss');
 
 const mapStateToProps = state => ({
   chat: state.classrooms.specificclassroom.chat,
