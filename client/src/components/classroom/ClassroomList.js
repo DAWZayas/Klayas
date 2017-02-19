@@ -28,9 +28,9 @@ class ClassroomList extends Component {
     return (
       <div>
         {classrooms.length === 0 ? (
-          <div>Not classrooms yet</div>
+          <div style={{padding: 15}}>Not classrooms yet</div>
         ) : (
-          <div>
+          <div style={{position: 'relative', width: '100%', height: '65vh'}}>
             {classroomPage.map(classroom => (
               <Classroom key={classroom.id} classroom={classroom} />
             ))}

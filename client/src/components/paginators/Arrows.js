@@ -2,7 +2,7 @@ import React from 'react';
 import {IconButton} from 'material-ui';
 
 export default ({click, pageIndex, nClassroom, classroomsLength}) => (
-  <div className="row">
+  <div className="row" style={{position: 'absolute', bottom: '1em', left: '35%'}}>
     <div className="col-xs-6" style={{textAlign: 'right'}}>
       <IconButton
         iconClassName="fa fa-angle-left"
