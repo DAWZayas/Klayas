@@ -8,7 +8,7 @@ import {Classroom} from '../db';
 export default (app) => {
   app.post('/api/classroom/:id', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
     // get classroom input
-    const {name, studentname, studentid, description} = req.body;
+    const {name, studentname, studentid, description, text, textDate, studentavatar} = req.body;
 
     // get classroom data
     let classroom;
@@ -34,9 +34,21 @@ export default (app) => {
       classroom.description = description;
     }
 
-    if (classroom.students.find(student => (student.studentid === studentid)) !== undefined) {
-      res.status(403).send({error: 'You have already joined to this classroom'});
-      return;
+    if (text) {
+      const line = {studentname, studentid, text, textDate, studentavatar};
+      classroom.chat.push(line);
+    }
+
+    if (!text) {
+      if (classroom.students.find(student => (student.studentid === studentid)) !== undefined) {
+        res.status(403).send({error: 'You have already joined to this classroom'});
+        return;
+      }
+
+      if (studentname) {
+        const student = {studentname, studentid};
+        classroom.students.push(student);
+      }
     }
 
     if (studentname) {

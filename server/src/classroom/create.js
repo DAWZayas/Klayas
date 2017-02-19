@@ -22,6 +22,7 @@ export default (app) => {
       description,
       teacher: req.user.id,
       teacherName: req.user.login,
+      chat: [],
       students: [],
     });
 

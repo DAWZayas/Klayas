@@ -7,6 +7,7 @@ import {Card, CircularProgress} from 'material-ui';
 // our packages
 import {getOneClassRoom, updateClassAction} from '../../store/actions';
 import SimplyUser from '../../components/user/SimplyUser';
+import ClassroomChat from '../../components/classroom/ClassroomChat';
 
 const mapStateToProps = state => ({
   classroom: state.classrooms.specificclassroom,
@@ -38,6 +39,18 @@ class CompleteClassroom extends Component {
         id: classroom.id,
       });
     };
+
+    function searchuser(id){
+      if (classroom.teacher === id) {
+        return true;
+      } else {
+        for (let i = 0; i < classroom.students.length; i++){
+          if (classroom.students[i].studentid === id)
+            return true;
+        }
+        return false;
+      }
+    }
 
     return (
       <div className="">
@@ -71,21 +84,28 @@ class CompleteClassroom extends Component {
                 <div className="panel panel-default">
                   <div className="panel-heading">
                     <h4>
-                      Streaming
+                      Share and learn
                     </h4>
                   </div>
                   <div className="panel-body">
                     <div>
                       {!user ?
                         (
-                          <div className="col-md-6">
+                          <div className="col-md-12">
                             Login to join this classroom
                           </div>
-                        ) : (
-                          <div className="col-md-6">
-                            <iframe width="560" height="315" src={classroom.url} frameBorder="0" allowFullScreen />
-                          </div>
-                        )
+                        ) :
+                        searchuser(user.id) ?
+                          (
+                            <div className="col-md-12">
+                              <ClassroomChat />
+                            </div>
+                          ) :
+                          (
+                            <div className="col-md-12">
+                              Login to join this classroom
+                            </div>
+                          )
                       }
                     </div>
                   </div>
