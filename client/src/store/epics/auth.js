@@ -19,7 +19,7 @@ export const login = action$ => action$
         payload: response,
       },
       Actions.addNotificationAction(
-        {text: 'Acceso correcto', alertType: 'info'},
+        {text: 'Login success', alertType: 'info'},
       ),
     ))
     .catch(error => Observable.of(
@@ -76,7 +76,7 @@ export const register = action$ => action$
         payload: response,
       },
       Actions.addNotificationAction(
-        {text: 'Registro completado', alertType: 'info'},
+        {text: 'Succesful register', alertType: 'info'},
       ),
       Actions.loginAction(
         {login: payload.login, password: payload.password},
@@ -99,7 +99,7 @@ export const logout = action$ => action$
   .ofType(ActionTypes.DO_LOGOUT)
   .switchMap(() => Observable.of(
     Actions.addNotificationAction({
-      text: 'Cerrada la sesión',
+      text: 'Logout success',
       alertType: 'info',
     }),
   ));
@@ -116,7 +116,7 @@ export const updateProfile = action$ => action$
         payload: response,
       },
       Actions.addNotificationAction(
-        {text: 'Perfil actualizado correctamente', alertType: 'success'},
+        {text: 'Profile succesfully updated', alertType: 'success'},
       ),
     ))
     .catch(error => Observable.of(

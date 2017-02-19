@@ -2,15 +2,17 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Card, RaisedButton, TextField} from 'material-ui';
+import {push} from 'react-router-redux';
 
 // our packages
 import {createClassAction} from '../../store/actions';
 
 const mapDispatchToProps = dispatch => ({
+  navToRoot: () => dispatch(push('/')),
   onCreateClick: params => dispatch(createClassAction(params)),
 });
 
-const CreateClassroom = ({onCreateClick}) => {
+const CreateClassroom = ({navToRoot, onCreateClick}) => {
   let nameInput;
   let descriptionInput;
 
@@ -20,6 +22,7 @@ const CreateClassroom = ({onCreateClick}) => {
       name: nameInput.getValue(),
       description: descriptionInput.getValue(),
     });
+    navToRoot();
   };
 
   return (
@@ -55,6 +58,7 @@ const CreateClassroom = ({onCreateClick}) => {
 };
 
 CreateClassroom.propTypes = {
+  navToRoot: PropTypes.func,
   onCreateClick: PropTypes.func,
 };
 

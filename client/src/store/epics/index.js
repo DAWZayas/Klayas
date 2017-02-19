@@ -1,6 +1,7 @@
 import {login, oauthLogin, register, logout, updateProfile} from './auth';
 import {
   createClassroom,
+  deleteClassroomAction,
   getAllClassroom,
   getOneClassroom,
   getClassroomsByFollowedUser,
@@ -20,6 +21,7 @@ export default [
   updateProfile,
   // classroom
   createClassroom,
+  deleteClassroomAction,
   getAllClassroom,
   getOneClassroom,
   getClassroomsByFollowedUser,

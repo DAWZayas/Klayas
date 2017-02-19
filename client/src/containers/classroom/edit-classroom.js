@@ -6,8 +6,9 @@ import {push} from 'react-router-redux';
 import {Card, RaisedButton, TextField} from 'material-ui';
 
 // our packages
-import {updateClassAction} from '../../store/actions';
-import {registerErrorToMessage} from '../../util';
+import {updateClassAction, deleteClassAction} from '../../store/actions';
+
+import styles from '../../components/formsFooter/FormsFooter.scss';
 
 const mapStateToProps = state => ({
   classroom: state.classrooms.specificclassroom,
@@ -15,12 +16,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onCreateClick: params => dispatch(updateClassAction(params)),
-  navToClassroom: () => dispatch(push('/classroom/complete-classroom')),
+  onDeleteClick: params => dispatch(deleteClassAction(params)),
+  navToHome: () => dispatch(push('/')),
 });
 
-const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
+const EditClassroom = ({onCreateClick, onDeleteClick, navToHome, classroom, router, error}) => {
   let nameInput;
   let descriptionInput;
+
+  const goBack = () => (router.goBack());
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -29,8 +33,17 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
       description: descriptionInput.getValue(),
       id: classroom.id,
     });
-    navToClassroom();
+    goBack();
   };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    onDeleteClick({
+      id: classroom.id,
+    });
+    setImmediate(() => navToHome());
+  };
+
 
   return (
     <Card className="containerPaper">
@@ -49,6 +62,7 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
             <TextField
               hintText="Change the description"
               floatingLabelText="Description"
+              defaultValue={classroom.description}
               ref={(i) => { descriptionInput = i; }}
             />
           </div>
@@ -58,7 +72,17 @@ const EditClassroom = ({onCreateClick, navToClassroom, classroom, error}) => {
             <RaisedButton label="Update" primary onTouchTap={handleClick} />
           </div>
           <div className="col-xs-6">
-            <RaisedButton label="Cancel" backgroundColor="#C62828" labelColor="white" onTouchTap={navToClassroom} />
+            <RaisedButton label="Cancel" onTouchTap={goBack} />
+          </div>
+        </div>
+        <div className="row marTop1_5em">
+          <div className="col-xs-10 col-xs-offset-1 col-md-9 col-md-offset-1">
+            <p className={styles.divider}>or</p>
+          </div>
+        </div>
+        <div className="row marTop1_5em">
+          <div className="col-xs-10 col-xs-offset-1">
+            <RaisedButton label="Delete classroom" backgroundColor="#D50000" labelColor="white" onTouchTap={handleDelete} fullWidth />
           </div>
         </div>
       </form>

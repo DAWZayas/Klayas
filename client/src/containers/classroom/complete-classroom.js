@@ -104,7 +104,7 @@ class CompleteClassroom extends Component {
                           ) :
                           (
                             <div className="col-md-12">
-                              Login to join this classroom
+                              Join this classroom to chat
                             </div>
                           )
                       }

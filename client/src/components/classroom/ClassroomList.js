@@ -16,7 +16,7 @@ class ClassroomList extends Component {
   render() {
     const {classrooms} = this.props;
     const {pageIndex} = this.state;
-    const N_CLASSROOMS = 2;
+    const N_CLASSROOMS = 8;
 
     const classroomPage = classrooms.slice(pageIndex * N_CLASSROOMS, (pageIndex * N_CLASSROOMS) + N_CLASSROOMS);
     const handleClick = (inc) => {

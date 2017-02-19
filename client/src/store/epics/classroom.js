@@ -98,6 +98,34 @@ export const createClassroom = action$ => action$
     )),
   );
 
+export const deleteClassroomAction = action$ => action$
+.ofType(ActionTypes.DELETE_CLASSROOM)
+.map(signRequest)
+.switchMap(({headers, payload}) => Observable
+  .ajax.delete(`http://localhost:8080/api/classroom/${payload.id}`, headers)
+  .map(res => res.response)
+  .mergeMap(response => Observable.of(
+    {
+      type: ActionTypes.DELETE_CLASSROOM_SUCCESS,
+      payload: response,
+    },
+    Actions.addNotificationAction(
+      {text: 'The Classroom has been successfully deleted', alertType: 'success'},
+    ),
+  ))
+  .catch(error => Observable.of(
+    {
+      type: ActionTypes.DELETE_CLASSROOM_ERROR,
+      payload: {
+        error,
+      },
+    },
+    Actions.addNotificationAction(
+      {text: 'An error occurred while deleting the Classroom', alertType: 'danger'},
+    ),
+  )),
+);
+
 export const updateClassroomAction = action$ => action$
   .ofType(ActionTypes.UPDATE_CLASSROOM)
   .map(signRequest)
