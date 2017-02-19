@@ -35,8 +35,8 @@ export default (app) => {
     }
 
     if (text) {
-      const line = {studentname, studentid, text, textDate, studentavatar};
-      classroom.chat.push(line);
+      const chatData = {studentname, studentid, text, textDate, studentavatar};
+      classroom.chat.push(chatData);
     }
 
     if (!text) {
@@ -49,11 +49,6 @@ export default (app) => {
         const student = {studentname, studentid};
         classroom.students.push(student);
       }
-    }
-
-    if (studentname) {
-      const student = {studentname, studentid};
-      classroom.students.push(student);
     }
 
     // try to save

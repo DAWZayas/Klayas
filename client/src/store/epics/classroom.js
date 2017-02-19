@@ -137,9 +137,6 @@ export const updateClassroomAction = action$ => action$
         type: ActionTypes.UPDATE_CLASSROOM_SUCCESS,
         payload: response,
       },
-      Actions.addNotificationAction(
-        {text: 'Classroom updated correctly', alertType: 'success'},
-      ),
     ))
     .catch(error => Observable.of(
       {
@@ -148,8 +145,5 @@ export const updateClassroomAction = action$ => action$
           error,
         },
       },
-      Actions.addNotificationAction(
-        {text: 'An error occurred during classroom update', alertType: 'danger'},
-      ),
     )),
   );
