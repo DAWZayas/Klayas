@@ -6,6 +6,7 @@ export const Classroom = thinky.createModel('Classroom', {
   description: thinky.type.string(),
   teacher: thinky.type.string().required(),
   teacherName: thinky.type.string().required(),
+  creationDate: thinky.type.date().default(thinky.r.now()),
   chat: thinky.type.array().schema(thinky.type.object().schema(
     {
       studentname: thinky.type.string(),
