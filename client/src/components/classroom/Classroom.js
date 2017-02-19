@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
   addObservable: observable => dispatch(addObservable(observable)),
 });
 
-const Classroom = ({classroom, navToCompleteClass}) => {
+const Classroom = ({classroom, addObservable, navToCompleteClass}) => {
   const handleSeeCompleteClass = (e) => {
     e.preventDefault();
     addObservable(registerClassroomObservable(classroom.id));

@@ -153,7 +153,7 @@ class Profile extends Component {
       <div className="animated fadeIn">
         <div className={styles.container}>
           {isLoading ? (
-            <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{top: '50vh'}} />
+            <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{top: '35vh'}} />
           ) : (
             <Card zDepth={3} className={styles.card} style={{textAlign: 'center'}}>
               <Avatar src={user.avatarURL} size={100} style={{marginTop: '0.5em'}} />
