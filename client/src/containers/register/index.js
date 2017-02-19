@@ -42,67 +42,69 @@ const Register = ({onRegisterClick}) => {
 
   return (
     <div className="animated fadeIn">
-      <Paper zDepth={3} className="containerPaper">
-        <div className="row">
-          <p className="h4">
-            {'Create a new Klayas account now!'}
-          </p>
-        </div>
-        <form className="marTop1_5em">
+      <div className="containerPaper">
+        <Paper zDepth={3}>
           <div className="row">
-            <div className="col-xs-12">
-              <TextField
-                hintText="Your name"
-                floatingLabelText="Name"
-                ref={(i) => { nameInput = i; }}
-              />
-            </div>
-            <div className="col-xs-12">
-              <TextField
-                hintText="Your surname"
-                floatingLabelText="Surname"
-                ref={(i) => { surnameInput = i; }}
-              />
-            </div>
-            <div className="col-xs-12">
-              <TextField
-                hintText="Choose a username"
-                floatingLabelText="Username"
-                ref={(i) => { loginInput = i; }}
-              />
-            </div>
-            <div className="col-xs-12">
-              <TextField
-                hintText="Your email address"
-                floatingLabelText="Email"
-                ref={(i) => { emailInput = i; }}
-              />
-            </div>
-            <div className="col-xs-12">
-              <TextField
-                hintText="Type a strong password"
-                floatingLabelText="Password"
-                ref={(i) => { passwordInput = i; }}
-                type="password"
-              />
-            </div>
-            <div className="col-xs-12">
-              <TextField
-                hintText="Repeat the password"
-                floatingLabelText="Repeat password"
-                ref={(i) => { repeatPasswordInput = i; }}
-                type="password"
-              />
-            </div>
+            <p className="h4">
+              {'Create a new Klayas account now!'}
+            </p>
           </div>
-          <div className="row marTop1_5em">
-            <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
-              <RaisedButton label="Sing up" primary onTouchTap={handleClick} fullWidth />
+          <form className="marTop1_5em">
+            <div className="row">
+              <div className="col-xs-12">
+                <TextField
+                  hintText="Your name"
+                  floatingLabelText="Name"
+                  ref={(i) => { nameInput = i; }}
+                />
+              </div>
+              <div className="col-xs-12">
+                <TextField
+                  hintText="Your surname"
+                  floatingLabelText="Surname"
+                  ref={(i) => { surnameInput = i; }}
+                />
+              </div>
+              <div className="col-xs-12">
+                <TextField
+                  hintText="Choose a username"
+                  floatingLabelText="Username"
+                  ref={(i) => { loginInput = i; }}
+                />
+              </div>
+              <div className="col-xs-12">
+                <TextField
+                  hintText="Your email address"
+                  floatingLabelText="Email"
+                  ref={(i) => { emailInput = i; }}
+                />
+              </div>
+              <div className="col-xs-12">
+                <TextField
+                  hintText="Type a strong password"
+                  floatingLabelText="Password"
+                  ref={(i) => { passwordInput = i; }}
+                  type="password"
+                />
+              </div>
+              <div className="col-xs-12">
+                <TextField
+                  hintText="Repeat the password"
+                  floatingLabelText="Repeat password"
+                  ref={(i) => { repeatPasswordInput = i; }}
+                  type="password"
+                />
+              </div>
             </div>
-          </div>
-        </form>
-        <FormsFooter />
-      </Paper>
+            <div className="row marTop1_5em">
+              <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
+                <RaisedButton label="Sing up" primary onTouchTap={handleClick} fullWidth />
+              </div>
+            </div>
+          </form>
+          <FormsFooter />
+        </Paper>
+      </div>
     </div>
   );
 };
