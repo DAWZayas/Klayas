@@ -26,12 +26,6 @@ export const classrooms = (state = initialState, action) => {
         status: 'done',
         userfollowedclassrooms: action.payload.userfollowedclassrooms,
       };
-
-    case ActionTypes.UPDATE_CLASSROOM:
-      return {
-        ...state,
-        status: 'loading',
-      };
     case ActionTypes.GET_ONE_CLASSROOM:
       return {
         ...state,

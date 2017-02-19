@@ -102,7 +102,7 @@ export const deleteClassroomAction = action$ => action$
 .ofType(ActionTypes.DELETE_CLASSROOM)
 .map(signRequest)
 .switchMap(({headers, payload}) => Observable
-  .ajax.delete(`http://localhost:8080/api/classroom/${payload.id}`, payload, headers)
+  .ajax.delete(`http://localhost:8080/api/classroom/${payload.id}`, headers)
   .map(res => res.response)
   .mergeMap(response => Observable.of(
     {
@@ -110,7 +110,7 @@ export const deleteClassroomAction = action$ => action$
       payload: response,
     },
     Actions.addNotificationAction(
-      {text: 'The Classroom has been successfully update', alertType: 'success'},
+      {text: 'The Classroom has been successfully deleted', alertType: 'success'},
     ),
   ))
   .catch(error => Observable.of(
@@ -121,7 +121,7 @@ export const deleteClassroomAction = action$ => action$
       },
     },
     Actions.addNotificationAction(
-      {text: 'An error occurred while updating the Classroom', alertType: 'danger'},
+      {text: 'An error occurred while deleting the Classroom', alertType: 'danger'},
     ),
   )),
 );
@@ -138,7 +138,7 @@ export const updateClassroomAction = action$ => action$
         payload: response,
       },
       Actions.addNotificationAction(
-        {text: 'The Classroom has been successfully update', alertType: 'success'},
+        {text: 'The Classroom has been successfully updated', alertType: 'success'},
       ),
     ))
     .catch(error => Observable.of(

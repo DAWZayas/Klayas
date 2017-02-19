@@ -15,17 +15,15 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onCreateClick: params => dispatch(updateClassAction(params)),
   onDeleteClick: params => dispatch(deleteClassAction(params)),
-  navToClassroom: () => dispatch(push('/classroom/complete-classroom')),
   navToHome: () => dispatch(push('/')),
 });
 
-const EditClassroom = ({onCreateClick, onDeleteClick, navToClassroom, navToHome, classroom, error}) => {
+const EditClassroom = ({onCreateClick, onDeleteClick, navToHome, classroom, error}) => {
   let nameInput;
   let descriptionInput;
 
   const handleClick = (e) => {
     e.preventDefault();
-    setImmediate(() => navToClassroom());
     onCreateClick({
       name: nameInput.value,
       description: descriptionInput.value,
@@ -35,13 +33,11 @@ const EditClassroom = ({onCreateClick, onDeleteClick, navToClassroom, navToHome,
 
   const handleDelete = (e) => {
     e.preventDefault();
-    setImmediate(() => navToHome());
     onDeleteClick({
       id: classroom.id,
     });
+    setImmediate(() => navToHome());
   };
-
-  const d = moment(classroom.date).format('YYYY-MM-DD');
 
   return (
     <Card className="containerPaper">
@@ -69,7 +65,7 @@ const EditClassroom = ({onCreateClick, onDeleteClick, navToClassroom, navToHome,
           />
         </div>
         <button type="submit" className="btn btn-default" onClick={handleClick}>Update Classroom</button> &nbsp;| &nbsp;
-        <button type="submit" className="btn btn-default" onClick={navToClassroom}>Cancel</button> &nbsp;| &nbsp;
+        <button type="submit" className="btn btn-default" onClick={navToHome}>Cancel</button> &nbsp;| &nbsp;
         <button type="submit" className="btn btn-danger" onClick={handleDelete}>Delete Classroom</button>
       </form>
     </Card>

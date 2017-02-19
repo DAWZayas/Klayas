@@ -32,7 +32,6 @@ const ClassroomChat = ({onChatClick, chat, user, classroom}) => {
       studentid: user.id,
       text: chatInput.value,
       date: moment(),
-
     });
   };
 
