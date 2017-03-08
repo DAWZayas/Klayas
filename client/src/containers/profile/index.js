@@ -65,8 +65,8 @@ class Profile extends Component {
     };
 
     const content = !editing ? (
-      <div>
-        <div className={styles.userData}>
+      <div style={{padding: 20}}>
+        <div style={{textAlign: 'left', padding: 20}}>
           <span className={styles.rowHeader}>Name</span>: {user.name}<br />
           <span className={styles.rowHeader}>Surname</span>: {user.surname}<br />
           <span className={styles.rowHeader}>Username</span>: {user.login}<br />
@@ -79,7 +79,7 @@ class Profile extends Component {
         </div>
       </div>
     ) : (
-      <form className={styles.editProfileForm}>
+      <form style={{padding: 20}}>
         <div className="row">
           <div className="col-xs">
             <TextField
@@ -151,7 +151,7 @@ class Profile extends Component {
 
     return (
       <div className="animated fadeIn">
-        <div className={styles.container}>
+        <div className="containerPaper">
           {isLoading ? (
             <CircularProgress className="col-xs-3 col-xs-offset-5" mode="indeterminate" style={{top: '35vh'}} />
           ) : (

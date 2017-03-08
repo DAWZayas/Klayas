@@ -54,8 +54,8 @@ class App extends React.Component {
           <Navbar {...this.props} />
           <div>
             {children}
-            <Footer />
           </div>
+          <Footer />
         </div>
       </MuiThemeProvider>
     );

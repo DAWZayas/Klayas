@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Avatar, Card, CardHeader, CardText} from 'material-ui';
+import {Card, CardHeader, CardText} from 'material-ui';
 
 const mapStateToProps = (state, ownProps) => ({
   line: ownProps.line,

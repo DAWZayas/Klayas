@@ -1,6 +1,5 @@
 // npm packages
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {CircularProgress} from 'material-ui';
 
